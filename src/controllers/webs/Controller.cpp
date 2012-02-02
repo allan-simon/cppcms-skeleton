@@ -32,7 +32,7 @@
 
 #include "contents/content.h"
 
-#include "contents/Config.h"
+#include "generics/Config.h"
 
 namespace controllers {
 namespace webs {

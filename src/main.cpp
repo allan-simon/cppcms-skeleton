@@ -34,7 +34,7 @@
 
 #include "tatodetect.h"
 
-#include "contents/Config.h"
+#include "generics/Config.h"
 
 using namespace std;
 using namespace cppcms;

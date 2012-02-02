@@ -28,7 +28,6 @@
 
 #include <cppcms/view.h>
 
-#include "contents/Config.h"
 #include "contents/forms/change_interface_langs.h"
 
 namespace contents {
