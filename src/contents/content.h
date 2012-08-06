@@ -1,5 +1,5 @@
 /**
- * @PROJECT_NAME_HUMAN@  free collaborative creation of multilingual corpuses project
+ * @PROJECT_NAME_HUMAN@  @DESCRIPTION@
  * Copyright (C) @YEARS@ @AUTHOR@ <@EMAIL@> 
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,7 +20,7 @@
  * @package  Contents
  * @author   @AUTHOR@ <@EMAIL@> 
  * @license  Affero General Public License
- * @link     http://tatoeba.org
+ * @link     @PROJECT_WEBSITE@
  */
 
 #ifndef CONTENTS_BASE_CONTENT_H
