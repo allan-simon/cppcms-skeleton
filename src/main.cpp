@@ -1,6 +1,6 @@
 /**
- * Tatoeba Project, free collaborative creation of multilingual corpuses project
- * Copyright (C) 2011 Allan SIMON <allan.simon@supinfo.com>
+ * @PROJECT_NAME_HUMAN@  free collaborative creation of multilingual corpuses project
+ * Copyright (C) @YEARS@ @AUTHOR@ <@EMAIL@> 
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -16,9 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  *
- * @category Tatodetect
+ * @category @PROJECT_NAME_HUMAN@
  * @package  Main
- * @author   Allan SIMON <allan.simon@supinfo.com>
+ * @author   @AUTHOR@ <@EMAIL@> 
  * @license  Affero General Public License
  * @link     http://tatoeba.org
  */
@@ -32,7 +32,7 @@
 #include <cppdb/frontend.h>
 #include <cppcms/json.h>
 
-#include "tatodetect.h"
+#include "@PROJECT_NAME_CODE@.h"
 
 #include "generics/Config.h"
 
@@ -48,7 +48,7 @@ int main(int argc,char ** argv)
     Config *conf = Config::get_instance();
 
     conf->sqlite3Path = app.settings().get<string>(
-        "tatodetect.sqlite3.path"
+        "@PROJECT_NAME_CODE@.sqlite3.path"
     );
         
     /*start the graph database*/

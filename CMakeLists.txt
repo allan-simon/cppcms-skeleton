@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.6)
 
-project(tatoedetect)
+project(@PROJECT_NAME_CODE@)
 include_directories(
     src
 )
@@ -45,8 +45,8 @@ file(
 
 
 add_executable(
-    tatodetect
-    src/tatodetect.cpp
+    @PROJECT_NAME_CODE@
+    src/@PROJECT_NAME_CODE@.cpp
     src/main.cpp
     ${controllers_files}
     ${models_files}
@@ -57,29 +57,12 @@ add_executable(
 )
 
 target_link_libraries(
-    tatodetect
+    @PROJECT_NAME_CODE@
     cppcms
     cppdb
     booster
     sqlite3
 )
-
-#add_executable(
-#    indexer
-#    src/indexer.cpp
-#    src/contents/Config.cpp
-#    src/generics/Languages.cpp
-#    src/models/TatoDB.cpp
-#)
-
-#target_link_libraries(
-#    indexer
-#    tato
-#    cppcms
-#    cppdb
-#    tokyodystopia
-#)
-#
 
 
 add_custom_command(

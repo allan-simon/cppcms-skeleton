@@ -8,7 +8,7 @@
         "backend" : "thread_shared"
     },
 	"http" : {
-		"script_names" : ["/tatodetect"]
+		"script_names" : ["/@PROJECT_NAME_CODE@"]
 	},
 	"localization" : {
 		"encoding" : "utf-8",
@@ -26,8 +26,7 @@
             "storage" : "memory"
         }
     },
-	"tatodetect" : {
-        "web" : "http://127.0.0.1:4242/",
+	"@PROJECT_NAME_CODE@" : {
         "interfacelangs" : [
             ["en"  , "en_GB.UTF-8", "English"],
             ["fr"  , "fr_FR.UTF-8", "Français"]
