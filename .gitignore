@@ -1,0 +1,5 @@
+*.[oa]
+*.swp
+*.pyc
+build/*
+*.back
