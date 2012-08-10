@@ -46,7 +46,7 @@ namespace apps {
 /**
  *
  */
-Tatodetect::Tatodetect(cppcms::service &serv) :
+@MAIN_CLASS@::@MAIN_CLASS@(cppcms::service &serv) :
     cppcms::application(serv),
     pages(serv)
 {
@@ -54,6 +54,8 @@ Tatodetect::Tatodetect(cppcms::service &serv) :
     //add(sentencesApi, "^/api/sentences(.*)", 1);
     //NOTE important to add the page controller at the end
     //as its regexp is more global
+
+    //add(#controller#,#mount_point#,1);
     add(pages, "/(.*)", 1);
 
 
@@ -64,7 +66,7 @@ Tatodetect::Tatodetect(cppcms::service &serv) :
  */
 
 
-void @PROJECT_NAME_HUMAN@::main(std::string url) {
+void @MAIN_CLASS@::main(std::string url) {
     
     std::string interfaceLang("");
     if (!session().is_set("interfaceLang")) {
@@ -87,7 +89,7 @@ void @PROJECT_NAME_HUMAN@::main(std::string url) {
 /**
  * 
  */
-std::string @PROJECT_NAME_HUMAN@::get_default_interface_lang() {
+std::string @MAIN_CLASS@::get_default_interface_lang() {
     
     std::string acceptedLanguage = request().http_accept_language();
        

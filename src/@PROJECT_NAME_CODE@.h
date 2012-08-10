@@ -24,8 +24,8 @@
  */
 
 
-#ifndef TATODETECT_H 
-#define TATODETECT_H
+#ifndef @MAIN_CLASS_HEADER@_H 
+#define @MAIN_CLASS_HEADER@_H
 
 /**
  * @file @PROJECT_NAME_CODE@.h
@@ -43,11 +43,11 @@
 namespace apps {
 
 /** 
- * @class @PROJECT_NAME_HUMAN@ 
+ * @class @MAIN_CLASS@ 
  * Application class representing the website
  * All http request will be dispatched by this class
  */
-class @PROJECT_NAME_HUMAN@ : public cppcms::application {
+class @MAIN_CLASS@ : public cppcms::application {
 
 private:
     controllers::webs::Pages pages;
@@ -70,7 +70,7 @@ public:
      * Will connect every controllers to their respective paths
      * @param serv
      */
-	Tatodetect(cppcms::service &serv);
+	@MAIN_CLASS@(cppcms::service &serv);
 
     /**
      * Method who receive all web requests

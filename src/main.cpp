@@ -60,7 +60,7 @@ int main(int argc,char ** argv)
     //booster::intrusive_ptr<apps::Tatoeba> tatoApp = new apps::Tatoeba(app);
 
     app.applications_pool().mount(
-        cppcms::applications_factory<apps::Tatodetect>()
+        cppcms::applications_factory<apps::@MAIN_CLASS@>()
     );
     /*launch it */
     cout << "[NOTICE] website launched" << endl;
