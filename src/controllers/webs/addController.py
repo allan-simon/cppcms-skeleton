@@ -65,11 +65,11 @@ def generateFromTemplate(templateFile, placeHolders, outfileName):
     )
 
 
-    pathTemplateCpp = os.path.join(
+    pathTemplate = os.path.join(
         TEMPLATE_DIR,
         templateFile
     )
-    for line in fileinput.FileInput(pathTemplateCpp):
+    for line in fileinput.FileInput(pathTemplate):
         for find,replace in placeHolders.items():
             line = line.replace(find,replace)
         outfile.write(line)

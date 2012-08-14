@@ -41,9 +41,9 @@ class %%CONTROLLER_NAME%% : public Controller {
          * @brief Constructor
          * @since %%CONTROLLER_TODAY%%
          */
-        %%CONTROLLER_NAME%%();
+        %%CONTROLLER_NAME%%(cppcms::service &serv);
 
-// %%%NEXT_ACTION_HEAADER_MARKER%%% , do not delete
+// %%%NEXT_ACTION_MARKER%%% , do not delete
 
 };
 

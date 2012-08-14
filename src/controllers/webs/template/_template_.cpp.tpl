@@ -39,10 +39,8 @@ namespace webs {
     controllers::webs::Controller(serv)
 {
 
-    //dispatcher().assign("%%ACTION_URL%%", &%%CONTROLLER_NAME%%::%%ACTION%%, this);
-
+    //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
 }
-
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 

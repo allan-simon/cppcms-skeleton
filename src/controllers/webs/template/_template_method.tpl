@@ -1,4 +1,3 @@
-
 /**
  *
  */
@@ -12,4 +11,3 @@ void %%CONTROLLER_NAME%%::%%ACTION_NAME%%() {
 }
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
-
