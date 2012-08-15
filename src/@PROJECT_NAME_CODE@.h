@@ -35,6 +35,7 @@
 #include <cppcms/application.h>
 #include <cppdb/frontend.h>
 
+//%%%NEXT_CONTROLLER_INCLUDE_MARKER%%%, do not delete
 #include "controllers/webs/Pages.h"
 
 /** 
@@ -50,6 +51,7 @@ namespace apps {
 class @MAIN_CLASS@ : public cppcms::application {
 
 private:
+    //%%%NEXT_MAIN_APP_CTRL_ATTR%%%
     controllers::webs::Pages pages;
 
     /**

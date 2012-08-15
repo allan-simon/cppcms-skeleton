@@ -27,7 +27,8 @@
 #include "Controller.h"
 #include "%%CONTROLLER_NAME%%.h"
 
-#include "contents/%%CONTROLLER_NAME%%.h"
+
+//#include "contents/%%CONTROLLER_NAME%%.h"
 
 
 
@@ -44,7 +45,6 @@ namespace webs {
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 
-}
 
 
 

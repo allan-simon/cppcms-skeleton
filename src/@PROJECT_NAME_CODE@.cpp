@@ -39,6 +39,10 @@
 #include "@PROJECT_NAME_CODE@.h"
 #include "generics/Languages.h"
 
+
+// @TODO move the default language in the configuration
+// file, so that it can easily changed without recompiling
+
 #define DEFAULT_INTERFACE_LANG "en"
 
 namespace apps {
@@ -48,6 +52,7 @@ namespace apps {
  */
 @MAIN_CLASS@::@MAIN_CLASS@(cppcms::service &serv) :
     cppcms::application(serv),
+    //%%%NEXT_MAIN_APP_CTRL_CONSTRUCT_MARKER%%%
     pages(serv)
 {
 
@@ -56,6 +61,8 @@ namespace apps {
     //as its regexp is more global
 
     //add(#controller#,#mount_point#,1);
+
+    //%%%NEXT_CONTROLLER_DISPATCHER_MARKER%%%, do not delete
     add(pages, "/(.*)", 1);
 
 
