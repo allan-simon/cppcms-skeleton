@@ -42,5 +42,12 @@ NEXT_CONTROLLER_INCLUDE_MARKER = '%%%NEXT_CONTROLLER_INCLUDE_MARKER%%%'
 NEXT_MAIN_APP_CTRL_ATTR = '%%%NEXT_MAIN_APP_CTRL_ATTR%%%'
 
 
+# content
+CONTENT_TMPL_DIR = "../src/contents/code_template"
+CONTENT_OUTPUT_DIR = "../src/contents"
 
+TMPL_CONTENT_H = "_controller_content.tpl"
+TMPL_CONTENT_INCLUDE_H = '_action_content_.tpl'
+
+NEXT_CONTENT_MARKER = '%%%NEXT_CONTENT_MARKER%%%'
 

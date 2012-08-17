@@ -66,7 +66,7 @@ replacePlaceholders = {
 insertFromTemplate(
     os.path.join(CTRL_OUTPUT_DIR,controller + '.cpp'),
     NEXT_ACTION_DISPATCHER_MARKER,
-    TMPL_METHOD_DISPATCH_CPP,
+    os.path.join(CTRL_TEMPLATE_DIR,TMPL_METHOD_DISPATCH_CPP),
     replacePlaceholders,
 )
 
@@ -83,6 +83,15 @@ insertFromTemplate(
     os.path.join(CTRL_OUTPUT_DIR,controller + '.h'),
     NEXT_ACTION_MARKER,
     os.path.join(CTRL_TEMPLATE_DIR,TMPL_METHOD_H),
+    replacePlaceholders
+)
+
+
+# edit the content header to add the content for that action
+insertFromTemplate(
+    os.path.join(CONTENT_OUTPUT_DIR,controller + '.h'),
+    NEXT_CONTENT_MARKER,
+    os.path.join(CONTENT_TMPL_DIR,TMPL_CONTENT_INCLUDE_H),
     replacePlaceholders
 )
 

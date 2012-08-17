@@ -37,12 +37,13 @@ description = args.description
 # controller name
 controller = args.controller
 controllerInclude = controller.upper()
-
+controllerUnderscore = camelToUnderscore(controller)
 controllerUrl = camelToUnderscore(controller).replace('_','-')
 
 replacePlaceholders = {
     '%%CONTROLLER_VAR%%' : pascalCaseToCamel(controller),
     '%%CONTROLLER_NAME%%' : controller,
+    '%%CONTROLLER_NS%%' : controllerUnderscore,
     '%%CONTROLLER_URL%%' : controllerUrl,
     '%%CONTROLLER_INCLUDE%%' : controllerInclude,
     '%%CONTROLLER_TODAY%%' : date.today().strftime('%d %B %Y'),
@@ -76,6 +77,7 @@ mainFileHPath = os.path.join(
 )
 
 
+# modify the main application file in order to attach it
 insertFromTemplate(
     mainFileHPath,
     NEXT_CONTROLLER_INCLUDE_MARKER,
@@ -105,6 +107,14 @@ insertFromTemplate(
     NEXT_CONTROLLER_DISPATCHER_MARKER,
     os.path.join(MAIN_APP_TEMPLATE_DIR,TMPL_MAIN_APP_DISPATCHER_CPP),
     replacePlaceholders
+)
+
+
+# create the Parent content
+generateFromTemplate(
+    os.path.join(CONTENT_TMPL_DIR ,TMPL_CONTENT_H),
+    replacePlaceholders,
+    os.path.join(CONTENT_OUTPUT_DIR,controller + '.h')
 )
 
 

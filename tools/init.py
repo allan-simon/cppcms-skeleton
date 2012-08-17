@@ -12,6 +12,10 @@ IGNORE_DIRS = [
     '.svn'
 ]
 
+IGNORE_EXTENSIONS = [
+    '.swp'
+]
+
 
 rootdir = '..'
 
@@ -23,6 +27,9 @@ for path, dirs, files in os.walk(rootdir):
             dirs.remove(ignoreDir)
     if files:
         for file in files:
+            #if the file is not a source file, we do not try to modify it
+            if file[-4:] in IGNORE_EXTENSIONS:
+                continue
             fullPathFile  = os.path.join(path,file)
             print(fullPathFile)
             # in all the files we search and replace for the placeholders

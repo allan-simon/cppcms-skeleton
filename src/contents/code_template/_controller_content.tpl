@@ -17,36 +17,32 @@
  *
  *
  * @category @PROJECT_NAME_HUMAN@
- * @package  Controllers
+ * @package  Contents
  * @author   @AUTHOR@ <@EMAIL@> 
  * @license  Affero General Public License
  * @link     @PROJECT_WEBSITE@
  */
 
-#include <cppcms/session_interface.h>
-#include "Controller.h"
-#include "%%CONTROLLER_NAME%%.h"
 
+#ifndef TATOEBACPP_CONTENTS_%%CONTROLLER_INCLUDE%%_H
+#define TATOEBACPP_CONTENTS_%%CONTROLLER_INCLUDE%%_H
 
-#include "contents/%%CONTROLLER_NAME%%.h"
+#include "contents/content.h"
 
+namespace contents {
+namespace %%CONTROLLER_NS%% {
 
+/**
+ * @class %%CONTROLLER_NAME%%
+ * @brief Base content for every action of %%CONTROLLER_NAME%% controller
+ * @since %%CONTROLLER_TODAY%%
+ */
+struct %%CONTROLLER_NAME%% : public BaseContent {
+};
 
+//%%%NEXT_CONTENT_MARKER%%%
 
-namespace controllers {
-namespace webs {
+} // end of namespace %%CONTROLLER_NS%%
+} //end of namespace contents
 
-%%CONTROLLER_NAME%%::%%CONTROLLER_NAME%%(cppcms::service& serv) :
-    controllers::webs::Controller(serv)
-{
-
-    //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
-}
-
-// %%%NEXT_ACTION_MARKER%%% , do not delete
-
-
-
-
-} // End namespace webs
-} // End namespace controllers
+#endif
