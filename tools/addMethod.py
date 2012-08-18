@@ -47,6 +47,7 @@ method= args.method
 controllerInclude = controller.upper()
 
 controllerUnderscore = camelToUnderscore(controller)
+viewName =controllerUnderscore + "_" + method 
 
 replacePlaceholders = {
     '%%CONTROLLER_NAME%%' : controller,
@@ -57,7 +58,7 @@ replacePlaceholders = {
     '%%ACTION_DESCRIPTION%%' : description,
     '%%CONTENT_NAME%%' : underscoreToPascalCase(method),
     '%%CONTROLLER_NS%%' : controllerUnderscore,
-    '%%VIEW_NAME%%' :  controllerUnderscore + "_" + method
+    '%%VIEW_NAME%%' : viewName
 }
 
 
@@ -96,3 +97,10 @@ insertFromTemplate(
 )
 
 
+# create the view for that action
+
+generateFromTemplate(
+    os.path.join(VIEW_CTRL_TMPL_DIR,TMPL_VIEW_ACTION_TPL),
+    replacePlaceholders,
+    os.path.join(VIEW_CTRL_OUTPUT_DIR,controllerUnderscore,method + '.tmpl')
+)

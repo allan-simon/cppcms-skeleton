@@ -51,3 +51,8 @@ TMPL_CONTENT_INCLUDE_H = '_action_content_.tpl'
 
 NEXT_CONTENT_MARKER = '%%%NEXT_CONTENT_MARKER%%%'
 
+# 
+VIEW_CTRL_TMPL_DIR = '../src/views/web/code_template'
+VIEW_CTRL_OUTPUT_DIR = '../src/views/web'
+
+TMPL_VIEW_ACTION_TPL = '_action_.tpl'

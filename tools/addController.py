@@ -117,4 +117,11 @@ generateFromTemplate(
     os.path.join(CONTENT_OUTPUT_DIR,controller + '.h')
 )
 
+# create the directory in views
 
+os.mkdir(
+    os.path.join(
+        VIEW_CTRL_OUTPUT_DIR,
+        controllerUnderscore
+    )
+)
