@@ -56,3 +56,12 @@ VIEW_CTRL_TMPL_DIR = '../src/views/web/code_template'
 VIEW_CTRL_OUTPUT_DIR = '../src/views/web'
 
 TMPL_VIEW_ACTION_TPL = '_action_.tpl'
+
+# models 
+
+
+MODEL_TMPL_DIR = '../src/models/code_template'
+MODEL_OUTPUT_DIR = '../src/models'
+
+MODEL_CPP_TPL = '_model_.cpp.tpl'
+MODEL_H_TPL = '_model_.h.tpl'
