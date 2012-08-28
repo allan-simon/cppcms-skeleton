@@ -28,6 +28,13 @@
 
 #include "Controller.h"
 
+
+//needed to avoid to include models directly here,
+//which would have the side effects to require to recompile the// controller every time we modify a model. even though it does// not affect the controller
+namespace models {
+    // %%%NEXT_CLASS_MODEL_CTRL_MARKER%%% 
+}
+
 namespace controllers {
 namespace webs { 
 /**
@@ -42,6 +49,15 @@ class %%CONTROLLER_NAME%% : public Controller {
          * @since %%CONTROLLER_TODAY%%
          */
         %%CONTROLLER_NAME%%(cppcms::service &serv);
+
+        /**
+         * @brief Destructor
+         * @since %%CONTROLLER_TODAY%%
+         */
+        ~%%CONTROLLER_NAME%%();
+
+    private:
+        // %%%NEXT_VAR_MODEL_CTRL_MARKER%%%
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 

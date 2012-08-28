@@ -65,3 +65,21 @@ MODEL_OUTPUT_DIR = '../src/models'
 
 MODEL_CPP_TPL = '_model_.cpp.tpl'
 MODEL_H_TPL = '_model_.h.tpl'
+
+
+#
+MODEL_CTRL_TMPL_DIR = "../src/controllers/webs/template"
+MODEL_CTRL_OUTPUT_DIR = "../src/controllers/webs"
+
+NEW_MODEL_CTRL_TPL = '_new_model_ctrl.tpl'
+DEL_MODEL_CTRL_TPL = '_del_model_ctrl.tpl'
+INC_MODEL_CTRL_TPL = '_inc_model_ctrl.tpl'
+VAR_MODEL_CTRL_TPL = '_var_model_ctrl.tpl'
+CLASS_MODEL_CTRL_TPL = '_class_model_ctrl.tpl'
+
+NEXT_NEW_MODEL_CTRL_MARKER = '%%%NEXT_NEW_MODEL_CTRL_MARKER%%%'
+NEXT_INC_MODEL_CTRL_MARKER = '%%%NEXT_INC_MODEL_CTRL_MARKER%%%'
+NEXT_DEL_MODEL_CTRL_MARKER = '%%%NEXT_DEL_MODEL_CTRL_MARKER%%%'
+NEXT_VAR_MODEL_CTRL_MARKER = '%%%NEXT_VAR_MODEL_CTRL_MARKER%%%'
+NEXT_CLASS_MODEL_CTRL_MARKER = '%%%NEXT_CLASS_MODEL_CTRL_MARKER%%%'
+

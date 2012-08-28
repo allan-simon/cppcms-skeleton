@@ -30,7 +30,7 @@
 
 #include "contents/%%CONTROLLER_NAME%%.h"
 
-
+//%%%NEXT_INC_MODEL_CTRL_MARKER%%%
 
 
 namespace controllers {
@@ -41,6 +41,15 @@ namespace webs {
 {
 
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
+
+    //%%%NEXT_NEW_MODEL_CTRL_MARKER%%%
+}
+
+/**
+ *
+ */
+%%CONTROLLER_NAME%%::~%%CONTROLLER_NAME%%() {
+    //%%%NEXT_DEL_MODEL_CTRL%%%
 }
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
