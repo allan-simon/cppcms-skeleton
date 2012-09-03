@@ -4,6 +4,7 @@
 import config
 import fileinput
 import os
+from architecture import generate_architecture
 
 IGNORE_DIRS = [
     'tools',
@@ -67,6 +68,4 @@ os.rename(
     renamedFile + '.cpp'
 )
 
-
-
-
+generate_architecture()

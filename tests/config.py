@@ -1,4 +1,33 @@
 
+
+ARCHITECTURE = {
+    'controllers' : {
+        'Module1' : {},
+        'Zrticles' : {
+            'description': 'a module that does something',
+            'methods' : {
+                'add_something' : {},
+                'do_something_else' : {}
+            }    
+        }
+    },
+
+    'models': {
+        'MyModel' : {}
+    },
+
+    'models_controllers': [
+        ('MyModel','Module1'),
+        ('MyModel','Zrticles')
+
+    ]
+
+
+
+}
+
+
+
 REPLACEMENT = {
     '@AUTHOR@' : 'Allan',
     '@EMAIL@': 'Your_email.com',

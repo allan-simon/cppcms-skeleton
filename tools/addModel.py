@@ -11,7 +11,7 @@ from utils import *
 from config import REPLACEMENT
 
 
-def addModel(model,description):
+def addModel(model,description = '@TODO'):
     modelInclude = model.upper()
 
     replacePlaceholders = {

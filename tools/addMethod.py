@@ -9,7 +9,7 @@ from utils import *
 import os
 import re
 
-def addMethod(controller, method, description):
+def addMethod(controller, method, description = '@TODO'):
     controllerInclude = controller.upper()
 
     controllerUnderscore = camelToUnderscore(controller)

@@ -1,5 +1,32 @@
-projectName = 'your project name'
-projectNameCode = projectName.replace(" ","_")
+
+
+ARCHITECTURE = {
+    'controllers' : {
+        'Module1' : {},
+        'Articles' : {
+            'description': 'a module that does something',
+            'methods' : {
+                'add_something' : {},
+                'do_something_else' : {}
+            }    
+        }
+    },
+
+    'models': {
+        'MyModel' : {}
+    },
+
+    'models_controllers': [
+        ('MyModel','Module1'),
+        ('MyModel','Articles')
+
+    ]
+
+
+
+}
+
+
 
 REPLACEMENT = {
     '@AUTHOR@' : 'your name',
@@ -13,7 +40,4 @@ REPLACEMENT = {
     '@YEARS@' : 'copyright years',
     '    ' : 'your prefered indentation '
 }
-
-
-
 
