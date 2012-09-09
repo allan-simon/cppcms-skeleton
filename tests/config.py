@@ -3,7 +3,7 @@
 ARCHITECTURE = {
     'controllers' : {
         'Module1' : {},
-        'Zrticles' : {
+        'Articles' : {
             'description': 'a module that does something',
             'methods' : {
                 'add_something' : {},
@@ -18,7 +18,7 @@ ARCHITECTURE = {
 
     'models_controllers': [
         ('MyModel','Module1'),
-        ('MyModel','Zrticles')
+        ('MyModel','Articles')
 
     ]
 

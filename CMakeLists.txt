@@ -68,6 +68,7 @@ target_link_libraries(
 add_custom_command(
     OUTPUT view_web.cpp
     COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tools/cppcms_tmpl_cc 
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/views/web/layouts/master.tmpl
         ${CMAKE_CURRENT_SOURCE_DIR}/src/views/web/*/*.tmpl 
         -o view_web.cpp
     DEPENDS
