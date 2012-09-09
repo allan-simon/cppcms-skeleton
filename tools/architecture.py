@@ -7,7 +7,11 @@ from linkModelController import linkModelController
 from config import ARCHITECTURE
 
 def generate_architecture ():
+
+    controllers = []
+
     for controller,attributes in ARCHITECTURE['controllers'].items():
+        controllers.append(controller)
         if  'description' in attributes.keys():
             description = attributes['description']
             addController(controller,description)
@@ -31,7 +35,9 @@ def generate_architecture ():
                     method
                 )
 
+    models = []
     for model,attributes in ARCHITECTURE['models'].items():
+        models.append(model)
         if  'description' in attributes.keys():
             description = attributes['description']
             addModel(
@@ -43,7 +49,16 @@ def generate_architecture ():
 
 
     for model,controller in ARCHITECTURE['models_controllers']:
-        linkModelController(model,controller)
+        
+        bothExist = true
+        if model not in models:
+            bothExist = false
+            print("the model %s is not defined",model)
+        if controller not in controllers:
+            bothExist = false
+            print("the controller %s is not defined",controller)
+        if bothExist:
+            linkModelController(model,controller)
 
 
 
