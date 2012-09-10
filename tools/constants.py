@@ -83,3 +83,12 @@ NEXT_DEL_MODEL_CTRL_MARKER = '%%%NEXT_DEL_MODEL_CTRL_MARKER%%%'
 NEXT_VAR_MODEL_CTRL_MARKER = '%%%NEXT_VAR_MODEL_CTRL_MARKER%%%'
 NEXT_CLASS_MODEL_CTRL_MARKER = '%%%NEXT_CLASS_MODEL_CTRL_MARKER%%%'
 
+# models 
+
+
+FORM_TMPL_DIR = '../src/contents/forms/code_template'
+FORM_OUTPUT_DIR = '../src/contents/forms'
+
+FORM_H_TPL = '_form_.h.tpl'
+
+
