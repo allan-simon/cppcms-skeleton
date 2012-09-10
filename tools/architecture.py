@@ -50,12 +50,12 @@ def generate_architecture ():
 
     for model,controller in ARCHITECTURE['models_controllers']:
         
-        bothExist = true
+        bothExist = True
         if model not in models:
-            bothExist = false
+            bothExist = False
             print("the model %s is not defined",model)
         if controller not in controllers:
-            bothExist = false
+            bothExist = False
             print("the controller %s is not defined",controller)
         if bothExist:
             linkModelController(model,controller)
