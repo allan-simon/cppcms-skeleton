@@ -22,6 +22,10 @@
  * @link     @PROJECT_WEBSITE@
  */
 
+#ifndef @MAIN_CLASS@_%%MODEL_INCLUDE%%
+#define @MAIN_CLASS@_%%MODEL_INCLUDE%%
+
+
 
 #include "models/SqliteModel.h"
 namespace models {
@@ -46,3 +50,4 @@ class %%MODEL_NAME%% : public SqliteModel {
 
 } // end namespace models 
 
+#endif
