@@ -31,6 +31,7 @@
 #include <cppcms/form.h>
 
 namespace forms{
+namespace %%CONTROLLER_NS%% {
 
 /**
  * @struct %%FORM_NAME%%
@@ -38,23 +39,34 @@ namespace forms{
  * @since  %%FORM_TODAY%%
  *
  */
-struct %%FORM_NAME%% : public cppcms::form {
+struct %%FORM_STRUCT%% : public cppcms::form {
 
     //%%%NEXT_WIDGET_VAR_MARKER%%%
 
     /**
+     * @brief button to submit the form
+     */
+    cppcms::widgets::submit submit;
+
+    /**
      * @brief Constructor
      */
-    %%FORM_NAME%%() {
+    %%FORM_STRUCT%%() {
 
         //%%%NEXT_WIDGET_ADD_MARKER%%%
+
+        add(submit);
+        submit.name(
+            cppcms::locale::translate("%%FORM_SUBMIT_UI%%")
+        );
+        submit.value("submit");
     }
 
 
 };
 
 
-
+} // end of namespace %%CONTROLLER_NS%%
 }// end of namespace forms
 
 

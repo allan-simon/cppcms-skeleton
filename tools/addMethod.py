@@ -19,7 +19,7 @@ def addMethod(controller, method, description = '@TODO'):
         '%%CONTROLLER_NAME%%' : controller,
         '%%ACTION_NAME%%' : method,
         #NOTE: it seems that - is more Google friendly than _
-        '%%ACTION_URL%%' : '/%s' % (method.replace('_','-')),
+        '%%ACTION_URL%%' : '%s' % (method.replace('_','-')),
         '%%ACTION_TODAY%%' : date.today().strftime('%d %B %Y'),
         '%%ACTION_DESCRIPTION%%' : description,
         '%%CONTENT_NAME%%' : underscoreToPascalCase(method),

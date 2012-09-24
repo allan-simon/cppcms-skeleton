@@ -29,6 +29,8 @@
 
 #include "contents/content.h"
 
+//%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
+
 namespace contents {
 namespace %%CONTROLLER_NS%% {
 

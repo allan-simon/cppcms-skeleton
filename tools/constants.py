@@ -57,6 +57,17 @@ VIEW_CTRL_OUTPUT_DIR = '../src/views/web'
 
 TMPL_VIEW_ACTION_TPL = '_action_.tpl'
 
+#form page
+
+TMPL_METHOD_FORM_DISPATCH_CPP = '_template_form_dispatcher_.tpl'
+TMPL_METHOD_FORM_H = '_template_form_header.tpl'
+TMPL_METHOD_FORM_CPP = '_template_form.tpl'
+TMPL_CONTENT_FORM_H = '_input_content_.tpl'
+TMPL_CONTENT_FORM_INCLUDE_H = '_content_include_form.tpl'
+TMPL_VIEW_FORM_TPL = '_form_action_.tpl'
+
+NEXT_CONTENT_FORM_INCLUDE_MARKER = '%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%'
+
 # models 
 
 

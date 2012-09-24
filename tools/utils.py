@@ -14,9 +14,12 @@ def camelToUnderscore(
 def underscoreToPascalCase(value):
     return "".join( x.capitalize() for x in value.split("_") )
 
+def underscoreToCamel(value):
+    #TODO replace by something more direct
+    return  pascalCaseToCamel(underscoreToPascalCase(value))
 
 def pascalCaseToCamel(value):
-    return value[0].upper() + value[1:]
+    return value[0].lower() + value[1:]
 
 
 ###

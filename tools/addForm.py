@@ -10,14 +10,19 @@ from constants import *
 from utils import *
 from config import REPLACEMENT
 
-def addForm(form,description = '@TODO'):
+def addForm(controller, form, description = '@TODO'):
     formInclude = form.upper()
     formUnderscore = camelToUnderscore(form)
+    controllerUnderscore = camelToUnderscore(controller)
 
     replacePlaceholders = {
+        '%%CONTROLLER_NS%%' : controllerUnderscore,
         '%%FORM_NAME%%' : form,
+        #TODO the user should be able to override this
+        '%%FORM_SUBMIT_UI%%' : 'submit',
         '%%FORM_INCLUDE%%' : formInclude,
         '%%FORM_TODAY%%' : date.today().strftime('%d %B %Y'),
+        '%%FORM_STRUCT%%' : underscoreToPascalCase(form),
         '%%FORM_DESCRIPTION%%' : description
     }
 
@@ -36,6 +41,15 @@ if __name__ == '__main__' :
     parser = ArgumentParser(
         description = "Add a new form"
     )
+
+
+    parser.add_argument(
+        'controller',
+        metavar = 'CONTROLLER',
+        help = 'name of the controller in which you want to add a form'
+    )
+
+
 
     parser.add_argument(
         'form',
@@ -58,6 +72,7 @@ if __name__ == '__main__' :
     description = args.description
 #TODO maybe do some check if the user enter a non valid
 # form name
+    controller = args.controller
     form = args.form
-    addForm(form,description)
+    addForm(controller,form,description)
 
