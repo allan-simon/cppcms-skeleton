@@ -6,9 +6,12 @@ ARCHITECTURE = {
         'Articles' : {
             'description': 'a module that does something',
             'methods' : {
-                'add_something' : {},
+                'show' : {},
                 'do_something_else' : {}
-            }    
+            },
+            'forms' : {
+                'add_comment' : {}
+            }
         }
     },
 

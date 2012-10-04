@@ -2,6 +2,7 @@ from addMethod import addMethod
 from addModel import addModel
 from addController import addController
 from linkModelController import linkModelController
+from addFormPage import addFormPage
 
 
 
@@ -34,6 +35,7 @@ def generate_controllers(controllers):
             addController(controller)
 
         generate_methods(controller,attributes)
+        generate_form_pages(controller,attributes)
 
     return controllerNames
 
@@ -57,6 +59,26 @@ def generate_methods (controller,attributes):
                 controller,
                 method
             )
+
+def generate_form_pages(controller,attributes):
+    if 'forms' not in attributes.keys():
+         return
+
+    for method, properties in attributes['forms'].items():
+        if 'description' in properties.keys():
+            description = properties['description']
+            addFormPage(
+                controller,
+                method,
+                description
+            )
+        else:
+            addFormPage(
+                controller,
+                method
+            )
+
+
 
 def generate_links_models_controllers(modelsControllers,models,controllers):
    for model,controller in modelsControllers:
