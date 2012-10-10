@@ -17,34 +17,13 @@
  *
  *
  * @category @PROJECT_NAME_HUMAN@
- * @package  Contents
+ * @package  Singletons
  * @author   @AUTHOR@ <@EMAIL@> 
  * @license  Affero General Public License
  * @link     @PROJECT_WEBSITE@
  */
 
+#include "Config.h"
 
-#ifndef TATOEBACPP_CONTENTS_%%CONTROLLER_INCLUDE%%_H
-#define TATOEBACPP_CONTENTS_%%CONTROLLER_INCLUDE%%_H
+Config::Config(){}
 
-#include "contents/content.h"
-
-//%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
-
-namespace contents {
-namespace %%CONTROLLER_NS%% {
-
-/**
- * @class %%CONTROLLER_NAME%%
- * @brief Base content for every action of %%CONTROLLER_NAME%% controller
- * @since %%CONTROLLER_TODAY%%
- */
-struct %%CONTROLLER_NAME%% : public BaseContent {
-};
-
-//%%%NEXT_CONTENT_MARKER%%%
-
-} // end of namespace %%CONTROLLER_NS%%
-} //end of namespace contents
-
-#endif

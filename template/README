@@ -1,0 +1,14 @@
+this folder is supposed to contain in all its sub-folder the
+complete code necessary to the application
+
+Code for annexe usage should be put in the "tools" directory
+
+this directory should contain at least
+
+main.cpp
+controllers (directory)
+models (directory)
+views (directory)
+contents (directory)
+results (directory)
+generics (directory)

@@ -27,7 +27,7 @@
 
 
 
-#include "models/SqliteModel.h"
+#include "framework/src/models/SqliteModel.h"
 namespace models {
 
 

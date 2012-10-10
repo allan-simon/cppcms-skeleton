@@ -1,4 +1,9 @@
 
+# where the application code will be generated
+# relative to the "tools" directory
+APP_ROOT = "../../app"
+
+
 
 ARCHITECTURE = {
     'controllers' : {
@@ -31,7 +36,8 @@ ARCHITECTURE = {
 
 
 
-REPLACEMENT = {
+REPLACEMENTS = {
+    '@FRAMEWORK_ROOT@' : '../framework', #TODO a bit hackish yet
     '@AUTHOR@' : 'Allan',
     '@EMAIL@': 'Your_email.com',
     '@PROJECT_NAME_CODE@' : 'TatoWiki',

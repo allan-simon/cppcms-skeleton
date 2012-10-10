@@ -1,5 +1,12 @@
 
 
+# where the application code will be generated
+# relative to the "tools" directory
+APP_ROOT = "../../app"
+
+# this represent the logical structure of your code
+# the script init will use this to generate a skeleton
+# of code
 ARCHITECTURE = {
     'controllers' : {
         'Module1' : {},
@@ -27,8 +34,10 @@ ARCHITECTURE = {
 }
 
 
-
-REPLACEMENT = {
+# placeholders, replace the value by those specific to your
+# projet
+REPLACEMENTS = {
+    '@FRAMEWORK_ROOT@' : '../framework', #TODO a bit hackish yet
     '@AUTHOR@' : 'your name',
     '@EMAIL@': 'Your_email.com',
     '@PROJECT_NAME_CODE@' : 'YourProjectName',

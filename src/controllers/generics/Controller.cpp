@@ -28,7 +28,7 @@
 #include <cppcms/session_interface.h>
 #include <cppcms/filters.h>
 
-#include "contents/content.h"
+#include "framework/src/contents/content.h"
 
 namespace controllers {
 namespace generics {

@@ -23,44 +23,47 @@
  * @link     @PROJECT_WEBSITE@
  */
 
-#ifndef CONTROLLERS_WEBS_%%CONTROLLER_INCLUDE%%_H
-#define CONTROLLERS_WEBS_%%CONTROLLER_INCLUDE%%_H
+#ifndef CONTROLLERS_WEBS_PAGES_H
+#define CONTROLLERS_WEBS_PAGES_H
 
-#include "Controller.h"
-
-
-//needed to avoid to include models directly here,
-//which would have the side effects to require to recompile the// controller every time we modify a model. even though it does// not affect the controller
-namespace models {
-    // %%%NEXT_CLASS_MODEL_CTRL_MARKER%%% 
-}
+#include "framework/src/controllers/webs/Controller.h"
 
 namespace controllers {
 namespace webs { 
 /**
- * @class %%CONTROLLER_NAME%%
- * @brief %%CONTROLLER_DESCRIPTION%%
- * @since %%CONTROLLER_TODAY%%
+ * @class Pages
+ * contains all functions to generate all independant pages
  */
-class %%CONTROLLER_NAME%% : public Controller {
+class Pages : public Controller {
     public:
         /**
-         * @brief Constructor
-         * @since %%CONTROLLER_TODAY%%
+         * Constructor
          */
-        %%CONTROLLER_NAME%%(cppcms::service &serv);
+        Pages(cppcms::service &serv);
+        /**
+         * generate home page
+         */
+        void homepage();
+        /**
+         * Main page to add sentences and so
+         */
+        void contribute();
+        /**
+         * Terms of use page
+         */
+        void terms_of_use();
+        /**
+         * Team and Credits page
+         */
+        void team_and_credits();
+        //TODO doc
 
         /**
-         * @brief Destructor
-         * @since %%CONTROLLER_TODAY%%
+         * @brief Display nothing, only to treat the form which permit
+         *        to change the language of the user interface
+         * @since 2 September 2011
          */
-        ~%%CONTROLLER_NAME%%();
-
-    private:
-        // %%%NEXT_VAR_MODEL_CTRL_MARKER%%%
-
-// %%%NEXT_ACTION_MARKER%%% , do not delete
-
+        void change_interface_lang_treat();
 };
 
 } // End namespace webs

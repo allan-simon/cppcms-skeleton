@@ -4,6 +4,8 @@ from addController import addController
 from linkModelController import linkModelController
 from addFormPage import addFormPage
 
+from os import mkdir
+
 
 
 def generate_models(models):
@@ -104,6 +106,18 @@ def generate_architecture (architecture):
         modelNames,
         controllerNames
     )
+
+def generate_folders(root,tree):
+    for folder,subfolders in tree.items():
+        newFolder = root + "/" + folder
+        mkdir(newFolder)
+        if len(subfolders) != 0:
+            generate_folders(newFolder,subfolders)
+        else:
+            # we create a new file in it
+            # because git does not like empty direcotry
+            open(newFolder + "/README",'w').close()
+
 
 
 

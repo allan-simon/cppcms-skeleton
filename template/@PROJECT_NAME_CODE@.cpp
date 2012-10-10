@@ -37,7 +37,7 @@
 
 
 #include "@PROJECT_NAME_CODE@.h"
-#include "generics/Languages.h"
+#include "framework/src/generics/Languages.h"
 
 
 // @TODO move the default language in the configuration

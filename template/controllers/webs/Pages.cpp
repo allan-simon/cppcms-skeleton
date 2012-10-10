@@ -17,41 +17,58 @@
  *
  *
  * @category @PROJECT_NAME_HUMAN@
- * @package  Contents
+ * @package  Controllers
  * @author   @AUTHOR@ <@EMAIL@> 
  * @license  Affero General Public License
  * @link     @PROJECT_WEBSITE@
  */
 
+#include <cppcms/session_interface.h>
+#include "Pages.h"
 
-#ifndef TATOEBACPP_CONTENTS_PAGES_H
-#define TATOEBACPP_CONTENTS_PAGES_H
+#include "contents/Pages.h"
 
-#include "contents/content.h"
+#include "framework/src/contents/forms/change_interface_langs.h"
 
-namespace contents {
-namespace pages {
+
+
+namespace controllers {
+namespace webs {
+
+Pages::Pages(cppcms::service& serv) : controllers::webs::Controller(serv) {
+    dispatcher().assign("", &Pages::homepage, this);
+}
 
 /**
- * Base content for every action of Pages controller
  *
  */
-struct Pages : public BaseContent {
-};
-
-/**
- * @struct Homepage
- * Content used by the homepage
- */
-struct Homepage : public Pages {
-
-    Homepage() {
+void Pages::change_interface_lang_treat() {
+    forms::InterfaceLang form;
+    form.set_langs();
+    form.load(context());
+    if(!form.validate()) {
+        go_back_to_previous_page();
     }
 
-};
+    session()["interfaceLang"] =  form.interfaceLang.selected_id();
+
+    go_back_to_previous_page();
 
 
-} // end of namespace pages
-} //end of namespace contents
 
-#endif
+}
+
+/**
+ *
+ */
+void Pages::homepage() {
+    contents::pages::Homepage c;
+    init_content(c);
+
+
+    render("homepage", c);
+}
+
+
+} // End namespace webs
+} // End namespace controllers

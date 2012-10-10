@@ -31,7 +31,6 @@
 #include <cppcms/application.h>
 #include <cppcms/url_dispatcher.h>
 
-//#include "contents/content.h"
 
 #define CHECK_PERMISSION_OR_GO_TO_LOGIN() \
     if (!check_permission()) {\

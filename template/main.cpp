@@ -34,7 +34,7 @@
 
 #include "@PROJECT_NAME_CODE@.h"
 
-#include "generics/Config.h"
+#include "framework/src/generics/Config.h"
 
 using namespace std;
 using namespace cppcms;

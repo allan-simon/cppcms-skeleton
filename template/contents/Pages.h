@@ -26,56 +26,41 @@
  *
  * @category Cppcms-skeleton
  * @author   Allan SIMON <allan.simon@supinfo.com>
- * @package  Singletons
+ * @package  Contents
  * @license  MIT
  * @link     https://github.com/allan-simon/cppcms-skeleton
  *
  */
 
 
-#ifndef CPPCMS_SKEL_SINGLETON_H
-#define CPPCMS_SKEL_SINGLETON_H
+#ifndef CPPCMS_SKEL_CONTENTS_PAGES_H
+#define CPPCMS_SKEL_CONTENTS_PAGES_H
 
-#include <iostream>
+#include "framework/src/contents/content.h"
 
-template <typename T>
-class Singleton
-{
-    protected:
-        Singleton () {}
-        ~Singleton () {}
+namespace contents {
+namespace pages {
 
-    public:
-        /**
-         * @return a singleton instance, create it if it doesn't exist yet
-         */
-        static T *get_instance () {
-            if (_singleton == NULL) {
-                 _singleton = new T;
-            }
-            return (static_cast<T*> (_singleton));
-        }
-        
-        static T *get_instance (std::string data_path) {
-            if (_singleton == NULL) {
-                 _singleton = new T(data_path);
-            }
-            return (static_cast<T*> (_singleton));
-        }
-
-
-        static void kill () {
-            if (_singleton != NULL) {
-                delete _singleton;
-                _singleton = NULL;
-            }
-        }
-
-    private:
-        // Unique instance
-        static T *_singleton;
+/**
+ * Base content for every action of Pages controller
+ *
+ */
+struct Pages : public BaseContent {
 };
 
-template <typename T>
-T *Singleton<T>::_singleton = NULL;
+/**
+ * @struct Homepage
+ * Content used by the homepage
+ */
+struct Homepage : public Pages {
+
+    Homepage() {
+    }
+
+};
+
+
+} // end of namespace pages
+} //end of namespace contents
+
 #endif

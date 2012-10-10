@@ -8,7 +8,7 @@ import os
 from datetime import date
 from constants import *
 from utils import *
-from config import REPLACEMENT
+from config import REPLACEMENTS
 
 def addController(controller,description = '@TODO'):
     controllerInclude = controller.upper()
@@ -40,8 +40,8 @@ def addController(controller,description = '@TODO'):
         os.path.join(CTRL_OUTPUT_DIR,controller + '.h')
     )
 
-    mainFileCpp = REPLACEMENT['@MAIN_CLASS@'] + '.cpp'
-    mainFileH = REPLACEMENT['@MAIN_CLASS@'] + '.h'
+    mainFileCpp = REPLACEMENTS['@MAIN_CLASS@'] + '.cpp'
+    mainFileH = REPLACEMENTS['@MAIN_CLASS@'] + '.h'
     mainFileCppPath = os.path.join(
         MAIN_APP_DIR,
         mainFileCpp

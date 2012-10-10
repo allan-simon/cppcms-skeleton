@@ -33,7 +33,6 @@ def insertFromTemplate(
 ) :
 
 
-
     output = ""
     for line in fileinput.FileInput(insertTemplateName):
         for find,replace in placeHolders.items():

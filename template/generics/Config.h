@@ -17,56 +17,55 @@
  *
  *
  * @category @PROJECT_NAME_HUMAN@
- * @package  Controllers
+ * @package  Singletons
  * @author   @AUTHOR@ <@EMAIL@> 
  * @license  Affero General Public License
  * @link     @PROJECT_WEBSITE@
  */
 
-#ifndef CONTROLLERS_WEBS_PAGES_H
-#define CONTROLLERS_WEBS_PAGES_H
+#ifndef SHDICT_CONTENT_CONFIG_H
+#define SHDICT_CONTENT_CONFIG_H
 
-#include "Controller.h"
+#include <map>
+#include "generics/Singleton.h"
 
-namespace controllers {
-namespace webs { 
 /**
- * @class Pages
- * contains all functions to generate all independant pages
- */
-class Pages : public Controller {
+ * Singleton class that store some value used in html generation
+ * such as the path for css files etc.
+ */ 
+class Config : public Singleton<Config> {
+    friend class Singleton<Config>;
+
+    private:
+
+        /**
+         * Default constructor, do nothing for the moment
+         */
+        Config();
+
     public:
         /**
-         * Constructor
+         * Store the path for css files
          */
-        Pages(cppcms::service &serv);
-        /**
-         * generate home page
-         */
-        void homepage();
-        /**
-         * Main page to add sentences and so
-         */
-        void contribute();
-        /**
-         * Terms of use page
-         */
-        void terms_of_use();
-        /**
-         * Team and Credits page
-         */
-        void team_and_credits();
-        //TODO doc
+        std::string cssPath;
 
         /**
-         * @brief Display nothing, only to treat the form which permit
-         *        to change the language of the user interface
-         * @since 2 September 2011
+         * Store the path for images files
          */
-        void change_interface_lang_treat();
+        std::string imgPath;
+
+        /**
+         * Store the root URL of the website
+         */
+        std::string webPath;
+
+
+        /**
+         * Store the path where the sqlite3 database is stored
+         */
+        std::string sqlite3Path;
 };
 
-} // End namespace webs
-} // End namespace generics
-
 #endif
+
+

@@ -17,59 +17,34 @@
  *
  *
  * @category @PROJECT_NAME_HUMAN@
- * @package  Controllers
+ * @package  Contents
  * @author   @AUTHOR@ <@EMAIL@> 
  * @license  Affero General Public License
  * @link     @PROJECT_WEBSITE@
  */
 
-#include <cppcms/session_interface.h>
-#include "Controller.h"
-#include "Pages.h"
 
-#include "contents/Pages.h"
+#ifndef TATOEBACPP_CONTENTS_%%CONTROLLER_INCLUDE%%_H
+#define TATOEBACPP_CONTENTS_%%CONTROLLER_INCLUDE%%_H
 
-#include "contents/forms/change_interface_langs.h"
+#include "framework/src/contents/content.h"
 
+//%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
 
-
-namespace controllers {
-namespace webs {
-
-Pages::Pages(cppcms::service& serv) : controllers::webs::Controller(serv) {
-    dispatcher().assign("", &Pages::homepage, this);
-}
+namespace contents {
+namespace %%CONTROLLER_NS%% {
 
 /**
- *
+ * @class %%CONTROLLER_NAME%%
+ * @brief Base content for every action of %%CONTROLLER_NAME%% controller
+ * @since %%CONTROLLER_TODAY%%
  */
-void Pages::change_interface_lang_treat() {
-    forms::InterfaceLang form;
-    form.set_langs();
-    form.load(context());
-    if(!form.validate()) {
-        go_back_to_previous_page();
-    }
+struct %%CONTROLLER_NAME%% : public BaseContent {
+};
 
-    session()["interfaceLang"] =  form.interfaceLang.selected_id();
+//%%%NEXT_CONTENT_MARKER%%%
 
-    go_back_to_previous_page();
+} // end of namespace %%CONTROLLER_NS%%
+} //end of namespace contents
 
-
-
-}
-
-/**
- *
- */
-void Pages::homepage() {
-    contents::pages::Homepage c;
-    init_content(c);
-
-
-    render("homepage", c);
-}
-
-
-} // End namespace webs
-} // End namespace controllers
+#endif

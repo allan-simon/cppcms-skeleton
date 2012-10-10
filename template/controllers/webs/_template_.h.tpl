@@ -23,39 +23,47 @@
  * @link     @PROJECT_WEBSITE@
  */
 
-#include <cppcms/session_interface.h>
-#include "Controller.h"
-#include "%%CONTROLLER_NAME%%.h"
+#ifndef CONTROLLERS_WEBS_%%CONTROLLER_INCLUDE%%_H
+#define CONTROLLERS_WEBS_%%CONTROLLER_INCLUDE%%_H
+
+#include "framework/src/controllers/webs/Controller.h"
 
 
-#include "contents/%%CONTROLLER_NAME%%.h"
-
-//%%%NEXT_INC_MODEL_CTRL_MARKER%%%
-
+//needed to avoid to include models directly here,
+//which would have the side effects to require to recompile the// controller every time we modify a model. even though it does// not affect the controller
+namespace models {
+    // %%%NEXT_CLASS_MODEL_CTRL_MARKER%%% 
+}
 
 namespace controllers {
-namespace webs {
-
-%%CONTROLLER_NAME%%::%%CONTROLLER_NAME%%(cppcms::service& serv) :
-    controllers::webs::Controller(serv)
-{
-
-    //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
-
-    //%%%NEXT_NEW_MODEL_CTRL_MARKER%%%
-}
-
+namespace webs { 
 /**
- *
+ * @class %%CONTROLLER_NAME%%
+ * @brief %%CONTROLLER_DESCRIPTION%%
+ * @since %%CONTROLLER_TODAY%%
  */
-%%CONTROLLER_NAME%%::~%%CONTROLLER_NAME%%() {
-    //%%%NEXT_DEL_MODEL_CTRL%%%
-}
+class %%CONTROLLER_NAME%% : public Controller {
+    public:
+        /**
+         * @brief Constructor
+         * @since %%CONTROLLER_TODAY%%
+         */
+        %%CONTROLLER_NAME%%(cppcms::service &serv);
+
+        /**
+         * @brief Destructor
+         * @since %%CONTROLLER_TODAY%%
+         */
+        ~%%CONTROLLER_NAME%%();
+
+    private:
+        // %%%NEXT_VAR_MODEL_CTRL_MARKER%%%
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
 
-
-
+};
 
 } // End namespace webs
-} // End namespace controllers
+} // End namespace generics
+
+#endif

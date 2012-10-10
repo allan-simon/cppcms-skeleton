@@ -8,7 +8,6 @@ import os
 from datetime import date
 from constants import *
 from utils import *
-from config import REPLACEMENT
 
 
 def addModel(model,description = '@TODO'):

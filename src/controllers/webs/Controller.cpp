@@ -29,10 +29,10 @@
 #include <cppcms/archive_traits.h>
 #include <cppcms/session_interface.h>
 #include <cppcms/filters.h>
+#include <cppcms/http_response.h>
 
-#include "contents/content.h"
-
-#include "generics/Config.h"
+#include "framework/src/contents/content.h"
+#include "framework/src/generics/Config.h"
 
 namespace controllers {
 namespace webs {
