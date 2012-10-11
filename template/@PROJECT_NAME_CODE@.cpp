@@ -37,7 +37,7 @@
 
 
 #include "@PROJECT_NAME_CODE@.h"
-#include "framework/src/generics/Languages.h"
+#include "cppcms_skel/generics/Languages.h"
 
 
 // @TODO move the default language in the configuration

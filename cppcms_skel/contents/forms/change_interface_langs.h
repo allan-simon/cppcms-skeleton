@@ -37,7 +37,7 @@
 
 
 #include <cppcms/form.h>
-#include "framework/src/generics/Languages.h"
+#include "cppcms_skel/generics/Languages.h"
 
 namespace forms{
 

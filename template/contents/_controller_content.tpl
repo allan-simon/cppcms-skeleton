@@ -27,7 +27,7 @@
 #ifndef TATOEBACPP_CONTENTS_%%CONTROLLER_INCLUDE%%_H
 #define TATOEBACPP_CONTENTS_%%CONTROLLER_INCLUDE%%_H
 
-#include "framework/src/contents/content.h"
+#include "cppcms_skel/contents/content.h"
 
 //%%%NEXT_CONTENT_FORM_INCLUDE_MARKER%%%
 

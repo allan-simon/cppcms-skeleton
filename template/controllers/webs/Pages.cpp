@@ -28,7 +28,7 @@
 
 #include "contents/Pages.h"
 
-#include "framework/src/contents/forms/change_interface_langs.h"
+#include "cppcms_skel/contents/forms/change_interface_langs.h"
 
 
 

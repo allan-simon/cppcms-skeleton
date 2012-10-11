@@ -24,7 +24,8 @@
 #include <booster/log.h>
 
 #include "SqliteModel.h"
-#include "framework/src/generics/Config.h"
+#include "cppcms_skel/generics/Config.h"
+
 
 namespace models {
 SqliteModel::SqliteModel() {

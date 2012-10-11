@@ -36,7 +36,7 @@
 #define CPPCMS_SKEL_CONTENT_CONFIG_H
 
 #include <map>
-#include "framework/src/generics/Singleton.h"
+#include "cppcms_skel/generics/Singleton.h"
 
 /**
  * Singleton class that store some value used in html generation

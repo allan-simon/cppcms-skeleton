@@ -37,7 +37,7 @@
 
 #include <cppcms/view.h>
 
-#include "framework/src/contents/forms/change_interface_langs.h"
+#include "cppcms_skel/contents/forms/change_interface_langs.h"
 
 namespace contents {
 

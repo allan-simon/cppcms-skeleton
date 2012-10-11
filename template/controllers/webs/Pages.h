@@ -26,7 +26,7 @@
 #ifndef CONTROLLERS_WEBS_PAGES_H
 #define CONTROLLERS_WEBS_PAGES_H
 
-#include "framework/src/controllers/webs/Controller.h"
+#include "cppcms_skel/controllers/webs/Controller.h"
 
 namespace controllers {
 namespace webs { 

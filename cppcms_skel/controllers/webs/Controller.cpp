@@ -25,18 +25,24 @@
 
 
 #include "Controller.h"
+#include <cppcms/serialization_classes.h>
+#include <cppcms/archive_traits.h>
 #include <cppcms/session_interface.h>
 #include <cppcms/filters.h>
+#include <cppcms/http_response.h>
 
-#include "framework/src/contents/content.h"
+#include "cppcms_skel/contents/content.h"
+#include "cppcms_skel/generics/Config.h"
 
 namespace controllers {
-namespace generics {
+namespace webs {
 
 /**
  *
  */
-Controller::Controller(cppcms::service &serv) : cppcms::application(serv) {
+Controller::Controller(cppcms::service &serv) :
+    controllers::generics::Controller(serv)
+{
 
 
 }
@@ -49,7 +55,13 @@ void Controller::init_content(contents::BaseContent& content) {
     response().content_encoding("UTF-8");
     response().set_content_header("text/html; charset=UTF-8");
 
+    content.interfaceLang.set_langs();
     //std::cout << "user name: " << session()["name"] << std::endl;
+
+    if (session().is_set("message")) {
+        content.message = session()["message"];
+        session().erase("message");
+    }
 }
 
 
@@ -61,6 +73,8 @@ inline bool Controller::is_logged() {
 }
 
 
+
+
 /**
  *
  */
@@ -68,7 +82,7 @@ void Controller::go_back_to_previous_page() {
     //std::cout << "referer : " << request().http_referer() << std::endl;
     
     //TODO we do not handle the case where the referer is not a valid page
-    // "*_check" page, or page that require a priviledge that the user does
+    // "*_treat" page, or page that require a priviledge that the user does
     // not have anymore (if session has expired etc.)
     response().set_redirect_header(
         request().http_referer()
@@ -109,5 +123,17 @@ int Controller::get_current_user_id() {
 }
 
 
-} // End namespace generics
+
+/**
+ *
+ */
+
+void Controller::set_message(std::string message) {
+
+    session()["message"] = message;
+}
+
+
+
+} // End namespace webs
 } // End namespace controllers
