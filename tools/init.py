@@ -22,13 +22,14 @@ IGNORE_EXTENSIONS = [
 
 
 
+# This function will take the generic "template" files and will adapt them
+# to the current projet (i.e putting the user copyright header etc.)
 def adapt_files(
     rootDir,
     replacements,
     ignoreDirs = [],
     ignoreExtensions = []
 ):
-    print("root Dir is :" + rootDir)
     # we do a recursive walk 
     for path, dirs, files in os.walk(rootDir):
         # we ignore some directories
@@ -50,6 +51,7 @@ def adapt_files(
                     # we use print and nothing is displayed
                     print(line, end='')
 
+
 def create_template_local_copy(localTemplateRoot):
     # we create a copy of the templates in order to
     # adapt them to the projet (and if the user need to custom
@@ -60,6 +62,7 @@ def create_template_local_copy(localTemplateRoot):
     )
 
 
+# generic function to move a file
 def move_file(
     localTemplateRoot,
     appRoot,
@@ -73,6 +76,8 @@ def move_file(
     os.rename(src, dst)
 
 
+# to move the CMake configuration file
+# that will compile the website
 def move_cmake_file(
     localTemplateRoot,
     appRoot
@@ -84,6 +89,8 @@ def move_cmake_file(
         fileName
     )
 
+# move the main.cpp file from the template's files
+# to the application folder
 def move_main(
     localTemplateRoot,
     appRoot
@@ -96,7 +103,8 @@ def move_main(
     )
 
 
-
+# The application class file has by default a generic name
+# rename it with the actual application name
 def rename_app_files(
     localTemplateRoot,
     placeholderName,
@@ -113,6 +121,8 @@ def rename_app_files(
     )
 
 
+# move the application class file from the template directoy
+# to the actual application folder
 def move_app_files(
     localTemplateRoot,
     appRoot,
@@ -131,6 +141,10 @@ def move_app_files(
         appRoot + '/src',
         fileName
     )
+
+# By default the main application contain a sub-application
+# named "Pages" that is used to display "nearly static" web pages
+# i.e homepage/credit pages etc.
 
 def move_pages_files(
     localTemplateRoot,
@@ -160,6 +174,9 @@ def move_pages_files(
         fileName
     )
 
+
+# move the configuration file of the website
+# from the template directory to the application's one
 def move_config_js(
     localTemplateRoot,
     appRoot
@@ -218,12 +235,17 @@ def move_and_renamed_files(
     move_pages_files(localTemplateRoot, appRoot)
     move_master_layout(localTemplateRoot, appRoot)
 
+
+# we create the application directory
 os.mkdir(APP_ROOT)
 
+# we create the directory structure in it
 generate_folders(APP_ROOT,FOLDERS)
 
+# we generate a local copy of the template files ...
 create_template_local_copy(LOCAL_TEMPLATE_ROOT)
 
+# and we adapt them to fit the current application
 adapt_files(
     LOCAL_TEMPLATE_ROOT,
     REPLACEMENTS,
@@ -231,6 +253,8 @@ adapt_files(
     IGNORE_EXTENSIONS
 )
 
+# we move the needing files from the local template
+# directory to the application's one
 move_and_renamed_files(
     LOCAL_TEMPLATE_ROOT,
     APP_ROOT,
@@ -244,5 +268,7 @@ print(
     ################################
     '''
 )
+# finally generate the code following the
+# architecture defined by the user in the config.py file
 generate_architecture(ARCHITECTURE)
 
