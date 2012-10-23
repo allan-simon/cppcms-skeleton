@@ -1,7 +1,7 @@
 from config import APP_ROOT
 #TODO for lisibility should be better to include them in some sub naming space
 
-LOCAL_TEMPLATE_ROOT = "../../local_template"
+LOCAL_TEMPLATE_ROOT = "../local_template"
 
 # how the generic .cpp/.h files of a main application
 # are named

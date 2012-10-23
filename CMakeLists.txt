@@ -29,6 +29,7 @@ file(
 )
 
 
+# used to create libccpcmsskel.so
 add_library(
     cppcmsskel
     SHARED
@@ -37,6 +38,8 @@ add_library(
     ${framework_controllers_files}
 )
 
+
+# TODO cppdb should not be mandatory 
 target_link_libraries(
     cppcmsskel
     cppcms
@@ -44,7 +47,53 @@ target_link_libraries(
 )
 
 
+    
+# we install the "template" files (i.e c++ code with placeholders)
+# a local copy of them will be made each time we create a new app
+install(
+    DIRECTORY template
+    DESTINATION share/cppcmsskel
+    PATTERN "README" EXCLUDE
+)
+
+
+# we install the "tools" (set of script to do basic tasks)
+# in (/usr/local)/share/cppcmsskel
+# we do not install them in bin to not polluate it
+# instead the framework will create a link to them in the tools directory
+# of a given application
+install(
+    DIRECTORY tools
+    DESTINATION share/cppcmsskel
+    USE_SOURCE_PERMISSIONS
+    PATTERN "*.pyc" EXCLUDE
+    PATTERN "__pycache__" EXCLUDE
+    PATTERN "*.swp" EXCLUDE
+)
+    
+# to install the libcppcmsskel 
 install(
     TARGETS cppcmsskel
     LIBRARY DESTINATION lib
+)
+
+
+# install the header files
+install(
+    DIRECTORY cppcms_skel
+    DESTINATION include
+    USE_SOURCE_PERMISSIONS
+    PATTERN "README" EXCLUDE
+    PATTERN "*.cpp" EXCLUDE
+)
+
+# to install create_new_cppcmsskel (command to initiate a new
+# cppcmsskel directory)
+install(
+    FILES tools/create_new_cppcmsskel
+    DESTINATION bin
+    PERMISSIONS
+        WORLD_EXECUTE WORLD_READ
+        GROUP_EXECUTE GROUP_READ
+        OWNER_EXECUTE OWNER_READ
 )

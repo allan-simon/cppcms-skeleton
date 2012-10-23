@@ -1,7 +1,7 @@
 
 # where the application code will be generated
 # relative to the "tools" directory
-APP_ROOT = "../../app"
+APP_ROOT = "../app"
 
 
 

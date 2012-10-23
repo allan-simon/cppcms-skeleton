@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from argparse import ArgumentParser
+import shutil
+import os
+
+
+#TODO replace this by 
+CPPCMS_SKEL_DEFAULT_INSTALL_DIR = '/usr/local/share/cppcmsskel/'
+
+if __name__ == '__main__':
+    parser = ArgumentParser(
+        description = 'create and copy the basic files and tools needed for a cppcms-skel based projet'
+    )
+
+    parser.add_argument(
+        '-i',
+        '--install-dir',
+        nargs='?',
+        help = 'Path where you have installed cppcmsskel',
+        default = CPPCMS_SKEL_DEFAULT_INSTALL_DIR
+    )
+
+    args = parser.parse_args();
+    cppcmsskelInstallDir = args.install_dir
+
+    # we create the application directory
+    os.mkdir('tools')
+    toolsDir = cppcmsskelInstallDir + '/tools/'
+
+    files = [
+        "addController.py",
+        "addFormPage.py",
+        "addForm.py",
+        "addMethod.py",
+        "addModel.py",
+        "architecture.py",
+        "config.py.example",
+        "constants.py",
+        "create_new_cppcmsskel.py",
+        "init.py",
+        "linkModelController.py",
+        "utils.py"
+    ]
+
+    if os.name == 'posix':
+        action = os.symlink
+    else:
+        action = shutil.copy
+    
+    for file in files:
+        action(
+            toolsDir + file,
+            'tools/' + file
+        )
+
+    print(
+        "Done, now you can create your config.py file, and run ./init.py"
+    )
+
+
+

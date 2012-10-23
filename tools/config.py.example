@@ -2,7 +2,7 @@
 
 # where the application code will be generated
 # relative to the "tools" directory
-APP_ROOT = "../../app"
+APP_ROOT = "../app"
 
 # this represent the logical structure of your code
 # the script init will use this to generate a skeleton
