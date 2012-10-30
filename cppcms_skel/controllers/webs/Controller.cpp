@@ -79,14 +79,21 @@ inline bool Controller::is_logged() {
  *
  */
 void Controller::go_back_to_previous_page() {
-    //std::cout << "referer : " << request().http_referer() << std::endl;
     
-    //TODO we do not handle the case where the referer is not a valid page
-    // "*_treat" page, or page that require a priviledge that the user does
-    // not have anymore (if session has expired etc.)
-    response().set_redirect_header(
-        request().http_referer()
-    );
+
+    const std::string referer = request().http_referer();
+
+    if (referer.empty()) {
+        response().make_error_response(404);
+    } else {
+
+        //TODO we do not handle the case where the referer is not a valid page
+        // "*_treat" page, or page that require a priviledge that the user does
+        // not have anymore (if session has expired etc.)
+        response().set_redirect_header(
+            referer
+        );
+    }
 }
 
 
