@@ -37,7 +37,6 @@ ARCHITECTURE = {
 
 
 REPLACEMENTS = {
-    '@FRAMEWORK_ROOT@' : '../framework', #TODO a bit hackish yet
     '@AUTHOR@' : 'Allan',
     '@EMAIL@': 'Your_email.com',
     '@PROJECT_NAME_CODE@' : 'TatoWiki',

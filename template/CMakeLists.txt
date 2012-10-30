@@ -2,14 +2,9 @@ cmake_minimum_required(VERSION 2.6)
 
 project(@PROJECT_NAME_CODE@)
 
-set(
-    FRAMEWORK_ROOT
-    ${CMAKE_CURRENT_SOURCE_DIR}/@FRAMEWORK_ROOT@
-)
 
 include_directories(
     src
-    ${FRAMEWORK_ROOT}
 )
 
 
@@ -17,13 +12,6 @@ set(
     FRAMEWORK_BUILD_DIR
     build
 )
-
-set(
-    CMAKE_LIBRARY_PATH
-    ${CMAKE_LIBRARY_PATH}
-    ${FRAMEWORK_ROOT}/${FRAMEWORK_BUILD_DIR}
-)
-
 
 
 file(
