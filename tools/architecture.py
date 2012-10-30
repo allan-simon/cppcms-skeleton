@@ -7,6 +7,14 @@ from addFormPage import addFormPage
 from os import mkdir
 
 
+# this function is meant to check that no
+# invalid names are used in the architecture (like using
+# language keywords etc.) that would result in a generated
+# code that can't compile
+def check_names(architecture):
+    pass
+
+
 
 def generate_models(models):
     modelNames = []
@@ -97,6 +105,8 @@ def generate_links_models_controllers(modelsControllers,models,controllers):
 
 
 def generate_architecture (architecture):
+    if (not check_names(architecture)):
+        return
 
     controllerNames = generate_controllers(architecture['controllers'])
     modelNames = generate_models(architecture['models']);
