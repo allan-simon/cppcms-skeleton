@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import os
 #as we use symbolic links we need to do this
 #to be able to import config.py
 import sys
 sys.path.append(".")
 
+if (not os.path.isfile("config.py")):
+    sys.exit("you should first create a config.py file")
+
+
 import config
 import fileinput
-import os
 import shutil
 
 from argparse import ArgumentParser
