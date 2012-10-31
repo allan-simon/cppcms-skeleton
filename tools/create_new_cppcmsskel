@@ -42,7 +42,6 @@ if __name__ == '__main__':
         "init.py",
         "linkModelController.py",
         "utils.py",
-        "architecture.py"
     ]
 
     if os.name == 'posix':
