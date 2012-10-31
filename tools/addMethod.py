@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+#as we use symbolic links we need to do this
+#to be able to import config.py
+import sys
+sys.path.append(".")
+
 from argparse import ArgumentParser
-import fileinput
 from datetime import date
 from constants import *
 from utils import *
 import os
-import re
 
 def addMethod(controller, method, description = '@TODO'):
     controllerInclude = controller.upper()
