@@ -25,8 +25,8 @@
 
 
 
-#ifndef SHDICT_GENERICS_LANGUAGES_H
-#define SHDICT_GENERICS_LANGUAGES_H
+#ifndef CPPCMS_SKEL_GENERICS_LANGUAGES_H
+#define CPPCMS_SKEL_GENERICS_LANGUAGES_H
 
 #include <map>
 #include "Singleton.h"

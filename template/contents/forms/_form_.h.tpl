@@ -24,8 +24,8 @@
  */
 
 
-#ifndef @MAIN_CLASS@_%%FORM_INCLUDE%%
-#define @MAIN_CLASS@_%%FORM_INCLUDE%%
+#ifndef @MAIN_CLASS_HEADER@_%%FORM_INCLUDE%%
+#define @MAIN_CLASS_HEADER@_%%FORM_INCLUDE%%
 
 
 #include <cppcms/form.h>

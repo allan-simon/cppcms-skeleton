@@ -1,5 +1,5 @@
-#ifndef TATOEBACPP_SINGLETON_H
-#define TATOEBACPP_SINGLETON_H
+#ifndef CPPCMS_SKEL_SINGLETON_H
+#define CPPCMS_SKEL_SINGLETON_H
 
 #include <iostream>
 

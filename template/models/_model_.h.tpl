@@ -22,8 +22,8 @@
  * @link     @PROJECT_WEBSITE@
  */
 
-#ifndef @MAIN_CLASS@_%%MODEL_INCLUDE%%
-#define @MAIN_CLASS@_%%MODEL_INCLUDE%%
+#ifndef @MAIN_CLASS_HEADER@_%%MODEL_INCLUDE%%
+#define @MAIN_CLASS_HEADER@_%%MODEL_INCLUDE%%
 
 
 

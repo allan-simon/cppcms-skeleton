@@ -23,8 +23,8 @@
  * @link     @PROJECT_WEBSITE@
  */
 
-#ifndef CONTROLLERS_WEBS_%%CONTROLLER_INCLUDE%%_H
-#define CONTROLLERS_WEBS_%%CONTROLLER_INCLUDE%%_H
+#ifndef @MAIN_CLASS_HEADER@CONTROLLERS_WEBS_%%CONTROLLER_INCLUDE%%_H
+#define @MAIN_CLASS_HEADER@CONTROLLERS_WEBS_%%CONTROLLER_INCLUDE%%_H
 
 #include "cppcms_skel/controllers/webs/Controller.h"
 
@@ -64,6 +64,6 @@ class %%CONTROLLER_NAME%% : public Controller {
 };
 
 } // End namespace webs
-} // End namespace generics
+} // End namespace controllers
 
 #endif
