@@ -118,6 +118,19 @@ def move_main(
         fileName
     )
 
+# move homepage.tmpl, the file that contain the html of
+# the main page when you go on domain.tld/
+def move_homeplage(
+    localTemplateRoot,
+    appRoot
+):
+    fileName = '/views/webs/pages/homepage.tmpl'
+    move_file(
+        localTemplateRoot,
+        appRoot + "/src",
+        fileName
+    )
+
 
 # The application class file has by default a generic name
 # rename it with the actual application name
@@ -233,6 +246,9 @@ def move_and_renamed_files(
 
     # move main.cpp file
     move_main(localTemplateRoot, appRoot)
+
+    # move homepage.tmpl
+    move_homeplage(localTemplateRoot, appRoot)
 
     # rename @mainAppPlaceholder@.h/cpp@ into mainApp.h/cpp
     mainApp = replacements[mainAppPlaceholder]
