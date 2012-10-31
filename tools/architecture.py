@@ -1,3 +1,14 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+#as we use symbolic links we need to do this
+#to be able to import config.py
+import sys
+sys.path.append(".")
+from config import ARCHITECTURE
+
+
+
 from addMethod import addMethod
 from addModel import addModel
 from addController import addController
@@ -6,14 +17,78 @@ from addFormPage import addFormPage
 
 from os import mkdir
 
+BAD_NAMES = [
+    "delete",
+    "new",
+    "register",
+    "class",
+    "int"
+]
 
 # this function is meant to check that no
 # invalid names are used in the architecture (like using
 # language keywords etc.) that would result in a generated
 # code that can't compile
-def check_names(architecture):
-    pass
+def check_architecture_names(architecture):
+    controllersOk = check_controllers(architecture['controllers'])
+    modelsOk = check_models(architecture['models']);
+    linksOk = check_links_models_controllers(architecture['models_controllers'])
 
+    # true only if everything is ok
+    return controllersOk and modelsOk and linksOk
+
+def _check(dict,type):
+    isAllOk = True
+    for key, value in dict.items():
+        if key.lower()  in BAD_NAMES:
+            print(
+                "You can't name your %s '%s', it's a C++ keyword"
+                % (type, key)
+            )
+            isAllOk = False
+    return isAllOk
+
+# TODO add DOC
+def check_controllers(controllers):
+    isAllOk = True
+    for controller,attributes in controllers.items():
+        if controller.lower() in BAD_NAMES:
+            print(
+                "You can't name your controller '%s', it's a C++ keyword"
+                % (controller)
+            )
+            isAllOk = False
+        check_methods(attributes)
+        check_forms(attributes)
+
+    return isAllOk
+
+# TODO add DOC
+def check_methods(attributes):
+    if 'methods' not in attributes.keys():
+         return True
+    isAllOk = _check(attributes['methods'],'method')
+
+    return isAllOk
+
+# TODO add DOC
+def check_forms(attributes):
+    isAllOk = True
+    if 'forms' not in attributes.keys():
+         return True
+
+    isAllOk = _check(attributes['forms'],'form')
+
+    return isAllOk
+
+# TODO add DOC
+def check_models(models):
+    isAllOk = _check(models,"model")
+    return isAllOk
+
+# TODO add DOC
+def check_links_models_controllers(links):
+    return True
 
 
 def generate_models(models):
@@ -105,7 +180,11 @@ def generate_links_models_controllers(modelsControllers,models,controllers):
 
 
 def generate_architecture (architecture):
-    if (not check_names(architecture)):
+    if (not check_architecture_names(architecture)):
+        print(
+            "Your architecture file is not correct please correct it" +
+            " and then run ./architecture.py"
+        )
         return
 
     controllerNames = generate_controllers(architecture['controllers'])
@@ -128,6 +207,5 @@ def generate_folders(root,tree):
             # because git does not like empty direcotry
             open(newFolder + "/README",'w').close()
 
-
-
-
+if __name__ == '__main__':
+    generate_architecture(ARCHITECTURE)

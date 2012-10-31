@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+#as we use symbolic links we need to do this
+#to be able to import config.py
 import sys
 sys.path.append(".")
 
@@ -302,4 +304,3 @@ if __name__ == '__main__':
     # finally generate the code following the
     # architecture defined by the user in the config.py file
     generate_architecture(ARCHITECTURE)
-    

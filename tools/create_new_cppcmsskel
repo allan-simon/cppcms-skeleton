@@ -41,7 +41,8 @@ if __name__ == '__main__':
         "create_new_cppcmsskel.py",
         "init.py",
         "linkModelController.py",
-        "utils.py"
+        "utils.py",
+        "architecture.py"
     ]
 
     if os.name == 'posix':
