@@ -21,6 +21,8 @@ def linkModelController(model,controller):
         '%%MODEL_NAME%%' : model
     }
 
+    # we need to add the include <this_model.h> at the beginning of
+    # this model.cpp
     insertFromTemplate(
         os.path.join(MODEL_CTRL_OUTPUT_DIR,controller + '.cpp'),
         NEXT_INC_MODEL_CTRL_MARKER,

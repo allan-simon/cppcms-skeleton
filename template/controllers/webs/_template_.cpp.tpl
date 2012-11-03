@@ -48,7 +48,7 @@ namespace webs {
  *
  */
 %%CONTROLLER_NAME%%::~%%CONTROLLER_NAME%%() {
-    //%%%NEXT_DEL_MODEL_CTRL%%%
+    //%%%NEXT_DEL_MODEL_CTRL_MARKER%%%
 }
 
 // %%%NEXT_ACTION_MARKER%%% , do not delete
