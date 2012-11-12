@@ -90,12 +90,20 @@ void Controller::go_back_to_previous_page() {
         //TODO we do not handle the case where the referer is not a valid page
         // "*_treat" page, or page that require a priviledge that the user does
         // not have anymore (if session has expired etc.)
-        response().set_redirect_header(
-            referer
-        );
+        redirect(referer);
     }
 }
 
+/**
+ *
+ */
+inline void Controller::redirect(
+    const std::string &url
+) {
+    response().set_redirect_header(
+        url
+    );
+}
 
 /**
  *
@@ -112,7 +120,7 @@ bool Controller::check_permission() {
            request().path_info()
         );
 
-        response().set_redirect_header(
+        redirect(
             "/users/login"
             "?from=" + oss.str()
         );

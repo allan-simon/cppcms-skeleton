@@ -116,6 +116,15 @@ class Controller : public controllers::generics::Controller {
          */
         int get_current_user_id();
 
+        /**
+         * @brief Wrapper  function to set the redirect url header
+         * 
+         * @param string url The URL on which the user will be redirected
+         * @since 12 November 2012
+         */
+        inline void redirect(
+            const std::string &url
+        );
                 
         /**
          * @brief Set a message to display on the next page a user will view
