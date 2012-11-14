@@ -1,31 +1,41 @@
 /**
- * @PROJECT_NAME_HUMAN@  @DESCRIPTION@
- * Copyright (C) @YEARS@ @AUTHOR@ <@EMAIL@> 
+ * cppcms-skeleton a set of tools and code over cppcms
+ * Copyright (C) 2012 Allan SIMON <allan.simon@supinfo.com>
+ * 
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom
+ * the Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall
+ * be included in all copies or substantial portions of the
+ * Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+ * KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+ * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+ * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+ * OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+ * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+ * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- *
- * @category @PROJECT_NAME_HUMAN@
+ * @category Cppcms-skeleton
+ * @author   Allan SIMON <allan.simon@supinfo.com>
  * @package  Controllers
- * @author   @AUTHOR@ <@EMAIL@> 
- * @license  Affero General Public License
- * @link     @PROJECT_WEBSITE@
+ * @license  MIT
+ * @link     https://github.com/allan-simon/cppcms-skeleton
+ *
  */
 
 
-#ifndef CONTROLLERS_WEBS_CONTROLLER_H
-#define CONTROLLERS_WEBS_CONTROLLER_H
+
+#ifndef CPPCMSSKEL_CONTROLLERS_WEBS_CONTROLLER_H
+#define CPPCMSSKEL_CONTROLLERS_WEBS_CONTROLLER_H
 
 #include <cppcms/json.h>
 #include <cppcms/application.h>
@@ -37,6 +47,7 @@
     if (!check_permission()) {\
        return;\
     }
+
 
 #define TREAT_PAGE() \
     if (request().post().empty()) {\
@@ -93,6 +104,17 @@ class Controller : public controllers::generics::Controller {
          * represent the current user
          */
         bool is_logged();
+
+        /**
+         * @brief Function that logout the user, it's not supposed to be called
+         *        In other controllers than the one managing users but as other
+         *        Methods dealing with the current user are put there, we put it
+         *        too for consistency
+         *
+         * @since 14 November 2012
+         */
+         void current_user_logout();
+
         /**
          * Check if the current user as the permission to do this action,
          * view this page
@@ -117,6 +139,42 @@ class Controller : public controllers::generics::Controller {
         int get_current_user_id();
 
         /**
+         * @brief Gives the current username
+         *
+         * @return string The username
+         *
+         * @since 14 November 2012
+         */
+        const std::string get_current_username();
+
+        /**
+         * @brief Set the current user name and id to be reused after by other
+         *        Controllers
+         *
+         * @param string userName The user's name
+         * @param id     Userid   The user's id (thanks captain obvious)
+         * 
+         * @since 14 November 2012
+         */
+        void set_current_username_and_id(
+            const std::string &username,
+            const int userId
+        );
+
+
+        /**
+         * @brief Set the current user name to be reused after by other
+         *        Controllers
+         *
+         * @param string userName The user's name
+         * 
+         * @since 14 November 2012
+         */
+        void set_current_username(
+            const std::string &username
+        );
+
+        /**
          * @brief Wrapper  function to set the redirect url header
          * 
          * @param string url The URL on which the user will be redirected
@@ -133,7 +191,19 @@ class Controller : public controllers::generics::Controller {
          *
          * @since 30 August 2011
          */
-        void set_message(std::string message);
+        void set_message(const std::string &message);
+
+        /**
+         * @brief Get the message to display on the page that is going to be
+         *        displayed to the user, note that the message is "destroyed"
+         *        after you get it, so calling a second time this method will
+         *        return you an empty string
+         *
+         * @return The message or an empty string if no message
+         *
+         * @since 14 November 2012
+         */
+        const std::string get_message();
 
 	public:
 		Controller(cppcms::service &serv);

@@ -57,21 +57,61 @@ void Controller::init_content(contents::BaseContent& content) {
 
     content.interfaceLang.set_langs();
     //std::cout << "user name: " << session()["name"] << std::endl;
+    if (is_logged()) {
+        content.currentUserHelper.username = get_current_username();
+    }
 
+    content.message = get_message();
+}
+
+/**
+ *
+ */
+inline const std::string Controller::get_message() {
+    std::string message = "";
     if (session().is_set("message")) {
-        content.message = session()["message"];
+        message = session()["message"];
         session().erase("message");
     }
+    return message;
+}
+
+/**
+ *
+ */
+inline bool Controller::is_logged() {
+    return !get_current_username().empty();
 }
 
 
 /**
  *
  */
-inline bool Controller::is_logged() {
-    return !session()["name"].empty();
+inline const std::string Controller::get_current_username() {
+    return session()["username"];
 }
 
+/**
+ *
+ */
+void Controller::set_current_username_and_id(
+    const std::string &username,
+    const int userId
+) {
+    session()["userid"] = userId;
+    session()["username"] = username;
+    session().save();
+}
+
+/**
+ *
+ */
+void Controller::set_current_username(
+    const std::string &username
+) {
+    session()["username"] = username;
+    session().save();
+}
 
 
 
@@ -134,6 +174,7 @@ bool Controller::check_permission() {
  */
 int Controller::get_current_user_id() {
     //std::cout << "[NOTICE] current id:" << session()["userId"] << std::endl;
+    //TODO replace atoi by stoi from C++11
     return atoi(session()["userId"].c_str());
 }
 
@@ -143,12 +184,19 @@ int Controller::get_current_user_id() {
  *
  */
 
-void Controller::set_message(std::string message) {
-
+void Controller::set_message(const std::string &message) {
+    //TODO maybe concatenate the message instead of replacing it
+    //     as it may be possible in the future that several message
+    //     are raised
     session()["message"] = message;
 }
 
-
+/**
+ *
+ */
+void Controller::current_user_logout() {
+    session().clear();
+}
 
 } // End namespace webs
 } // End namespace controllers

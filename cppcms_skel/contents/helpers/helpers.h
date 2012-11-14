@@ -26,50 +26,41 @@
  *
  * @category Cppcms-skeleton
  * @author   Allan SIMON <allan.simon@supinfo.com>
- * @package  Contents
+ * @package  Helpers
  * @license  MIT
  * @link     https://github.com/allan-simon/cppcms-skeleton
  *
  */
 
-#ifndef CPPCMS_SKEL_CONTENTS_BASE_CONTENT_H
-#define CPPCMS_SKEL_CONTENTS_BASE_CONTENT_H
+#ifndef CPPCMS_SKEL_CONTENTS_HELPER_HELPERS_H
+#define CPPCMS_SKEL_CONTENTS_HELPER_HELPERS_H
 
 #include <cppcms/view.h>
 
-#include "cppcms_skel/contents/forms/change_interface_langs.h"
-#include "cppcms_skel/contents/helpers/current_user.h"
 namespace contents {
-
-/**
- * @struct 
- */
-struct BaseContent : public cppcms::base_content {
-    /**
-     * @brief Will contain a flash message to inform the user about the
-     *        success/failure of an action.
-     *
-     * @since 30 August
-     */
-    std::string message;
-
-    /**
-     * @brief Helper that contain all the information related to the
-     *        current user
-     *
-     * @since 14 November 2012
-     */
-     helpers::CurrentUser currentUserHelper;
-
-    /**
-     * @brief Form which permits to change the user interface language
-     *
-     * @since 2 September
-     */
-    forms::InterfaceLang interfaceLang;
-    
-};
-
+    namespace helpers {
+        /**
+         * @struct contents::helpers::Helper
+         * Base struct for sending data from the controller to the view
+         * for data meant to be used in some reusable modules
+         *
+         * @since 14 November 2012
+         */
+        struct Helpers : public cppcms::base_content {
+            /**
+             * @brief Base url used in the helper in case we need to generate
+             *        Some link
+             * 
+             * @since 14 November 2012
+             *
+             * @TODO  Check if we still need it
+             */
+            std::string baseUrl;
+        };
+    }
 }
 
 #endif
+
+
+

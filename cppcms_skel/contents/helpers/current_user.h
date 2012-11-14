@@ -26,50 +26,47 @@
  *
  * @category Cppcms-skeleton
  * @author   Allan SIMON <allan.simon@supinfo.com>
- * @package  Contents
+ * @package  Helpers
  * @license  MIT
  * @link     https://github.com/allan-simon/cppcms-skeleton
  *
  */
 
-#ifndef CPPCMS_SKEL_CONTENTS_BASE_CONTENT_H
-#define CPPCMS_SKEL_CONTENTS_BASE_CONTENT_H
 
-#include <cppcms/view.h>
+#ifndef CPPCMS_SKEL_CONTENTS_HELPER_CURRENT_USER_H
+#define CPPCMS_SKEL_CONTENTS_HELPER_CURRENT_USER_H
 
-#include "cppcms_skel/contents/forms/change_interface_langs.h"
-#include "cppcms_skel/contents/helpers/current_user.h"
+#include "helpers.h"
+
 namespace contents {
-
-/**
- * @struct 
- */
-struct BaseContent : public cppcms::base_content {
-    /**
-     * @brief Will contain a flash message to inform the user about the
-     *        success/failure of an action.
-     *
-     * @since 30 August
-     */
-    std::string message;
-
-    /**
-     * @brief Helper that contain all the information related to the
-     *        current user
-     *
-     * @since 14 November 2012
-     */
-     helpers::CurrentUser currentUserHelper;
-
-    /**
-     * @brief Form which permits to change the user interface language
-     *
-     * @since 2 September
-     */
-    forms::InterfaceLang interfaceLang;
+    namespace helpers {
+        /**
+         * @struct CurrentUser
+         * Used everywhere we need to send current user information
+         * to the view
+         *
+         * @since 14 November 2012
+         */
+        struct CurrentUser : public Helpers {
     
-};
+            /**
+             * @brief Name of the user, empty for visitor
+             *
+             * @since 14 November 2012
+             */
+            std::string username;
 
+            public:
+                /**
+                 * @brief To know if the current user is logged or not
+                 *
+                 * @since 14 November 2012
+                 */
+                bool is_logged() {
+                    return !username.empty();
+                }
+        };
+    }
 }
-
 #endif
+
