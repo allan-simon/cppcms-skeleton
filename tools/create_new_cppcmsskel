@@ -33,6 +33,7 @@ if __name__ == '__main__':
         "addController.py",
         "addFormPage.py",
         "addForm.py",
+        "addActionOnlyPage.py",
         "addMethod.py",
         "addModel.py",
         "architecture.py",

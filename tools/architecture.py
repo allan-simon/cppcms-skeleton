@@ -14,6 +14,7 @@ from addModel import addModel
 from addController import addController
 from linkModelController import linkModelController
 from addFormPage import addFormPage
+from addActionOnlyPage import addActionOnlyPage
 
 from os import mkdir
 
@@ -120,48 +121,58 @@ def generate_controllers(controllers):
             addController(controller)
 
         generate_methods(controller,attributes)
+        generate_actions_only(controller,attributes)
         generate_form_pages(controller,attributes)
 
     return controllerNames
 
 
 
-def generate_methods (controller,attributes):
-
-    if 'methods' not in attributes.keys():
+def generate_generic_methods(controller,attributes,key,function):
+    if key not in attributes.keys():
          return
 
-    for method, properties in attributes['methods'].items():
+    for method, properties in attributes[key].items():
         if 'description' in properties.keys():
             description = properties['description']
-            addMethod(
+            function(
                 controller,
                 method,
                 description
             )
         else:
-            addMethod(
+            function(
                 controller,
                 method
             )
+
+
+
+def generate_methods (controller,attributes):
+    generate_generic_methods(
+        controller,
+        attributes,
+        "methods",
+        addMethod
+    )
+
+def generate_actions_only (controller,attributes):
+    generate_generic_methods(
+        controller,
+        attributes,
+        "actions_only",
+        addActionOnlyPage
+    )
+
+
 
 def generate_form_pages(controller,attributes):
-    if 'forms' not in attributes.keys():
-         return
-
-    for method, properties in attributes['forms'].items():
-        if 'description' in properties.keys():
-            description = properties['description']
-            addFormPage(
-                controller,
-                method,
-                description
-            )
-        else:
-            addFormPage(
-                controller,
-                method
-            )
+    generate_generic_methods(
+        controller,
+        attributes,
+        "forms",
+        addFormPage
+    )
 
 
 

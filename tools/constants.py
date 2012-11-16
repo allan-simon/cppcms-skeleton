@@ -1,5 +1,4 @@
 from config import APP_ROOT
-#TODO for lisibility should be better to include them in some sub naming space
 
 LOCAL_TEMPLATE_ROOT = "../local_template"
 
@@ -100,6 +99,10 @@ TMPL_CTRL_H = '_template_.h.tpl'
 #name of the template that contains the code for a new
 #controller method
 TMPL_METHOD_CPP = '_template_method.tpl'
+#name of the template that contains the code for a new
+#controller method that do only an action
+TMPL_ACTION_ONLY_CPP = '_template_action_only.tpl'
+
 #name of the template that contains the code for a new
 #controller method header
 TMPL_METHOD_H = '_template_method_header.tpl'
