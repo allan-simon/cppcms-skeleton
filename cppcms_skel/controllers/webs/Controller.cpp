@@ -137,6 +137,15 @@ void Controller::go_back_to_previous_page() {
 /**
  *
  */
+void Controller::go_to_main_page() {
+    //TODO replace this by something using Config:: 
+    redirect("/");
+}
+
+
+/**
+ *
+ */
 inline void Controller::redirect(
     const std::string &url
 ) {

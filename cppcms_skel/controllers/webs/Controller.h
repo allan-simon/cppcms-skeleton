@@ -131,6 +131,14 @@ class Controller : public controllers::generics::Controller {
          */
         void go_back_to_previous_page();
 
+        /**
+         * @brief Redirect to the main page of the application (which
+         *        is maybe not the root of the domain)
+         *
+         * @since 17 November 2012
+         */
+        void go_to_main_page();
+
         /* 
          * Return the id of the current user 
          * @TODO maybe move this in a dedicated class that would
