@@ -198,5 +198,13 @@ void Controller::current_user_logout() {
     session().clear();
 }
 
+/**
+ *
+ */
+const std::string Controller::get_interface_lang() {
+    return session()["interfaceLang"];
+}
+
+
 } // End namespace webs
 } // End namespace controllers

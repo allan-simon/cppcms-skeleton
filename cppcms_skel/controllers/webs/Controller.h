@@ -205,6 +205,18 @@ class Controller : public controllers::generics::Controller {
          */
         const std::string get_message();
 
+        /**
+         * @brief Get the same language in which the current user has the
+         *        interface
+         *
+         * @return string The code of the language of the interface for the
+         *                current user
+         *
+         * @since 16 November 2012
+         *
+         */
+         const std::string get_interface_lang();
+
 	public:
 		Controller(cppcms::service &serv);
 };
