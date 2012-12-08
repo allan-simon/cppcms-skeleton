@@ -28,8 +28,8 @@
     },
 	"@PROJECT_NAME_CODE@" : {
         "interfacelangs" : [
-            ["en"  , "en_GB.UTF-8", "English"],
-            ["fr"  , "fr_FR.UTF-8", "Français"]
+            ["en"  , "en_GB.UTF-8", "English", "English"],
+            ["fr"  , "fr_FR.UTF-8", "Français", "French"]
         ],
         "sqlite3" : {
             "path" : "../data/sqlite3.db"

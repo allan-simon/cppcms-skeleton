@@ -61,9 +61,13 @@ void Languages::init(
         cppcms::json::array lang = p->array();
 
         std::string langCode = lang[0].str();
+        std::string locale = lang[1].str();
+        std::string name = lang[2].str();
+        std::string englishName = lang[3].str();
 
-        langToLocale[langCode] = lang[1].str();
-        interfaceCodeToName[langCode] = lang[2].str();
+        langToLocale[langCode] =  locale;
+        interfaceCodeToName[langCode] = name;
+        nameToCode[englishName] = langCode;
     }
 }
 
@@ -96,6 +100,21 @@ void Languages::fill_interface_lang_select(
         select.add(
             itr->second,
             itr->first
+        );
+    }
+
+}
+
+
+/**
+ *
+ */
+void Languages::fill_form_select(cppcms::widgets::select &select) {
+    for(auto itr = nameToCode.begin(); itr != nameToCode.end(); ++itr){
+        //TODO l10n the language name
+        select.add(
+            cppcms::locale::translate(itr->first),
+            itr->second
         );
     }
 

@@ -45,6 +45,7 @@
 //TODO maybe replace all these maps by something smarter
 typedef std::map<std::string, std::string> InterfaceLangToLocale;
 typedef std::map<std::string, std::string> InterfaceCodeToName;
+typedef std::map<std::string, std::string> NameToCode;
 
 
 //TODO try to view how it deals with i18n (especially for language name sorting)
@@ -67,6 +68,12 @@ class Languages : public Singleton<Languages> {
         InterfaceLangToLocale langToLocale;
 
         InterfaceCodeToName interfaceCodeToName;
+        /**
+         * @brief map association the lang name to an iso code
+         *        for example  English => en
+         * @since 8 December 2012
+         */
+        NameToCode nameToCode;
 
         Languages();
 
@@ -120,6 +127,17 @@ class Languages : public Singleton<Languages> {
          * @since 2 September 2011
          */
         void fill_interface_lang_select(cppcms::widgets::select &select);
+
+
+        /**
+         * @brief Fill a html form's select and fill it with all the supported
+         *        languages
+         *
+         * @param select The cppcms select to fill
+         * @since 8 December 2012
+         */
+        void fill_form_select(cppcms::widgets::select &select);
+
 
 };
 
