@@ -32,6 +32,7 @@
  *
  */
 
+#include <iostream>
 #include "Languages.h"
 
 /**
@@ -46,12 +47,12 @@ void Languages::init(
     cppcms::json::array langsJson,
     cppcms::json::array interfaceLangsJson
 ) {
-    cppcms::json::array::const_iterator end = interfaceLangsJson.end();
 
     // lines are in this form
     // code , locale , natural name
     // e.g
     // "en" , "en_GB.UTF-8", "English"
+    cppcms::json::array::const_iterator end = interfaceLangsJson.end();
     for (
         cppcms::json::array::const_iterator p=interfaceLangsJson.begin();
         p!= end;
@@ -63,12 +64,25 @@ void Languages::init(
         std::string langCode = lang[0].str();
         std::string locale = lang[1].str();
         std::string name = lang[2].str();
-        std::string englishName = lang[3].str();
 
         langToLocale[langCode] =  locale;
         interfaceCodeToName[langCode] = name;
+    }
+    // we now process the languages used in the website itself
+    end = langsJson.end();
+    for (
+        cppcms::json::array::const_iterator p=langsJson.begin();
+        p!= end;
+        ++p
+    ) {
+
+        cppcms::json::array lang = p->array();
+
+        std::string langCode = lang[0].str();
+        std::string englishName = lang[1].str();
         nameToCode[englishName] = langCode;
     }
+
 }
 
 std::string Languages::get_locale_from_lang(
@@ -110,10 +124,10 @@ void Languages::fill_interface_lang_select(
  *
  */
 void Languages::fill_form_select(cppcms::widgets::select &select) {
-    for(auto itr = nameToCode.begin(); itr != nameToCode.end(); ++itr){
+    for( NameToCode::const_iterator itr = nameToCode.begin(); itr != nameToCode.end(); ++itr){
         //TODO l10n the language name
         select.add(
-            cppcms::locale::translate(itr->first),
+            itr->first,
             itr->second
         );
     }
