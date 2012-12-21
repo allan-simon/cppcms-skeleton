@@ -101,6 +101,20 @@ class Languages : public Singleton<Languages> {
          */
         std::string get_locale_from_lang(const std::string &lang);
   
+
+        /**
+         * @brief Return the name associated a interface lang code
+         *        Note: the name of the language is in this language
+         *        i.e  Français for fr , Deutsch for de etc.
+         *
+         * @param lang The interface lang code
+         *
+         * @return A language name string (such as Français)
+         *
+         * @since 22 December 2012
+         *
+         */
+        std::string get_interface_lang_from_code(const std::string &code);
   
         /**
          * @brief Permits to know if a given subdomain is actually an interface

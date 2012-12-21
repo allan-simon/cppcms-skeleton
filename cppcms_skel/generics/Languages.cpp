@@ -85,6 +85,18 @@ void Languages::init(
 
 }
 
+/**
+ *
+ */
+std::string Languages::get_interface_lang_from_code(
+    const std::string &code
+) {
+    return interfaceCodeToName[code];
+}
+
+/**
+ *
+ */
 std::string Languages::get_locale_from_lang(
     const std::string &lang
 ) {
@@ -92,6 +104,9 @@ std::string Languages::get_locale_from_lang(
 }
 
 
+/**
+ *
+ */
 bool Languages::is_interface_lang(
     const std::string &interfaceLang
 ) {
