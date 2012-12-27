@@ -53,7 +53,7 @@ Controller::Controller(cppcms::service &serv) :
 void Controller::init_content(contents::BaseContent& content) {
     
     response().content_encoding("UTF-8");
-    response().set_content_header("text/html; charset=UTF-8");
+    response().set_content_header("text/html");
 
     content.interfaceLang.set_langs();
     //std::cout << "user name: " << session()["name"] << std::endl;

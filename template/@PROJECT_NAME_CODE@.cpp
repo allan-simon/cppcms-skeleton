@@ -85,7 +85,7 @@ void @MAIN_CLASS@::main(std::string url) {
 
     // we set the locale in which the page will be generated
     context().locale(
-        interfaceLang
+        Languages::get_instance()->get_locale_from_lang(interfaceLang)
     );
     // and we call the appropriate controller
     application::main(url);
