@@ -1,9 +1,12 @@
 PROJECT(cppcmsskel)
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
+enable_testing()
+
 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}
+    cppcms_skel
 )
 
 
@@ -40,10 +43,16 @@ add_library(
 
 
 # TODO cppdb should not be mandatory 
-target_link_libraries(
-    cppcmsskel
+set(
+    CPPCMSSKEL_LIBS
     cppcms
     cppdb
+    booster
+)
+
+target_link_libraries(
+    cppcmsskel
+    ${CPPCMSSKEL_LIBS}
 )
 
 
@@ -97,3 +106,26 @@ install(
         GROUP_EXECUTE GROUP_READ
         OWNER_EXECUTE OWNER_READ
 )
+
+#unit tests
+set(
+    ALL_TESTS
+    models_sqlitemodel_load_db_from_file_test
+)
+
+foreach(TEST ${ALL_TESTS})
+    add_executable(
+        ${TEST}
+        tests/${TEST}.cpp
+        ${framework_generics_files}
+        ${framework_models_files}
+        ${framework_controllers_files}
+    )
+    target_link_libraries(${TEST} ${CPPCMSSKEL_LIBS})
+    add_test(
+        ${TEST}
+        ${TEST}
+    )
+endforeach()
+
+
