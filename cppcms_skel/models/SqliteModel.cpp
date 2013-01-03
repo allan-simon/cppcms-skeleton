@@ -21,6 +21,8 @@
  SOFTWARE.
 */
 
+#include <fstream>
+
 #include <booster/log.h>
 
 #include "SqliteModel.h"
@@ -28,13 +30,42 @@
 
 
 namespace models {
+
+/**
+ *
+ */
 SqliteModel::SqliteModel() {
+    create_session(
+        Config::get_instance()->sqlite3Path
+    );
+}
+
+
+/**
+ *
+ */
+SqliteModel::SqliteModel(cppdb::session sqliteDb) : sqliteDb(sqliteDb) {
+
+}
+
+/**
+ *
+ */
+SqliteModel::SqliteModel(const std::string &databasePath) {
+    create_session(databasePath);
+}
+
+/**
+ *
+ */
+void SqliteModel::create_session(
+    const std::string &databasePath
+) {
     try {
 
         sqliteDb = cppdb::session(
-            "sqlite3:db=" + Config::get_instance()->sqlite3Path
+            "sqlite3:db=" + databasePath
         );
-
         // We need this to have triggers call even in some tricky case 
         // (for example "update or replace" that cause a deletion, will not call
         // the delete trigger otherwise)
@@ -46,9 +77,25 @@ SqliteModel::SqliteModel() {
 
 }
 
+/**
+ *
+ */
+int SqliteModel::load_db_from_file(
+    const std::string &sqlFilePath
+) {
+    try {
+        std::ifstream f(sqlFilePath.c_str());
+        std::string fileStr(
+            (std::istreambuf_iterator<char>(f)),
+            std::istreambuf_iterator<char>()
+        );
+        sqliteDb << fileStr << cppdb::exec; 
 
-SqliteModel::SqliteModel(cppdb::session sqliteDb) : sqliteDb(sqliteDb) {
-
+    } catch(std::exception const &e) {
+        BOOSTER_ERROR("cppcms") << e.what();
+        return 1;
+    }
+    return 0;
 }
 
 } // end of namespace models

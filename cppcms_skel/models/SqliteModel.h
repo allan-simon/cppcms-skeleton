@@ -37,11 +37,44 @@ namespace models {
  *        a sqlite database 
  */
 class SqliteModel {
+    private:
+        /**
+         * @brief Create the session using the Sqlite3
+         *        database provided at the given path
+         *
+         * @param databasePath Location of the Sqlite3 db
+         *
+         * @since 3 January 2013
+         */
+        void create_session(
+            const std::string &databasePath
+        );
+
     protected:
         cppdb::session sqliteDb;
     public:
         SqliteModel();
+
+        /**
+         * @brief Create a Model based on sqlite3 database
+         *
+         * @param databasePath The location of the Sqlite3 database
+         *
+         * @since 3 January 2013
+         */
+        SqliteModel(const std::string &databasePath);
         SqliteModel(cppdb::session sqliteDb);
+
+        /**
+         * @brief Import an SQL file into the database opened by the model
+         *
+         * @param sqlFilePath The location of the file to import 
+         *
+         * @return 0 if the file is correctly imported, positive number otherwise
+         */
+        int load_db_from_file(
+            const std::string &sqlFilePath
+        );
 };
 
 }
