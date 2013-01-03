@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 2.6)
 project(@PROJECT_NAME_CODE@)
 
 
+enable_testing()
+
 include_directories(
     src
 )
@@ -65,13 +67,22 @@ add_executable(
     view_web.cpp
 )
 
-target_link_libraries(
-    @PROJECT_NAME_CODE@
+set(
+    MAIN_PROJECT_LIBS
     cppcms
     cppdb
     booster
     sqlite3
     cppcmsskel
+    #if you need to link with an other lib add it here
+)
+
+
+
+
+target_link_libraries(
+    @PROJECT_NAME_CODE@
+    ${MAIN_PROJECT_LIBS}
 )
 
 
@@ -84,4 +95,31 @@ add_custom_command(
     DEPENDS
         ${CMAKE_CURRENT_SOURCE_DIR}/src/views/webs/*/*.tmpl 
 )
+
+
+# unit tests
+
+set(
+    ALL_TESTS
+    #TODO add your tests there
+)
+
+
+foreach(TEST ${ALL_TESTS})
+    add_executable(
+        ${TEST}
+        tests/${TEST}.cpp
+        ${controllers_files}
+        ${models_files}
+        ${generics_files}
+        ${results_files}
+        ${contents_files}
+    )
+    target_link_libraries(${TEST} ${MAIN_PROJECT_LIBS})
+    add_test(
+        ${TEST}
+        ${TEST}
+    )
+endforeach()
+
 
