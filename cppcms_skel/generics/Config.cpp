@@ -34,5 +34,15 @@
 
 #include "Config.h"
 
+/**
+ *
+ */
 Config::Config(){}
 
+std::string Config::get_base_host() {
+    return get_instance()->baseHost;
+}
+
+void Config::set_base_host(const std::string &baseHost) {
+    get_instance()->baseHost = baseHost;
+}

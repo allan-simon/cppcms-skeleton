@@ -52,7 +52,18 @@ class Config : public Singleton<Config> {
          */
         Config();
 
+        /**
+         * @brief Store the base domain name
+         *
+         * @since 28 December 2012
+         */
+        std::string baseHost;
+
     public:
+
+        static std::string get_base_host();
+
+        static void set_base_host(const std::string & baseHost);
         /**
          * Store the path for css files
          */
