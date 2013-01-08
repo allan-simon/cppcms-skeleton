@@ -80,7 +80,7 @@ void SqliteModel::create_session(
 /**
  *
  */
-int SqliteModel::load_db_from_file(
+int SqliteModel::import_sql_file(
     const std::string &sqlFilePath
 ) {
     try {
@@ -90,6 +90,16 @@ int SqliteModel::load_db_from_file(
             std::istreambuf_iterator<char>()
         );
         sqliteDb << fileStr << cppdb::exec; 
+        size_t current = 0;
+        size_t next = -1;
+        do
+        {
+            current = next + 1;
+            next = fileStr.find_first_of( ";", current );
+            std::string tmpRequest =  fileStr.substr( current, next - current );
+            sqliteDb.create_statement(tmpRequest)  << cppdb::exec; 
+        } while (next != std::string::npos);
+
 
     } catch(std::exception const &e) {
         BOOSTER_ERROR("cppcms") << e.what();

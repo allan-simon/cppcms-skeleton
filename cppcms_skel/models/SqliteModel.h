@@ -72,7 +72,7 @@ class SqliteModel {
          *
          * @return 0 if the file is correctly imported, positive number otherwise
          */
-        int load_db_from_file(
+        int import_sql_file(
             const std::string &sqlFilePath
         );
 };

@@ -110,7 +110,7 @@ install(
 #unit tests
 set(
     ALL_TESTS
-    models_sqlitemodel_load_db_from_file_test
+    models_sqlitemodel_import_sql_file_test
 )
 
 foreach(TEST ${ALL_TESTS})

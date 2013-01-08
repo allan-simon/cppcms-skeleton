@@ -6,7 +6,7 @@
 #define FAIL "[FAILED]"
 
 #define SQL_PATH "../tests/" 
-#define TEST_NAME "models_sqlitemodel_load_db_from_file_test"
+#define TEST_NAME "models_sqlitemodel_import_sql_file_test"
 
 int main() {
 
@@ -14,7 +14,7 @@ int main() {
     // if we provide a correct file everything must
     // run smoothly 
     std::cout << "Try to load a correct SQL file ... " ;
-    int result = model.load_db_from_file(
+    int result = model.import_sql_file(
         SQL_PATH TEST_NAME  "_correct.sql"
     );
     // TODO maybe add things to check that not only
@@ -29,7 +29,7 @@ int main() {
     // if we provide a file containing a mistake we should
     // return an error
     std::cout << "Try to load a erroneous SQL file ... " ;
-    result = model.load_db_from_file(
+    result = model.import_sql_file(
         SQL_PATH  TEST_NAME  "_not_correct.sql"
     );
     if (result == 0) {
@@ -37,6 +37,29 @@ int main() {
     } else {
         std::cout << OK << std::endl;
     }
+
+    //
+    std::cout << "Check that the file has been correctly imported ... ";
+    result = model.import_sql_file(
+        SQL_PATH TEST_NAME "_correct_data.sql"
+    );
+
+    if (result == 0) {
+        std::cout << FAIL << std::endl;
+    } else {
+        std::cout << OK << std::endl;
+    }
+
+    // if the file does not exists we should not crash
+    //std::cout << "Try to load an non existing SQL file ... " ;
+    //result = model.import_sql_file(
+    //    SQL_PATH TEST_NAME "_doesnt_exist.sql"
+    //);
+    //if (result == 2) {
+    //    std::cout << FAIL << std::endl;
+    //} else {
+    //    std::cout << OK << std::endl;
+    //}
 
 
 
