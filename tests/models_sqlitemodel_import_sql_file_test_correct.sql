@@ -1,6 +1,12 @@
-DROP TABLE IF EXISTS test3;
-CREATE TABLE test3 (
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+DROP TABLE IF EXISTS test;
+CREATE TABLE test (
     foo INTEGER,
     bar TEXT
 );
-INSERT INTO test3 VALUES ( 1 , "toto" );
+INSERT INTO "test" VALUES(1,'toto');
+INSERT INTO "test" VALUES(1,'test');
+INSERT INTO "test" VALUES(1,'test');
+INSERT INTO "test" VALUES(2,'foo');
+COMMIT;

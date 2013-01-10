@@ -67,6 +67,8 @@ class SqliteModel {
 
         /**
          * @brief Import an SQL file into the database opened by the model
+         *        FIXME TODO for the moment the import will totally ignore what's
+         *        written after the last ';' 
          *
          * @param sqlFilePath The location of the file to import 
          *
