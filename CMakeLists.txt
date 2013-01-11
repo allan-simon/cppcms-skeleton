@@ -1,6 +1,7 @@
 PROJECT(cppcmsskel)
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
+set(PROJECT_VERSION "0.1.0")
 enable_testing()
 
 
