@@ -67,7 +67,7 @@ void Controller::init_content(contents::BaseContent& content) {
 /**
  *
  */
-inline const std::string Controller::get_message() {
+const std::string Controller::get_message() {
     std::string message = "";
     if (session().is_set("message")) {
         message = session()["message"];
@@ -79,7 +79,7 @@ inline const std::string Controller::get_message() {
 /**
  *
  */
-inline bool Controller::is_logged() {
+bool Controller::is_logged() {
     return !get_current_username().empty();
 }
 
@@ -87,7 +87,7 @@ inline bool Controller::is_logged() {
 /**
  *
  */
-inline const std::string Controller::get_current_username() {
+const std::string Controller::get_current_username() {
     return session()["username"];
 }
 
@@ -146,7 +146,7 @@ void Controller::go_to_main_page() {
 /**
  *
  */
-inline void Controller::redirect(
+void Controller::redirect(
     const std::string &url
 ) {
     response().set_redirect_header(
