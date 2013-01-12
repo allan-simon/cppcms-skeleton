@@ -188,7 +188,7 @@ class Controller : public controllers::generics::Controller {
          * @param string url The URL on which the user will be redirected
          * @since 12 November 2012
          */
-        inline void redirect(
+        void redirect(
             const std::string &url
         );
                 

@@ -56,7 +56,7 @@ void Controller::init_content(contents::BaseContent& content) {
 /**
  *
  */
-inline bool Controller::is_logged() {
+bool Controller::is_logged() {
     return !session()["name"].empty();
 }
 
