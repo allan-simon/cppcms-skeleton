@@ -129,6 +129,7 @@ install(
 set(
     ALL_TESTS
     models_sqlitemodel_import_sql_file_test
+    models_sqlitemodel_import_sql_file_test2
 )
 
 foreach(TEST ${ALL_TESTS})
