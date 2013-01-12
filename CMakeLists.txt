@@ -9,13 +9,18 @@ add_custom_target(dist
 	        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 enable_testing()
 
+###################
+# Dependency check
+##################
+find_library(CPPCMS cppcms)
+find_library(BOOSTER booster)
+find_library(CPPDB cppdb)
 
-include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    cppcms_skel
-)
 
 
+###################
+# source files
+###################
 file(
     GLOB
     framework_generics_files
@@ -39,6 +44,13 @@ file(
 
 
 # used to create libccpcmsskel.so
+
+include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    cppcms_skel
+)
+
+
 add_library(
     cppcmsskel
     SHARED
@@ -51,9 +63,9 @@ add_library(
 # TODO cppdb should not be mandatory 
 set(
     CPPCMSSKEL_LIBS
-    cppcms
-    cppdb
-    booster
+    ${CPPCMS}
+    ${CPPDB}
+    ${BOOSTER}
 )
 
 target_link_libraries(
