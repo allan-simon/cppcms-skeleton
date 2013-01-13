@@ -90,7 +90,6 @@ int SqliteModel::import_sql_file(
             (std::istreambuf_iterator<char>(f)),
             std::istreambuf_iterator<char>()
         );
-        sqliteDb << fileStr << cppdb::exec; 
         size_t current = 0;
         size_t next = fileStr.find_first_of( ";", current );
         
