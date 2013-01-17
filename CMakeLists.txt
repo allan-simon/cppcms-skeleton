@@ -1,7 +1,10 @@
 PROJECT(cppcmsskel)
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
-set(PROJECT_VERSION "0.1.0")
+#set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
+#set(CMAKE_CXX_FLAGS "-std=c++11")
+
+set(PROJECT_VERSION "0.1.1")
 set(ARCHIVE_NAME ${CMAKE_PROJECT_NAME}-${PROJECT_VERSION})
 add_custom_target(dist
     COMMAND git archive --prefix=${ARCHIVE_NAME}/ HEAD

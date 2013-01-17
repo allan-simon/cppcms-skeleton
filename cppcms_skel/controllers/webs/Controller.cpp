@@ -34,6 +34,12 @@
 #include "cppcms_skel/contents/content.h"
 #include "cppcms_skel/generics/Config.h"
 
+#define USERNAME "username"
+#define USERID   "userid"
+#define MESSAGE "message"
+#define INTERFACE_LANG "interfaceLang"
+
+
 namespace controllers {
 namespace webs {
 
@@ -56,7 +62,6 @@ void Controller::init_content(contents::BaseContent& content) {
     response().set_content_header("text/html");
 
     content.interfaceLang.set_langs();
-    //std::cout << "user name: " << session()["name"] << std::endl;
     if (is_logged()) {
         content.currentUserHelper.username = get_current_username();
     }
@@ -69,9 +74,9 @@ void Controller::init_content(contents::BaseContent& content) {
  */
 const std::string Controller::get_message() {
     std::string message = "";
-    if (session().is_set("message")) {
-        message = session()["message"];
-        session().erase("message");
+    if (session().is_set(MESSAGE)) {
+        message = session()[MESSAGE];
+        session().erase(MESSAGE);
     }
     return message;
 }
@@ -88,7 +93,7 @@ bool Controller::is_logged() {
  *
  */
 const std::string Controller::get_current_username() {
-    return session()["username"];
+    return session()[USERNAME];
 }
 
 /**
@@ -98,8 +103,9 @@ void Controller::set_current_username_and_id(
     const std::string &username,
     const int userId
 ) {
-    session()["userid"] = userId;
-    session()["username"] = username;
+
+    session()[USERID] = std::to_string(userId);
+    session()[USERNAME] = username;
     session().save();
 }
 
@@ -109,7 +115,7 @@ void Controller::set_current_username_and_id(
 void Controller::set_current_username(
     const std::string &username
 ) {
-    session()["username"] = username;
+    session()[USERNAME] = username;
     session().save();
 }
 
@@ -184,7 +190,7 @@ bool Controller::check_permission() {
 int Controller::get_current_user_id() {
     //std::cout << "[NOTICE] current id:" << session()["userId"] << std::endl;
     //TODO replace atoi by stoi from C++11
-    return atoi(session()["userId"].c_str());
+    return std::stoi(session()[USERID]);
 }
 
 
@@ -197,7 +203,7 @@ void Controller::set_message(const std::string &message) {
     //TODO maybe concatenate the message instead of replacing it
     //     as it may be possible in the future that several message
     //     are raised
-    session()["message"] = message;
+    session()[MESSAGE] = message;
 }
 
 /**
@@ -211,7 +217,7 @@ void Controller::current_user_logout() {
  *
  */
 const std::string Controller::get_interface_lang() {
-    return session()["interfaceLang"];
+    return session()[INTERFACE_LANG];
 }
 
 
