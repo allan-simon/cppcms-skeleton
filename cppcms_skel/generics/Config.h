@@ -59,15 +59,23 @@ class Config : public Singleton<Config> {
          */
         std::string baseHost;
 
-    public:
-
-        static std::string get_base_host();
-
-        static void set_base_host(const std::string & baseHost);
         /**
-         * Store the path for css files as displayed on the webpage
+         * @brief Store the path for css files as displayed on the webpage
+         *
+         * @since 18 January 2013
          */
         std::string cssPath;
+
+ 
+
+        /**
+         * @brief Store the path for images files as used in the HTML
+         * @since 19 January 2013
+         */
+        std::string imgPath;
+
+
+
 
         /**
          * @brief Store the path for css files on the server
@@ -75,13 +83,46 @@ class Config : public Singleton<Config> {
          *
          * @since 18 January 2013
          */
-         std::string innerCssPath;
-
+         std::string innerCssFolder;
 
         /**
-         * Store the path for images files
+         * @brief Store the path for image files on the server
+         *        (if the application itself server the images)
+         *
+         * @since 19 January 2013
          */
-        std::string imgPath;
+         std::string innerImgFolder;
+
+
+
+
+    public:
+
+        static std::string get_base_host();
+
+        static void set_base_host(const std::string & baseHost);
+
+        static std::string get_inner_css_folder();
+
+        static void set_inner_css_folder(
+            const std::string & cssFolder
+        );
+
+        static std::string get_css_path();
+
+        static void set_css_path(const std::string & cssPath);
+
+
+        static std::string get_inner_img_folder();
+
+        static void set_inner_img_folder(
+            const std::string & imgFolder
+        );
+
+        static std::string get_img_path();
+
+        static void set_img_path(const std::string & imgPath);
+
 
         /**
          * Store the root URL of the website

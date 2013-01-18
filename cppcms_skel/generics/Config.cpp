@@ -39,10 +39,86 @@
  */
 Config::Config(){}
 
+
+/**
+ *
+ */
 std::string Config::get_base_host() {
     return get_instance()->baseHost;
 }
 
+
+
+/**
+ *
+ */
 void Config::set_base_host(const std::string &baseHost) {
     get_instance()->baseHost = baseHost;
+}
+
+/**
+ *
+ */
+void Config::set_inner_css_folder(
+    const std::string &cssFolder
+) {
+    get_instance()->innerCssFolder = cssFolder;
+}
+
+/**
+ *
+ */
+std::string Config::get_inner_css_folder() {
+    return get_instance()->innerCssFolder;
+}
+
+
+/**
+ *
+ */
+void Config::set_inner_img_folder(
+    const std::string &imgFolder
+) {
+    get_instance()->innerImgFolder = imgFolder;
+}
+
+/**
+ *
+ */
+std::string Config::get_inner_img_folder() {
+    return get_instance()->innerImgFolder;
+}
+
+
+
+/**
+ *
+ */
+void Config::set_css_path(
+    const std::string &cssPath
+) {
+    get_instance()->cssPath = cssPath;
+}
+
+/**
+ *
+ */
+std::string Config::get_css_path() {
+    return get_instance()->cssPath;
+}
+
+/**
+ *
+ */
+void Config::set_img_path(
+    const std::string &imgPath
+) {
+    get_instance()->imgPath = imgPath;
+}
+
+/**
+ *
+ */
+std::string Config::get_img_path() {
+    return get_instance()->imgPath;
 }
