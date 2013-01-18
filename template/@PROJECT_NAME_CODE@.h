@@ -35,6 +35,9 @@
 #include <cppcms/application.h>
 #include <cppdb/frontend.h>
 
+#include <cppcms_skel/controllers/webs/Img.h>
+#include <cppcms_skel/controllers/webs/Css.h>
+
 //%%%NEXT_CONTROLLER_INCLUDE_MARKER%%%, do not delete
 #include "controllers/webs/Pages.h"
 
@@ -52,6 +55,8 @@ class @MAIN_CLASS@ : public cppcms::application {
 
 private:
     //%%%NEXT_MAIN_APP_CTRL_ATTR%%%
+    controllers::webs::Img img;
+    controllers::webs::Css css;
     controllers::webs::Pages pages;
 
     /**

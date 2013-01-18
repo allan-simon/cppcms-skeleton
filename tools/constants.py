@@ -73,6 +73,14 @@ FOLDERS = {
     # (database etc.)
     "data": {},
 
+    # contains the ressource of the websites (images,
+    # css, images etc.)
+    "resources" : {
+        "css" : {},
+        "img" : {},
+        "js" : {}
+    },
+
     # contains the configuration file of the website
     # and tools that the website use
     "conf": {},

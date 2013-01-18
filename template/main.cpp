@@ -50,6 +50,35 @@ int main(int argc,char ** argv)
     conf->sqlite3Path = app.settings().get<string>(
         "@PROJECT_NAME_CODE@.sqlite3.path"
     );
+
+    Config::set_css_path(
+        app.settings().get<string>(
+            "skel.cssPath"
+        )
+    );
+
+    Config::set_img_path(
+        app.settings().get<string>(
+            "skel.imgPath"
+        )
+    );
+
+
+
+    Config::set_inner_css_folder(
+        app.settings().get<string>(
+            "skel.innerCssFolder"
+        )
+    );
+
+    Config::set_inner_img_folder(
+        app.settings().get<string>(
+            "skel.innerImgFolder"
+        )
+    );
+
+
+
         
     /*start the graph database*/
 

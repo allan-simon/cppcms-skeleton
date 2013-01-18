@@ -26,6 +26,13 @@
             "storage" : "memory"
         }
     },
+    "skel" : {
+        "baseHost" : "",
+        "innerCssFolder" : "../resource/css/",
+        "innerImgFolder" : "../resource/img/",
+        "imgPath" : "/img/",
+        "cssPath" : "/css/"
+    },
 	"@PROJECT_NAME_CODE@" : {
         "interfacelangs" : [
             ["en"  , "en_GB.UTF-8", "English", "English"],

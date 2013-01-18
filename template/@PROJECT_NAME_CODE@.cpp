@@ -53,16 +53,21 @@ namespace apps {
 @MAIN_CLASS@::@MAIN_CLASS@(cppcms::service &serv) :
     cppcms::application(serv),
     //%%%NEXT_MAIN_APP_CTRL_CONSTRUCT_MARKER%%%
+    img(serv),
+    css(serv),
     pages(serv)
 {
 
     //add(sentencesApi, "^/api/sentences(.*)", 1);
-    //NOTE important to add the page controller at the end
-    //as its regexp is more global
 
     //add(#controller#,#mount_point#,1);
 
     //%%%NEXT_CONTROLLER_DISPATCHER_MARKER%%%, do not delete
+
+    add(css,"^/css(.*)",1);
+    add(img,"^/img(.*)",1);
+    //NOTE important to add the page controller at the end
+    //as its regexp is more global
     add(pages, "/(.*)", 1);
 
 
