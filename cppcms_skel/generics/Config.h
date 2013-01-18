@@ -65,9 +65,18 @@ class Config : public Singleton<Config> {
 
         static void set_base_host(const std::string & baseHost);
         /**
-         * Store the path for css files
+         * Store the path for css files as displayed on the webpage
          */
         std::string cssPath;
+
+        /**
+         * @brief Store the path for css files on the server
+         *        (if the application itself server the CSS)
+         *
+         * @since 18 January 2013
+         */
+         std::string innerCssPath;
+
 
         /**
          * Store the path for images files
