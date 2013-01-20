@@ -51,7 +51,7 @@ namespace webs {
 Css::Css(cppcms::service& serv) :
     controllers::webs::Controller(serv)
 {
-    dispatcher().assign("/([a-z_0-9/\\.]+.css)[0-9]*", &Css::serve_file, this, 1);
+    dispatcher().assign("/([a-z_0-9/\\.-]+.css)[0-9]*", &Css::serve_file, this, 1);
 
 
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete

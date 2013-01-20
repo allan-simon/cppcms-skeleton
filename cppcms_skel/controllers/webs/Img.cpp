@@ -51,7 +51,7 @@ namespace webs {
 Img::Img(cppcms::service& serv) :
     controllers::webs::Controller(serv)
 {
-    dispatcher().assign("/([a-z_0-9/\\.]+.(jpg|jpeg|png))[0-9]*", &Img::serve_file, this, 1, 2);
+    dispatcher().assign("/([a-z_0-9/\\.-]+.(jpg|jpeg|png))[0-9]*", &Img::serve_file, this, 1, 2);
 
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
 
