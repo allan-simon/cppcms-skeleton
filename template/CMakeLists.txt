@@ -3,8 +3,32 @@ cmake_minimum_required(VERSION 2.6)
 project(@PROJECT_NAME_CODE@)
 
 
-enable_testing()
+##########################
+#  Packaging/Versioning 
+#########################
+set(PROJECT_VERSION "0.0.1")
+set(ARCHIVE_NAME ${CMAKE_PROJECT_NAME}-${PROJECT_VERSION})
+add_custom_target(
+    dist
+    COMMAND git archive --prefix=${ARCHIVE_NAME}/ HEAD
+        | bzip2 > ${CMAKE_BINARY_DIR}/${ARCHIVE_NAME}.tar.bz2
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+)
 
+###################
+# Dependency check
+##################
+find_library(CPPCMS cppcms)
+find_library(BOOSTER booster)
+find_library(CPPDB cppdb)
+find_library(SQLITE3 sqlite3)
+
+
+
+
+###################
+# source files
+###################
 include_directories(
     src
 )
@@ -69,10 +93,10 @@ add_executable(
 
 set(
     MAIN_PROJECT_LIBS
-    cppcms
-    cppdb
-    booster
-    sqlite3
+    ${CPPCMS}
+    ${CPPDB}
+    ${BOOSTER}
+    ${SQLITE3}
     cppcmsskel
     #if you need to link with an other lib add it here
 )
@@ -96,8 +120,10 @@ add_custom_command(
         ${CMAKE_CURRENT_SOURCE_DIR}/src/views/webs/*/*.tmpl 
 )
 
-
+##################
 # unit tests
+##################
+enable_testing()
 
 set(
     ALL_TESTS
