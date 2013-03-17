@@ -56,7 +56,7 @@ file(
 
 add_executable(
     @PROJECT_NAME_CODE@
-    src/@PROJECT_NAME_CODE@.cpp
+    src/@MAIN_CLASS@.cpp
     src/main.cpp
     ${controllers_files}
     ${models_files}

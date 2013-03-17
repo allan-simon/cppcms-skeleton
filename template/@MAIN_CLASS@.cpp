@@ -36,7 +36,7 @@
 
 
 
-#include "@PROJECT_NAME_CODE@.h"
+#include "@MAIN_CLASS@.h"
 #include "cppcms_skel/generics/Languages.h"
 
 

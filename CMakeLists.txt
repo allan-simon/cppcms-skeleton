@@ -4,12 +4,14 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 #set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 
-set(PROJECT_VERSION "0.2.1")
+set(PROJECT_VERSION "0.2.3")
 set(ARCHIVE_NAME ${CMAKE_PROJECT_NAME}-${PROJECT_VERSION})
-add_custom_target(dist
+add_custom_target(
+    dist
     COMMAND git archive --prefix=${ARCHIVE_NAME}/ HEAD
-            | bzip2 > ${CMAKE_BINARY_DIR}/${ARCHIVE_NAME}.tar.bz2
-	        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+        | bzip2 > ${CMAKE_BINARY_DIR}/${ARCHIVE_NAME}.tar.bz2
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+)
 enable_testing()
 
 ###################

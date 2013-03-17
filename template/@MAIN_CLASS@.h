@@ -28,7 +28,7 @@
 #define @MAIN_CLASS_HEADER@_H
 
 /**
- * @file @PROJECT_NAME_CODE@.h
+ * @file @MAIN_CLASS@.h
  */
 #include <map>
 

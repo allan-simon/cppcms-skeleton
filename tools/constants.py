@@ -4,7 +4,7 @@ LOCAL_TEMPLATE_ROOT = "../local_template"
 
 # how the generic .cpp/.h files of a main application
 # are named
-MAIN_APP_PLACEHOLDER = "@PROJECT_NAME_CODE@"
+MAIN_APP_PLACEHOLDER = "@MAIN_CLASS@"
 
 FOLDERS = {
     #to store the i18n messages
