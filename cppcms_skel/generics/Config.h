@@ -74,6 +74,13 @@ class Config : public Singleton<Config> {
          */
         std::string imgPath;
 
+        /**
+         * @brief Store the path for javascript files as used in the HTML
+         * @since 20 March 2013
+         */
+        std::string jsPath;
+
+
 
 
 
@@ -92,6 +99,15 @@ class Config : public Singleton<Config> {
          * @since 19 January 2013
          */
          std::string innerImgFolder;
+
+        /**
+         * @brief Store the path for javascript files on the server
+         *        (if the application itself server the images)
+         *
+         * @since 20 March 2013
+         */
+         std::string innerJsFolder;
+
 
 
 
@@ -122,6 +138,19 @@ class Config : public Singleton<Config> {
         static std::string get_img_path();
 
         static void set_img_path(const std::string & imgPath);
+
+
+        static std::string get_inner_js_folder();
+
+        static void set_inner_js_folder(
+            const std::string & jsFolder
+        );
+
+        static std::string get_js_path();
+
+        static void set_js_path(const std::string & jsPath);
+
+
 
 
         /**

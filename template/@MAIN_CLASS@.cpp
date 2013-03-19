@@ -55,6 +55,7 @@ namespace apps {
     //%%%NEXT_MAIN_APP_CTRL_CONSTRUCT_MARKER%%%
     img(serv),
     css(serv),
+    js(serv),
     pages(serv)
 {
 
@@ -66,6 +67,7 @@ namespace apps {
 
     add(css,"^/css(.*)",1);
     add(img,"^/img(.*)",1);
+    add(js,"^/js(.*)",1);
     //NOTE important to add the page controller at the end
     //as its regexp is more global
     add(pages, "/(.*)", 1);

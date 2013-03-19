@@ -89,6 +89,24 @@ std::string Config::get_inner_img_folder() {
     return get_instance()->innerImgFolder;
 }
 
+/**
+ *
+ */
+void Config::set_inner_js_folder(
+    const std::string &jsFolder
+) {
+    get_instance()->innerJsFolder = jsFolder;
+}
+
+/**
+ *
+ */
+std::string Config::get_inner_js_folder() {
+    return get_instance()->innerJsFolder;
+}
+
+
+
 
 
 /**
@@ -121,4 +139,21 @@ void Config::set_img_path(
  */
 std::string Config::get_img_path() {
     return get_instance()->imgPath;
+}
+
+
+/**
+ *
+ */
+void Config::set_js_path(
+    const std::string &jsPath
+) {
+    get_instance()->jsPath = jsPath;
+}
+
+/**
+ *
+ */
+std::string Config::get_js_path() {
+    return get_instance()->jsPath;
 }

@@ -62,6 +62,14 @@ int main(int argc,char ** argv)
             "skel.imgPath"
         )
     );
+    
+    Config::set_js_path(
+        app.settings().get<string>(
+            "skel.jsPath"
+        )
+    );
+
+
 
 
 
@@ -76,6 +84,14 @@ int main(int argc,char ** argv)
             "skel.innerImgFolder"
         )
     );
+    
+    Config::set_inner_js_folder(
+        app.settings().get<string>(
+            "skel.innerJsFolder"
+        )
+    );
+
+
 
 
 

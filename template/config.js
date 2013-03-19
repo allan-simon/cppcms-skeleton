@@ -30,8 +30,10 @@
         "baseHost" : "",
         "innerCssFolder" : "../resource/css/",
         "innerImgFolder" : "../resource/img/",
+        "innerJsFolder" : "../resource/js/",
         "imgPath" : "/img/",
         "cssPath" : "/css/"
+        "jsPath" : "/js/"
     },
 	"@PROJECT_NAME_CODE@" : {
         "interfacelangs" : [

@@ -37,6 +37,7 @@
 
 #include <cppcms_skel/controllers/webs/Img.h>
 #include <cppcms_skel/controllers/webs/Css.h>
+#include <cppcms_skel/controllers/webs/Js.h>
 
 //%%%NEXT_CONTROLLER_INCLUDE_MARKER%%%, do not delete
 #include "controllers/webs/Pages.h"
@@ -57,6 +58,7 @@ private:
     //%%%NEXT_MAIN_APP_CTRL_ATTR%%%
     controllers::webs::Img img;
     controllers::webs::Css css;
+    controllers::webs::Js js;
     controllers::webs::Pages pages;
 
     /**
