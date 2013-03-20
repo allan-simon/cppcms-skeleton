@@ -65,7 +65,6 @@ void Js::serve_file(std::string jsFile) {
     std::ifstream file(
         absolutePath.c_str()
     );  
-    std::cout << absolutePath << std::endl;
     if(!file.good()) {  
        response().status(404);
        response().out() << "404";
