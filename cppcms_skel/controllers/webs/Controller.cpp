@@ -130,7 +130,7 @@ void Controller::go_back_to_previous_page() {
     const std::string referer = request().http_referer();
 
     if (referer.empty()) {
-        response().make_error_response(404);
+        go_to_main_page();
     } else {
 
         //TODO we do not handle the case where the referer is not a valid page
@@ -144,8 +144,7 @@ void Controller::go_back_to_previous_page() {
  *
  */
 void Controller::go_to_main_page() {
-    //TODO replace this by something using Config:: 
-    redirect("/");
+    redirect(Config::get_base_host());
 }
 
 
