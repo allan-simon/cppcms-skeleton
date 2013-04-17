@@ -48,7 +48,13 @@
        return;\
     }
 
-
+#define TREAT_PAGE() \
+    if (request().post().empty()) {\
+        response().set_redirect_header(\
+            Config::get_base_host() \
+        );\
+        return;\
+    }
 
 #define GET_FIELD(fieldVar, fieldString) \
     it = getData.find(fieldString);\

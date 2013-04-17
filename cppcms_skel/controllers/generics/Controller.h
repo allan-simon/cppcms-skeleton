@@ -32,19 +32,6 @@
 #include <cppcms/url_dispatcher.h>
 
 
-#define CHECK_PERMISSION_OR_GO_TO_LOGIN() \
-    if (!check_permission()) {\
-       return;\
-    }
-
-
-#define TREAT_PAGE() \
-    if (request().post().empty()) {\
-        response().set_redirect_header(\
-            Config::get_base_host() \
-        );\
-        return;\
-    }
 
 namespace contents {
     class BaseContent;
@@ -60,6 +47,7 @@ namespace generics {
  * it's a generic which is herited by all controllers
  */
 class Controller : public cppcms::application {
+    //TODO need to check what i'm doing wrong with virtual functions
 	protected:
 
         /**
@@ -67,14 +55,14 @@ class Controller : public cppcms::application {
          * view with common values (such as interface language etc.)
          */
 
-        void init_content(contents::BaseContent& content);
+        //virtual void init_content(contents::BaseContent& content) = 0;
     
         /**
          * Return if the current visitor is a logged user or not
          * @TODO maybe move this in a dedicated class that would
          * represent the current user
          */
-        bool is_logged();
+        //virtual bool is_logged() = 0 ;
         /**
          * Check if the current user as the permission to do this action,
          * view this page
@@ -83,22 +71,23 @@ class Controller : public cppcms::application {
          * represent the current user
          * 
          */
-        bool check_permission();
+        //virtual bool check_permission() = 0;
 
         /**
          * Convenience function to make an http redirection to the 
          * referer
          */
-        void go_back_to_previous_page();
+        //virtual void go_back_to_previous_page() = 0;
 
         /* 
          * Return the id of the current user 
          * @TODO maybe move this in a dedicated class that would
          * represent the current user
          */
-        int get_current_user_id();
+        //virtual int get_current_user_id() = 0;
 	public:
 		Controller(cppcms::service &serv);
+        //virtual ~Controller() {};
 };
 
 } // End namespace generics
