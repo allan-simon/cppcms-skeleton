@@ -37,13 +37,11 @@
        return;\
     }
 
-//TODO replace the "/" by something more that can be configured
-// as one may have attached the application not at the root of the server
 
 #define TREAT_PAGE() \
     if (request().post().empty()) {\
         response().set_redirect_header(\
-            "/" \
+            Config::get_base_host() \
         );\
         return;\
     }
