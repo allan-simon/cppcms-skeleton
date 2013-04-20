@@ -87,12 +87,12 @@ def addFormPage(controller, form, description = '@TODO'):
 
 
 # create the view for that action
-
-    generateFromTemplate(
-        os.path.join(VIEW_CTRL_TMPL_DIR,TMPL_VIEW_FORM_TPL),
-        replacePlaceholders,
-        os.path.join(VIEW_CTRL_OUTPUT_DIR,controllerUnderscore,form + '.tmpl')
+    generateTemplateForAllSkins(
+        controllerUnderscore,
+        form,
+        replacePlaceholders
     )
+
 
 if __name__ == '__main__':
     parser = ArgumentParser(

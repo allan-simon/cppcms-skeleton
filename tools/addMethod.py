@@ -67,11 +67,10 @@ def addMethod(controller, method, description = '@TODO'):
 
 
 # create the view for that action
-
-    generateFromTemplate(
-        os.path.join(VIEW_CTRL_TMPL_DIR,TMPL_VIEW_ACTION_TPL),
-        replacePlaceholders,
-        os.path.join(VIEW_CTRL_OUTPUT_DIR,controllerUnderscore,method + '.tmpl')
+    generateTemplateForAllSkins(
+        controllerUnderscore,
+        method,
+        replacePlaceholders
     )
 
 if __name__ == '__main__':

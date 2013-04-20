@@ -98,13 +98,14 @@ def addController(controller,description = '@TODO'):
     )
 
 # create the directory in views
-
-    os.mkdir(
-        os.path.join(
-            VIEW_CTRL_OUTPUT_DIR,
-            controllerUnderscore
+    for skinDir in os.listdir(VIEW_CTRL_OUTPUT_DIR):
+        os.mkdir(
+            os.path.join(
+                VIEW_CTRL_OUTPUT_DIR,
+                skinDir,
+                controllerUnderscore
+            )
         )
-    )
 
 if __name__ == '__main__' :
 

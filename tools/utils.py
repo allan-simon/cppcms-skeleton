@@ -2,6 +2,7 @@
 import re
 import fileinput
 import os
+from constants import *
 
 def camelToUnderscore(
     name
@@ -66,5 +67,18 @@ def generateFromTemplate(
         outfile.write(line)
 
     outfile.close()
+
+
+def generateTemplateForAllSkins(
+    controllerUnderscore,
+    method,
+    replacePlaceholders
+):
+    for skinDir in os.listdir(VIEW_CTRL_OUTPUT_DIR):
+        generateFromTemplate(
+            os.path.join(VIEW_CTRL_TMPL_DIR,TMPL_VIEW_ACTION_TPL),
+            replacePlaceholders,
+            os.path.join(VIEW_CTRL_OUTPUT_DIR, skinDir,controllerUnderscore,method + '.tmpl')
+        )
 
 

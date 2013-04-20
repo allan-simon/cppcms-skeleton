@@ -118,20 +118,6 @@ def move_main(
         fileName
     )
 
-# move homepage.tmpl, the file that contain the html of
-# the main page when you go on domain.tld/
-def move_homeplage(
-    localTemplateRoot,
-    appRoot
-):
-    fileName = '/views/webs/pages/homepage.tmpl'
-    move_file(
-        localTemplateRoot,
-        appRoot + "/src",
-        fileName
-    )
-
-
 # The application class file has by default a generic name
 # rename it with the actual application name
 def rename_app_files(
@@ -217,17 +203,41 @@ def move_config_js(
         fileName
     )
 
+def move_template(
+    localTemplateRoot,
+    appRoot,
+    templateName
+):
+    #TODO replace by a constant in constants.py
+    websRoot = appRoot + '/src/views/webs'
+    fileName = '/views/webs/' + templateName
+    localFile = localTemplateRoot + fileName
+
+    for skinDir in os.listdir(websRoot):
+        dst = os.path.join(websRoot,skinDir,templateName)
+        print(localFile +  " => " + dst)
+        os.rename(
+            localFile,
+            dst
+        )
+
+
+
+# move homepage.tmpl, the file that contain the html of
+# the main page when you go on domain.tld/
+def move_homeplage(
+    localTemplateRoot,
+    appRoot
+):
+    move_template(localTemplateRoot,appRoot,'pages/homepage.tmpl')
+
+
 
 def move_master_layout(
     localTemplateRoot,
     appRoot
 ):
-    fileName = 'views/webs/layouts/master.tmpl'
-    move_file(
-        localTemplateRoot,
-        appRoot + "/src",
-        fileName
-    )
+    move_template(localTemplateRoot,appRoot,'layouts/master.tmpl')
 
 
 

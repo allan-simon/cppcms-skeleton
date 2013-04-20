@@ -32,7 +32,7 @@
         "innerImgFolder" : "../resource/img/",
         "innerJsFolder" : "../resource/js/",
         "imgPath" : "/img/",
-        "cssPath" : "/css/"
+        "cssPath" : "/css/",
         "jsPath" : "/js/"
     },
 	"@PROJECT_NAME_CODE@" : {
@@ -44,4 +44,9 @@
             "path" : "../data/sqlite3.db"
         }
 	}
+   "views" : {
+        "default_skin" : "default_skin"
+    },
+
+
 }

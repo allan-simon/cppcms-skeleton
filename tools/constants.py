@@ -59,8 +59,12 @@ FOLDERS = {
                 "layouts" : {}
             },
             "webs" : {
-                "layouts" : {},
-                "pages" : {}
+                # the webs directory is divided into skins
+                # we by default create a skin 'default'
+                "default_skin" : {
+                    "layouts" : {},
+                    "pages" : {}
+                }
             }
         }
     },

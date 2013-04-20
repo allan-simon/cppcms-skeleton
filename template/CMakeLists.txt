@@ -87,8 +87,7 @@ add_executable(
     ${generics_files}
     ${results_files}
     ${contents_files}
-
-    view_web.cpp
+    view_default_skin_web.cpp
 )
 
 set(
@@ -110,15 +109,26 @@ target_link_libraries(
 )
 
 
-add_custom_command(
-    OUTPUT view_web.cpp
-    COMMAND cppcms_tmpl_cc 
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/views/webs/layouts/master.tmpl
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/views/webs/*/*.tmpl 
-        -o view_web.cpp
-    DEPENDS
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/views/webs/*/*.tmpl 
+########################
+#  Default skin
+########################
+set(
+    DEFAULT_WEB_SKIN_DIR
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/views/webs/default_skin
 )
+
+add_custom_command(
+    OUTPUT view_default_skin_web.cpp
+    COMMAND cppcms_tmpl_cc 
+        ${DEFAULT_WEB_SKIN_DIR}/layouts/master.tmpl
+        ${DEFAULT_WEB_SKIN_DIR}/*/*.tmpl 
+        -o view_default_skin_web.cpp
+        -s default_skin
+    DEPENDS
+        ${DEFAULT_WEB_SKIN_DIR}/*/*.tmpl 
+)
+
+
 
 ##################
 # unit tests
