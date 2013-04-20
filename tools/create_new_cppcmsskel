@@ -57,7 +57,8 @@ if __name__ == '__main__':
         )
 
     print(
-        "Done, now you can create your config.py file, and run ./init.py"
+        "Done, now you can create your config.py file, and run ./init.py\n"
+        "you can copy config.py.example if you simply want to cppcmsskel "
     )
 
 
