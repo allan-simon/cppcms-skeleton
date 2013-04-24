@@ -38,7 +38,7 @@ namespace models {
  * @since %%MODEL_TODAY%%       
  *
  */
-class %%MODEL_NAME%% : public SqliteModel {
+class %%MODEL_NAME%% : public cppcmsskel::models::SqliteModel {
     public:
         /**
          * @brief Constructor

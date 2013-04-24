@@ -159,15 +159,10 @@ int Users::add(
         booster::ptime::now().get_seconds()
     );
           
-    try {
-        addUser.exec();    
-    } catch (cppdb::cppdb_error const &e) {
-        BOOSTER_ERROR("cppcms") << e.what();
-        addUser.reset();
+    if (!execute_simple(addUser)) {
         return USERS_NOT_ADDED_ERROR;
     }
     int userId = addUser.last_insert_id();
-    addUser.reset();
     return userId;
 }     
 
@@ -189,15 +184,7 @@ bool Users::change_password(
     request.bind(passHashed);
     request.bind(login);
 
-    try {
-        request.exec();
-    } catch (cppdb::cppdb_error const &e) {
-        BOOSTER_ERROR("cppcms") << e.what();
-        request.reset();
-        return false;
-    }
-    request.reset();
-    return true;
+    return execute_simple(request);
 
 
 }
@@ -212,22 +199,14 @@ bool Users::change_permission_level(
     cppdb::statement request = sqliteDb.prepare(
         "UPDATE users "
         "SET "
-        " group = ?  "
+        " 'group' = ?  "
         "WHERE username =  ?"
     );
     
     request.bind(newPermissionLevel);
     request.bind(login);
 
-    try {
-        request.exec();
-    } catch (cppdb::cppdb_error const &e) {
-        
-        request.reset();
-        return false;
-    }
-    request.reset();
-    return true;
+    return execute_simple(request);
 }
 
 
@@ -295,15 +274,7 @@ bool Users::save_salt(const std::string &salt) {
         "VALUES(?)"
     );
     save.bind(salt);
-    try {
-        save.exec();    
-    } catch (cppdb::cppdb_error const &e) {
-        BOOSTER_ERROR("cppcms") << e.what();
-        save.reset();
-        return false;
-    }
-    save.reset();
-    return true;
+    return execute_simple(save);
 }
 
 /**

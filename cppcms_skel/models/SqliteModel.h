@@ -52,6 +52,11 @@ class SqliteModel {
 
     protected:
         cppdb::session sqliteDb;
+       
+        //TODO
+        bool execute_simple(
+            cppdb::statement &statement
+        );
     public:
         SqliteModel();
 
@@ -77,6 +82,7 @@ class SqliteModel {
         int import_sql_file(
             const std::string &sqlFilePath
         );
+
 };
 
 }

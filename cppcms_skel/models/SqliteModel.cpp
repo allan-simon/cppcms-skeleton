@@ -123,5 +123,22 @@ int SqliteModel::import_sql_file(
     return 0;
 }
 
+/**
+ *
+ */
+bool SqliteModel::execute_simple(
+    cppdb::statement &statement
+) {
+    try {
+        statement.exec();
+    } catch (cppdb::cppdb_error const& e) {
+        BOOSTER_ERROR("cppcms") << e.what();
+        statement.reset();
+        return false;
+    }
+    statement.reset();
+    return true;
+}
+
 } // end of namespace models
 } // end namespace cppcmsskel
