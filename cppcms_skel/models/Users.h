@@ -29,11 +29,20 @@
 
 #include "SqliteModel.h"
 
-#define USERS_NOT_ADDED_ERROR -1
 
 namespace cppcmsskel {
 namespace models {
 
+
+#define USERS_NOT_ADDED_ERROR -1
+
+//TODO replace this by an enum
+#define USERS_ADMIN 0
+#define USERS_MODERATOR 1
+#define USERS_ADVANCED_USER 2
+#define USERS_NORMAL_USER 3
+#define USERS_BLOCKED_USER 4
+#define USERS_INACTIVE_USER 5
 
 /**
  * @class Users
@@ -197,6 +206,20 @@ class Users : public SqliteModel {
             const std::string &login,
             const std::string &newPassword
         );
+        
+        /**
+         * @brief change the permission a user has
+         *
+         * @param login The user we want to upgrade/downgrade
+         * @param newPermissionLevel The new permission of this user
+         *
+         * @return bool Return if the change was successful or not
+         */
+        bool change_permission_level(
+            const std::string &login,
+            const int newPermissionLevel
+        );
+
 
 
 };

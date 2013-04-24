@@ -151,7 +151,6 @@ int Users::add(
     );
 
 
-    //TODO replace md5 by sha1 + salt
     const std::string passHashed = hash_password(pass);
     addUser.bind(login);
     addUser.bind(passHashed);
@@ -163,7 +162,6 @@ int Users::add(
     try {
         addUser.exec();    
     } catch (cppdb::cppdb_error const &e) {
-        //TODO log it
         BOOSTER_ERROR("cppcms") << e.what();
         addUser.reset();
         return USERS_NOT_ADDED_ERROR;
@@ -194,7 +192,7 @@ bool Users::change_password(
     try {
         request.exec();
     } catch (cppdb::cppdb_error const &e) {
-        //TODO log it
+        BOOSTER_ERROR("cppcms") << e.what();
         request.reset();
         return false;
     }
@@ -203,6 +201,35 @@ bool Users::change_password(
 
 
 }
+
+/**
+ *
+ */
+bool Users::change_permission_level(
+    const std::string &login,
+    const int newPermissionLevel
+) {
+    cppdb::statement request = sqliteDb.prepare(
+        "UPDATE users "
+        "SET "
+        " group = ?  "
+        "WHERE username =  ?"
+    );
+    
+    request.bind(newPermissionLevel);
+    request.bind(login);
+
+    try {
+        request.exec();
+    } catch (cppdb::cppdb_error const &e) {
+        
+        request.reset();
+        return false;
+    }
+    request.reset();
+    return true;
+}
+
 
 /**
  *
