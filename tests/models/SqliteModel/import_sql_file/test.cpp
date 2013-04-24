@@ -6,14 +6,14 @@
 #define OK "[OK]"
 #define FAIL "[FAILED]"
 
-#define SQL_PATH "../tests/" 
-#define TEST_NAME "models_sqlitemodel_import_sql_file_test"
+#define SQL_PATH "../tests/models/SqliteModel/import_sql_file/"
+#define TEST_NAME "test"
 #define BUG_TRANSACTION_SQL "bug_transaction.sql"
 int main() {
 
     bool nothingFailed = true;
 
-    cppcmsskel::models::SqliteModel model("test.db");
+    cppcmsskel::models::SqliteModel model(TEST_NAME "_" "test.db");
     // if we provide a correct file everything must
     // run smoothly 
     CPPCMSSKEL_TEST_RESULT_WORK(

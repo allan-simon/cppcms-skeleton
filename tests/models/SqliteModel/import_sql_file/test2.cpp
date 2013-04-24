@@ -6,8 +6,8 @@
 #define OK "[OK]"
 #define FAIL "[FAILED]"
 
-#define SQL_PATH "../tests/" 
-#define TEST_NAME "models_sqlitemodel_import_sql_file_test"
+#define SQL_PATH "../tests/models/SqliteModel/import_sql_file/" 
+#define TEST_NAME "test"
 #define BUG_INSERT_SQL "bug_insert.sql"
 #define BUG_INSERT_CREATE_TABLES_SQL "bug_insert_create_tables.sql"
 int main() {
@@ -19,7 +19,7 @@ int main() {
     // when done directly (i.e using  sqlite3 my.db < the_file.sql
     bool nothingFailed = true;
 
-    cppcmsskel::models::SqliteModel model("test2.db");
+    cppcmsskel::models::SqliteModel model(TEST_NAME "_" "test2.db");
 
     // we first create the database
     CPPCMSSKEL_TEST_RESULT_WORK(
