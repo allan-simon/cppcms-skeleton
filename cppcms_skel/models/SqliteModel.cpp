@@ -29,6 +29,7 @@
 #include "cppcms_skel/generics/Config.h"
 
 
+namespace cppcmsskel {
 namespace models {
 
 /**
@@ -123,3 +124,4 @@ int SqliteModel::import_sql_file(
 }
 
 } // end of namespace models
+} // end namespace cppcmsskel

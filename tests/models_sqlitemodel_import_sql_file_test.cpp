@@ -13,7 +13,7 @@ int main() {
 
     bool nothingFailed = true;
 
-    models::SqliteModel model("test.db");
+    cppcmsskel::models::SqliteModel model("test.db");
     // if we provide a correct file everything must
     // run smoothly 
     CPPCMSSKEL_TEST_RESULT_WORK(

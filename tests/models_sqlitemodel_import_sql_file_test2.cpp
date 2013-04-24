@@ -19,7 +19,7 @@ int main() {
     // when done directly (i.e using  sqlite3 my.db < the_file.sql
     bool nothingFailed = true;
 
-    models::SqliteModel model("test2.db");
+    cppcmsskel::models::SqliteModel model("test2.db");
 
     // we first create the database
     CPPCMSSKEL_TEST_RESULT_WORK(

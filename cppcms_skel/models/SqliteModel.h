@@ -27,7 +27,7 @@
 
 #include <cppdb/frontend.h>
 
-
+namespace cppcmsskel {
 namespace models {
 
 /**
@@ -79,6 +79,7 @@ class SqliteModel {
         );
 };
 
+}
 }
 
 #endif
