@@ -214,12 +214,23 @@ class Users : public SqliteModel {
          * @param newPermissionLevel The new permission of this user
          *
          * @return bool Return if the change was successful or not
+         *
+         * @since 25 April 2013
          */
         bool change_permission_level(
             const std::string &login,
             const int newPermissionLevel
         );
 
+
+        /**
+         * @brief check if there's already at least one admin user
+         *
+         * @return bool True if there's an admin or more, false otherwise
+         *
+         * @since 25 April 2013
+         */
+        bool admin_exists(void);
 
 
 };

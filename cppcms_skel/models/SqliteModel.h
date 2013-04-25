@@ -57,6 +57,21 @@ class SqliteModel {
         bool execute_simple(
             cppdb::statement &statement
         );
+        
+        /**
+         * @brief Used with a statement try to check the existence
+         *        or not of a given record
+         *
+         * @param statement The statement to execute
+         *
+         * @return bool True if the record exists, false otherwise
+         *
+         * @since 25 April 2012
+         */
+        bool check_existence(
+            cppdb::statement &statement
+        );
+        
     public:
         SqliteModel();
 

@@ -140,5 +140,25 @@ bool SqliteModel::execute_simple(
     return true;
 }
 
+
+/**
+ *
+ */
+bool SqliteModel::check_existence(
+    cppdb::statement &statement
+) {
+    cppdb::result res = statement.row();
+    int checkresult = 0;
+    res.fetch(0,checkresult);
+
+    // Don't forget to reset statement
+    statement.reset();
+
+    if (checkresult == 1 ) {
+        return true;
+    }
+    return false;
+}
+
 } // end of namespace models
 } // end namespace cppcmsskel

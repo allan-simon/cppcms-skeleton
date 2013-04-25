@@ -69,18 +69,7 @@ bool Users::is_login_correct(
     const std::string passHashed = hash_password(pass);
     checkPasswd.bind(login);
     checkPasswd.bind(passHashed);
-    cppdb::result res = checkPasswd.row();
-    int checkresult = 0;
-    res.fetch(0,checkresult);
-
-    // Don't forget to reset statement
-    checkPasswd.reset();
-
-    if (checkresult == 1 ) {
-        return true;
-    }
-    return false;
-
+    return check_existence(checkPasswd);
 }
 
 
@@ -95,18 +84,7 @@ bool Users::username_exists(
         "WHERE username = ? "
     );
     usernameExists.bind(username);
-    cppdb::result res = usernameExists.row();
-    int checkresult = 0;
-    res.fetch(0,checkresult);
-
-    // Don't forget to reset statement
-    usernameExists.reset();
-
-    if (checkresult == 1 ) {
-        return true;
-    }
-    return false;
-
+    return check_existence(usernameExists);
 }
 
 /**
@@ -120,17 +98,7 @@ bool Users::email_exists(
         "WHERE email = ? "
     );
     emailExists.bind(email);
-    cppdb::result res = emailExists.row();
-    int checkresult = 0;
-    res.fetch(0,checkresult);
-
-    // Don't forget to reset statement
-    emailExists.reset();
-
-    if (checkresult == 1 ) {
-        return true;
-    }
-    return false;
+    return check_existence(emailExists);
 
 }
 
@@ -199,7 +167,7 @@ bool Users::change_permission_level(
     cppdb::statement request = sqliteDb.prepare(
         "UPDATE users "
         "SET "
-        " 'group' = ?  "
+        " group_id = ?  "
         "WHERE username =  ?"
     );
     
@@ -208,6 +176,22 @@ bool Users::change_permission_level(
 
     return execute_simple(request);
 }
+
+
+/**
+ *
+ */
+bool Users::admin_exists(void) {
+    cppdb::statement adminExists = sqliteDb.prepare(
+        "SELECT 1 FROM users "
+        "WHERE group_id = ? "
+    );
+    adminExists.bind(USERS_ADMIN);
+    return check_existence(adminExists);
+
+
+}
+
 
 
 /**
