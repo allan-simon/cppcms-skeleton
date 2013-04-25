@@ -81,7 +81,7 @@ void SqliteModel::create_session(
 /**
  *
  */
-int SqliteModel::import_sql_file(
+bool SqliteModel::import_sql_file(
     const std::string &sqlFilePath
 ) {
 
@@ -118,9 +118,9 @@ int SqliteModel::import_sql_file(
     } catch(std::exception const &e) {
         std::cerr << e.what() << std::endl;
         BOOSTER_ERROR("cppcms") << e.what();
-        return 1;
+        return false;
     }
-    return 0;
+    return true;
 }
 
 /**

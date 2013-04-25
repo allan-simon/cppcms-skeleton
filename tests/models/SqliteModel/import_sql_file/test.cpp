@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "models/SqliteModel.h" 
-#include "test.h"
+#include "generics/test.h"
 
 #define OK "[OK]"
 #define FAIL "[FAILED]"

@@ -4,7 +4,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 #set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 
-set(PROJECT_VERSION "0.7.0")
+set(PROJECT_VERSION "0.8.0")
 set(ARCHIVE_NAME ${CMAKE_PROJECT_NAME}-${PROJECT_VERSION})
 add_custom_target(
     dist
@@ -136,12 +136,6 @@ install(
 ###############
 enable_testing()
 
-include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    cppcms_skel
-    tests/include/
-)
-
     ######
     # Unit test for SqliteModel
     #####
@@ -161,6 +155,7 @@ include_directories(
     set(
         SQLITEMODEL_MODELS_METHODS
         import_sql_file
+        check_existence
     )
     
     foreach(METHOD ${SQLITEMODEL_MODELS_METHODS})

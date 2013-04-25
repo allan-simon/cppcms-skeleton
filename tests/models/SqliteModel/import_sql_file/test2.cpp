@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "models/SqliteModel.h" 
-#include "test.h"
+#include "generics/test.h"
 
 #define OK "[OK]"
 #define FAIL "[FAILED]"
@@ -10,6 +10,7 @@
 #define TEST_NAME "test"
 #define BUG_INSERT_SQL "bug_insert.sql"
 #define BUG_INSERT_CREATE_TABLES_SQL "bug_insert_create_tables.sql"
+
 int main() {
 
     // the goal here is to test the following case

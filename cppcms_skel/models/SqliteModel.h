@@ -77,9 +77,9 @@ class SqliteModel {
          *
          * @param sqlFilePath The location of the file to import 
          *
-         * @return 0 if the file is correctly imported, positive number otherwise
+         * @return bool True if the file is correctly imported, false otherwise
          */
-        int import_sql_file(
+        bool import_sql_file(
             const std::string &sqlFilePath
         );
 
