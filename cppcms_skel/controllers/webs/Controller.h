@@ -157,6 +157,9 @@ class Controller : public controllers::generics::Controller {
         /**
          * @brief Set the current user name and id to be reused after by other
          *        Controllers
+         *        Note: for the moment it relies on the session for storing 
+         *              information, so if your session storage backend need
+         *              it, it's your job to call session().save()
          *
          * @param string userName The user's name
          * @param id     Userid   The user's id (thanks captain obvious)
@@ -172,6 +175,9 @@ class Controller : public controllers::generics::Controller {
         /**
          * @brief Set the current user name to be reused after by other
          *        Controllers
+         *        Note: for the moment it relies on the session for storing 
+         *              information, so if your session storage backend need
+         *              it, it's your job to call session().save()
          *
          * @param string userName The user's name
          * 
@@ -193,6 +199,9 @@ class Controller : public controllers::generics::Controller {
                 
         /**
          * @brief Set a message to display on the next page a user will view
+         *        Note: for the moment it relies on the session for storing 
+         *              information, so if your session storage backend need
+         *              it, it's your job to call session().save()
          *
          * @param message The content of the message that will be displayed
          *

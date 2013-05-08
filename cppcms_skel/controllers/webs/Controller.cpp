@@ -106,7 +106,6 @@ void Controller::set_current_username_and_id(
 
     session()[USERID] = std::to_string(userId);
     session()[USERNAME] = username;
-    session().save();
 }
 
 /**
@@ -116,7 +115,6 @@ void Controller::set_current_username(
     const std::string &username
 ) {
     session()[USERNAME] = username;
-    session().save();
 }
 
 
@@ -187,8 +185,6 @@ bool Controller::check_permission() {
  *
  */
 int Controller::get_current_user_id() {
-    //std::cout << "[NOTICE] current id:" << session()["userId"] << std::endl;
-    //TODO replace atoi by stoi from C++11
     return std::stoi(session()[USERID]);
 }
 
