@@ -60,7 +60,7 @@ void Controller::init_content(contents::BaseContent& content) {
     
     response().content_encoding("UTF-8");
     response().set_content_header("text/html");
-
+    content.lang = get_interface_lang();
     content.interfaceLang.set_langs();
     if (is_logged()) {
         content.currentUserHelper.username = get_current_username();

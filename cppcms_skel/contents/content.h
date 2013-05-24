@@ -67,6 +67,13 @@ struct BaseContent : public cppcms::base_content {
      * @since 2 September
      */
     forms::InterfaceLang interfaceLang;
+
+    /**
+     * @brief Language of the page
+     *
+     * @since 24 May 2013
+     */
+     std::string lang;
     
 };
 
