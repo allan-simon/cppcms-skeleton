@@ -3,9 +3,6 @@
 #include "models/SqliteModel.h" 
 #include "generics/test.h"
 
-#define OK "[OK]"
-#define FAIL "[FAILED]"
-
 #define SQL_PATH "../tests/models/SqliteModel/import_sql_file/"
 #define TEST_NAME "test"
 #define BUG_TRANSACTION_SQL "bug_transaction.sql"

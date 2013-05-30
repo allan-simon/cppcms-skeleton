@@ -3,10 +3,6 @@
 #include "models/SqliteModel.h" 
 #include "generics/test.h"
 
-#define OK "[OK]"
-#define FAIL "[FAILED]"
-
-
 #define TEST_NAME "test"
 #define TEST_PATH "tests/models/SqliteModel/check_existence/"
 #define BASIC_SQL "basic.sql"

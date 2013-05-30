@@ -34,7 +34,7 @@
 
 
 namespace contents {
-    class BaseContent;
+    struct BaseContent;
 }
 
 /** @namespace controllers

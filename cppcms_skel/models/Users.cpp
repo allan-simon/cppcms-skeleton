@@ -130,7 +130,7 @@ int Users::add(
     if (!execute_simple(addUser)) {
         return USERS_NOT_ADDED_ERROR;
     }
-    int userId = addUser.last_insert_id();
+    int userId = static_cast<int>(addUser.last_insert_id());
     return userId;
 }     
 
@@ -268,7 +268,7 @@ bool Users::save_salt(const std::string &salt) {
 std::string Users::random_string(
     const size_t length
 ) {
-    srand(time(NULL));
+    srand(static_cast<unsigned>(time(NULL)));
 
     auto randchar = []() -> char {
         const char charset[] =
@@ -276,7 +276,7 @@ std::string Users::random_string(
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
             "abcdefghijklmnopqrstuvwxyz";
         const size_t maxIndex = (sizeof(charset) - 1);
-        return charset[ rand() % maxIndex ];
+        return charset[ static_cast<unsigned>(rand()) % maxIndex ];
     };
 
     std::string randomString(length,0);

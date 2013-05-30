@@ -45,7 +45,7 @@ SqliteModel::SqliteModel() {
 /**
  *
  */
-SqliteModel::SqliteModel(cppdb::session sqliteDb) : sqliteDb(sqliteDb) {
+SqliteModel::SqliteModel(cppdb::session sqliteDbParam) : sqliteDb(sqliteDbParam) {
 
 }
 
