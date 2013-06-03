@@ -39,19 +39,21 @@
 
 #include "cppcms_skel/contents/forms/change_interface_langs.h"
 #include "cppcms_skel/contents/helpers/current_user.h"
+#include "messages.h"
 namespace contents {
 
 /**
  * @struct 
  */
 struct BaseContent : public cppcms::base_content {
+
     /**
-     * @brief Will contain a flash message to inform the user about the
-     *        success/failure of an action.
+     * @brief Will contain The flash messages to inform the user about the
+     *        success/failure of actions.
      *
-     * @since 30 August
+     * @since 3 June 2013
      */
-    std::string message;
+    Messages messages;
 
     /**
      * @brief Helper that contain all the information related to the

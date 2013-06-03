@@ -42,6 +42,7 @@
 #include <cppcms/url_dispatcher.h>
 
 #include "cppcms_skel/controllers/generics/Controller.h"
+#include "cppcms_skel/contents/content.h"
 
 #define CHECK_PERMISSION_OR_GO_TO_LOGIN() \
     if (!check_permission()) {\
@@ -70,14 +71,8 @@
     
 
 
-
-
-
-namespace contents {
-    struct BaseContent;
-}
-
-/** @namespace controllers
+/**
+ * @namespace controllers
  * regroup all controllers of the application
  */
 namespace controllers {
@@ -198,28 +193,72 @@ class Controller : public controllers::generics::Controller {
         );
                 
         /**
-         * @brief Set a message to display on the next page a user will view
+         * @brief Add a message to display on the next page a user will view
          *        Note: for the moment it relies on the session for storing 
          *              information, so if your session storage backend need
          *              it, it's your job to call session().save()
          *
-         * @param message The content of the message that will be displayed
+         * @param text The content of the message that will be displayed
+         * @param type The kind of message (success message, error mess, etc.)
          *
-         * @since 30 August 2011
+         * @since 3 June 2013
          */
-        void set_message(const std::string &message);
+        void add_message(
+            const std::string &text,
+            const std::string &type = "info" 
+        );
 
         /**
-         * @brief Get the message to display on the page that is going to be
-         *        displayed to the user, note that the message is "destroyed"
-         *        after you get it, so calling a second time this method will
-         *        return you an empty string
+         * @brief Add an error message that will be displayed at next page
+         *        viewed by the user
          *
-         * @return The message or an empty string if no message
+         * @param text Text to display in the message
+         *
+         * @since 3 June 2013
+         */
+        void add_error(const std::string &text);
+ 
+        /**
+         * @brief Add a warning message that will be displayed at next page
+         *        viewed by the user
+         *
+         * @param text Text to display in the message
+         *
+         * @since 3 June 2013
+         */
+        void add_warning(const std::string &text);
+        
+        /**
+         * @brief Add an information message that will be displayed at next
+         *        page viewed by the user
+         *
+         * @param text Text to display in the message
+         *
+         * @since 3 June 2013
+         */
+        void add_info(const std::string &text);
+
+        /**
+         * @brief Add a success message that will be displayed at next page
+         *        viewed by the user
+         *
+         * @param text Text to display in the message
+         *
+         * @since 3 June 2013
+         */
+        void add_success(const std::string &text);
+
+        /**
+         * @brief Get the messages to display on the page that is going to be
+         *        displayed to the user, note that messages are "destroyed"
+         *        after you get them, so calling a second time this method
+         *        will return you an empty set of messages
+         *
+         * @return The messages
          *
          * @since 14 November 2012
          */
-        const std::string get_message();
+        const contents::Messages get_messages();
 
         /**
          * @brief Get the same language in which the current user has the

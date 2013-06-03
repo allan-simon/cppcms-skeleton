@@ -36,7 +36,7 @@
 
 #define USERNAME "username"
 #define USERID   "userid"
-#define MESSAGE "message"
+#define MESSAGES "messages"
 #define INTERFACE_LANG "interfaceLang"
 
 
@@ -66,19 +66,20 @@ void Controller::init_content(contents::BaseContent& content) {
         content.currentUserHelper.username = get_current_username();
     }
 
-    content.message = get_message();
+    content.messages = get_messages();
 }
 
 /**
  *
  */
-const std::string Controller::get_message() {
-    std::string message = "";
-    if (session().is_set(MESSAGE)) {
-        message = session()[MESSAGE];
-        session().erase(MESSAGE);
+const contents::Messages Controller::get_messages() {
+    contents::Messages messages;
+    if (session().is_set(MESSAGES)) {
+
+        session().fetch_data(MESSAGES,messages);
+        session().erase(MESSAGES);
     }
-    return message;
+    return messages;
 }
 
 /**
@@ -194,12 +195,56 @@ int Controller::get_current_user_id() {
  *
  */
 
-void Controller::set_message(const std::string &message) {
-    //TODO maybe concatenate the message instead of replacing it
-    //     as it may be possible in the future that several message
-    //     are raised
-    session()[MESSAGE] = message;
+void Controller::add_message(
+    const std::string &text,
+    const std::string &type
+) {
+
+    contents::Messages messages;
+    std::vector<int> plop;
+    contents::Message newMessage(text, type);
+    if (session().is_set(MESSAGES)) {
+        std::string tmp;
+        session().fetch_data(MESSAGES,messages);
+    }
+    
+    messages.push_back(newMessage);
+    session().store_data(
+        MESSAGES,
+        messages
+    );
 }
+
+/**
+ *
+ */
+void Controller::add_error(const std::string &text) {
+    add_message(text, CPPCMS_SKEL_MESSAGE_ERROR);
+}
+
+/**
+ *
+ */
+void Controller::add_info(const std::string &text) {
+    add_message(text, CPPCMS_SKEL_MESSAGE_INFO);
+}
+
+/**
+ *
+ */
+void Controller::add_success(const std::string &text) {
+    add_message(text, CPPCMS_SKEL_MESSAGE_SUCCESS);
+}
+
+/**
+ *
+ */
+void Controller::add_warning(const std::string &text) {
+    add_message(text, CPPCMS_SKEL_MESSAGE_WARNING);
+}
+
+
+
 
 /**
  *
