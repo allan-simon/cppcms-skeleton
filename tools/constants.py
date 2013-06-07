@@ -85,6 +85,9 @@ FOLDERS = {
         "js" : {}
     },
 
+    # contains the uploaded files
+    "upload" :  {},
+
     # contains the configuration file of the website
     # and tools that the website use
     "conf": {},

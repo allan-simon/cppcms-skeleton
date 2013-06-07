@@ -31,9 +31,11 @@
         "innerCssFolder" : "../resource/css/",
         "innerImgFolder" : "../resource/img/",
         "innerJsFolder" : "../resource/js/",
+        "uploadFolder" : "../upload/"
         "imgPath" : "/img/",
         "cssPath" : "/css/",
-        "jsPath" : "/js/"
+        "jsPath" : "/js/",
+        "uploadUrl" : "/upload/",
     },
 	"@PROJECT_NAME_CODE@" : {
         "interfacelangs" : [

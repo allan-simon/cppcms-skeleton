@@ -157,3 +157,36 @@ void Config::set_js_path(
 std::string Config::get_js_path() {
     return get_instance()->jsPath;
 }
+
+/**
+ *
+ */
+std::string Config::get_upload_url() {
+    return get_instance()->uploadUrl;
+}
+
+/**
+ *
+ */
+void Config::set_upload_url(
+    const std::string &uploadUrl
+) {
+    get_instance()->uploadUrl = uploadUrl;
+}
+
+/**
+ *
+ */
+std::string Config::get_upload_folder() {
+    return get_instance()->uploadFolder;
+}
+
+/**
+ *
+ */
+void Config::set_upload_folder(
+    const std::string &uploadFolder
+) {
+    get_instance()->uploadFolder = uploadFolder;
+}
+

@@ -79,7 +79,13 @@ class Config : public Singleton<Config> {
          * @since 20 March 2013
          */
         std::string jsPath;
+        
 
+        /**
+         * @brief Store the URL for uploaded files as used in the HTML
+         * @since 07 June 2013
+         */
+        std::string uploadUrl;
 
 
 
@@ -109,6 +115,12 @@ class Config : public Singleton<Config> {
          std::string innerJsFolder;
 
 
+        /**
+         * @brief Store the internal path for the uploaded file on the
+         *        server 
+         * @since 7 June 2013
+         */
+        std::string uploadFolder;
 
 
 
@@ -150,8 +162,11 @@ class Config : public Singleton<Config> {
 
         static void set_js_path(const std::string & jsPath);
 
+        static std::string get_upload_url();
+        static void set_upload_url(const std::string &uploadUrl);
 
-
+        static std::string get_upload_folder();
+        static void set_upload_folder(const std::string &uploadFolder);
 
         /**
          * Store the root URL of the website
