@@ -36,6 +36,7 @@
 #define CPPCMS_SKEL_CONTENT_CONFIG_H
 
 #include <map>
+#include <cppcms/json.h>
 #include "cppcms_skel/generics/Singleton.h"
 
 /**
@@ -125,6 +126,16 @@ class Config : public Singleton<Config> {
 
 
     public:
+        /**
+         * @brief Set the values used by the config singleton
+         *        using the part of the config json dedicated
+         *        to it 
+         *
+         * @param appConfig The json array containing the configuration
+         *
+         * @param 07 June 2013
+         */
+        static void set_values(cppcms::json::value appConfig);
 
         static std::string get_base_host();
 
