@@ -102,9 +102,9 @@ struct Messages : public std::vector<Message> , public cppcms::serializable {
     void serialize(cppcms::archive &archive) {  
         std::cout << "in serialize" << std::endl;
         if (archive.mode() == cppcms::archive::save_to_archive) {
-            cppcms::archive_traits<std::vector<Message>>::save(*this,archive);
+            cppcms::archive_traits<std::vector<Message> >::save(*this,archive);
         } else {
-            cppcms::archive_traits<std::vector<Message>>::load(*this,archive);
+            cppcms::archive_traits<std::vector<Message> >::load(*this,archive);
         }
     }  
 
