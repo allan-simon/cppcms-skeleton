@@ -13,14 +13,14 @@
 
 #include <cppcms/http_file.h>
 #include <booster/shared_ptr.h>
+#include "cppcms_skel/results/Uploads.h"
 #include "SqliteModel.h"
-
 
 namespace cppcmsskel {
 namespace models {
 
-
-
+#define UPLOADS_SAVE_ON_DISK_ERROR ""
+#define UPLOADS_SAVE_ON_DB_ERROR " "
 
 /**
  * @class Uploads 
@@ -37,7 +37,6 @@ class Uploads : public SqliteModel {
          * @since 7 June 2013
          */
         Uploads();
-
  
         /**
          * @brief Save a file on the server
@@ -49,8 +48,21 @@ class Uploads : public SqliteModel {
         std::string save(
             booster::shared_ptr<cppcms::http::file> file
         );
-        
 
+ 
+        /**
+         * @brief Get a list of files
+         *
+         * @param limit Number of files to get
+         * @page  page  For paginated result, permit to get files
+         *              of that page number
+         *
+         * @since 13 June 2013
+         */
+        results::Files list(
+            const unsigned limit,
+            const unsigned page = 0
+        );
 };
 
 

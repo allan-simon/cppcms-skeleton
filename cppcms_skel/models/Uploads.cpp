@@ -12,6 +12,7 @@
 #include <cppcms/util.h>
 #include <cppcms/cppcms_error.h>
 #include <cppcms/http_file.h>
+#include <booster/posix_time.h>
 #include <booster/log.h>
 
 #include <cppcms_skel/generics/Config.h>
@@ -46,9 +47,59 @@ std::string Uploads::save(
         );
     } catch (cppcms::cppcms_error const &e) {
         BOOSTER_ERROR("cppcms_skel") << e.what();
-        return std::string();
+        return UPLOADS_SAVE_ON_DISK_ERROR;
     }
+    
+    cppdb::statement saveFile = sqliteDb.prepare(
+        "INSERT INTO uploads(filename, created) "
+        "VALUES(?,?)"
+    );
+    saveFile.bind(filename);
+    saveFile.bind(
+        booster::ptime::now().get_seconds()
+    );
+
+    if (!execute_simple(saveFile)) {
+        return UPLOADS_SAVE_ON_DB_ERROR;
+    }
+
     return Config::get_upload_url() + filename;
+}
+
+/**
+ * 
+ */
+results::Files Uploads::list(
+    const unsigned limit,
+    const unsigned page
+) {
+    results::Files files;
+    cppdb::statement listFiles = sqliteDb.prepare(
+        "SELECT "
+        "   filename, "
+        "   created "
+        "FROM uploads "
+        "LIMIT ? OFFSET ? "
+    );
+    listFiles.bind(limit); 
+    listFiles.bind(page*limit); 
+    
+    
+    std::string baseURL = Config::get_upload_url();
+    
+    cppdb::result res = listFiles.query();
+    while (res.next()) {
+        std::string name = res.get<std::string>("filename");
+
+        files.push_back(results::File(
+            name,
+            baseURL + name,
+            res.get<unsigned>("created")
+        ));
+    }
+    listFiles.reset();
+
+    return files;
 }
 
 } // end namespace models
