@@ -31,7 +31,7 @@
 #include <booster/log.h>
 
 #include <cppcms_skel/generics/Config.h>
-#include "models/Media.h"
+#include "models/Uploads.h"
 
 namespace cppcmsskel {
 namespace models {
@@ -39,7 +39,7 @@ namespace models {
 /**
  *
  */
-Media::Media() :
+Uploads::Uploads() :
     SqliteModel()
 {
 }
@@ -47,13 +47,14 @@ Media::Media() :
 /**
  * 
  */
-std::string Media::save_media(
+std::string Uploads::save(
     booster::shared_ptr<cppcms::http::file> file
 ) {
+
+    std::string filename = file->filename();
     try {
         //TODO if we keep the same name, we should then check that there's
         // not already a file with the same name
-        std::string filename = file->filename();
         file->save_to(filename);
         std::rename(
             filename.c_str(),
@@ -63,7 +64,7 @@ std::string Media::save_media(
         BOOSTER_ERROR("cppcms_skel") << e.what();
         return std::string();
     }
-    return Config::get_upload_url();
+    return Config::get_upload_url() + filename;
 }
 
 } // end namespace models
