@@ -7,6 +7,7 @@
  * @category @PROJECT_NAME_HUMAN@
  * @author   @AUTHOR@ <@EMAIL@> 
  * @package  Controllers
+ * @link     @PROJECT_WEBSITE@
  *
  */
 
