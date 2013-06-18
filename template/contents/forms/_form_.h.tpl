@@ -1,11 +1,11 @@
 /**
  * @PROJECT_NAME_HUMAN@  @DESCRIPTION@
  *
- * Copyright (C) @YEARS@ @AUTHOR@ <@EMAIL@> 
+ * Copyright (C) @YEARS@ @AUTHOR@ <@EMAIL@>
  * See accompanying file COPYING.TXT file for licensing details.
  *
  * @category @PROJECT_NAME_HUMAN@
- * @author   @AUTHOR@ <@EMAIL@> 
+ * @author   @AUTHOR@ <@EMAIL@>
  * @package  Forms
  *
  */
@@ -20,8 +20,7 @@ namespace forms{
 namespace %%CONTROLLER_NS%% {
 
 /**
- * @struct %%FORM_NAME%%
- * @brief  %%FORM_DESCRIPTION%%
+ * @struct %%FORM_NAME%% %%FORM_DESCRIPTION%%
  * @since  %%FORM_TODAY%%
  *
  */

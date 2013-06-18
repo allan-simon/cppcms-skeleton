@@ -1,11 +1,11 @@
 /**
  * @PROJECT_NAME_HUMAN@  @DESCRIPTION@
  *
- * Copyright (C) @YEARS@ @AUTHOR@ <@EMAIL@> 
+ * Copyright (C) @YEARS@ @AUTHOR@ <@EMAIL@>
  * See accompanying file COPYING.TXT file for licensing details.
  *
  * @category @PROJECT_NAME_HUMAN@
- * @author   @AUTHOR@ <@EMAIL@> 
+ * @author   @AUTHOR@ <@EMAIL@>
  * @package  Controllers
  * @link     @PROJECT_WEBSITE@
  *
@@ -22,11 +22,11 @@
 // controller every time we modify a model. even though it does
 // not affect the controller
 namespace models {
-    // %%%NEXT_CLASS_MODEL_CTRL_MARKER%%% 
+    // %%%NEXT_CLASS_MODEL_CTRL_MARKER%%%
 }
 
 namespace controllers {
-namespace webs { 
+namespace webs {
 /**
  * @class %%CONTROLLER_NAME%% %%CONTROLLER_DESCRIPTION%%
  * @since %%CONTROLLER_TODAY%%

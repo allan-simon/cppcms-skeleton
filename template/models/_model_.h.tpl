@@ -1,11 +1,11 @@
 /**
  * @PROJECT_NAME_HUMAN@  @DESCRIPTION@
  *
- * Copyright (C) @YEARS@ @AUTHOR@ <@EMAIL@> 
+ * Copyright (C) @YEARS@ @AUTHOR@ <@EMAIL@>
  * See accompanying file COPYING.TXT file for licensing details.
  *
  * @category @PROJECT_NAME_HUMAN@
- * @author   @AUTHOR@ <@EMAIL@> 
+ * @author   @AUTHOR@ <@EMAIL@>
  * @package  Models
  *
  */
@@ -20,10 +20,9 @@ namespace models {
 
 
 /**
- * @class %%MODEL_NAME%%
- * 
- * @brief %%MODEL_DESCRIPTION%%
- * @since %%MODEL_TODAY%%       
+ * @class %%MODEL_NAME%% %%MODEL_DESCRIPTION%%
+ *
+ * @since %%MODEL_TODAY%%
  *
  */
 class %%MODEL_NAME%% : public cppcmsskel::models::SqliteModel {
@@ -36,6 +35,6 @@ class %%MODEL_NAME%% : public cppcmsskel::models::SqliteModel {
 
 };
 
-} // end namespace models 
+} // end namespace models
 
 #endif
