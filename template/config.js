@@ -31,11 +31,11 @@
         "innerCssFolder" : "../resource/css/",
         "innerImgFolder" : "../resource/img/",
         "innerJsFolder" : "../resource/js/",
-        "uploadFolder" : "../upload/"
+        "uploadFolder" : "../upload/",
         "imgPath" : "/img/",
         "cssPath" : "/css/",
         "jsPath" : "/js/",
-        "uploadUrl" : "/upload/",
+        "uploadUrl" : "/upload/"
     },
 	"@PROJECT_NAME_CODE@" : {
         "interfacelangs" : [
@@ -45,10 +45,10 @@
         "sqlite3" : {
             "path" : "../data/sqlite3.db"
         }
-	}
+	},
    "views" : {
         "default_skin" : "default_skin"
-    },
+    }
 
 
 }
