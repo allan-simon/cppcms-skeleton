@@ -28,9 +28,9 @@
     },
     "skel" : {
         "baseHost" : "",
-        "innerCssFolder" : "../resource/css/",
-        "innerImgFolder" : "../resource/img/",
-        "innerJsFolder" : "../resource/js/",
+        "innerCssFolder" : "../resources/css/",
+        "innerImgFolder" : "../resources/img/",
+        "innerJsFolder" : "../resources/js/",
         "uploadFolder" : "../upload/",
         "imgPath" : "/img/",
         "cssPath" : "/css/",
