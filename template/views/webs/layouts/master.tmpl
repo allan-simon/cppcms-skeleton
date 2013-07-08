@@ -34,7 +34,10 @@
     alt="<%= alt %>"
 /><%end template %>
 
-
+<% template js_link(std::string const& jsFile) %><script
+    src="<% c++ out() << Config::get_js_path(); %><%= jsFile %>"
+    type="text/javascript">
+</script><% end template %>
 
 :
 <% template header() %>
@@ -47,11 +50,13 @@
 
 <% end template %>
 
+<% template js() %>
 
-
+<% end template %>
 
 <% template body() %>
     <% gt "Hello world" %>
+    <% include js() %>
 <% end template %>
 
 
