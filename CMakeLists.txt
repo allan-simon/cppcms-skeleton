@@ -5,6 +5,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 
 set(PROJECT_VERSION "0.16.0")
+set(PROJECT_SOVERSION "0")
 set(ARCHIVE_NAME ${CMAKE_PROJECT_NAME}-${PROJECT_VERSION})
 add_custom_target(
     dist
@@ -110,6 +111,7 @@ install(
     LIBRARY DESTINATION lib
 )
 
+set_target_properties(cppcmsskel PROPERTIES VERSION ${PROJECT_VERSION} SOVERSION ${PROJECT_SOVERSION})
 
 # install the header files
 install(
