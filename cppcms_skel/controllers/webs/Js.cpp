@@ -36,7 +36,7 @@ Js::Js(cppcms::service& serv) :
 
 
 void Js::serve_file(std::string jsFile) {
-    std::string absolutePath = Config::get_inner_js_folder() + jsFile;
+    std::string absolutePath = Config::get_assets_folder() + jsFile;
     std::ifstream file(
         absolutePath.c_str()
     );  

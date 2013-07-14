@@ -28,14 +28,10 @@
     },
     "skel" : {
         "baseHost" : "",
-        "innerCssFolder" : "../resources/css/",
-        "innerImgFolder" : "../resources/img/",
-        "innerJsFolder" : "../resources/js/",
+        "assetsFolder" : "../resources/",
         "uploadFolder" : "../upload/",
-        "imgPath" : "/img/",
-        "cssPath" : "/css/",
-        "jsPath" : "/js/",
-        "uploadUrl" : "/upload/"
+        "assetsURL" : "/"
+        "uploadURL" : "/upload/"
     },
 	"@PROJECT_NAME_CODE@" : {
         "interfacelangs" : [

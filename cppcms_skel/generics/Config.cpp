@@ -35,119 +35,49 @@ void Config::set_base_host(const std::string &baseHost) {
 /**
  *
  */
-void Config::set_inner_css_folder(
-    const std::string &cssFolder
+void Config::set_assets_folder(
+    const std::string &assetsFolder
 ) {
-    get_instance()->innerCssFolder = cssFolder;
+    get_instance()->assetsFolder = assetsFolder;
 }
 
 /**
  *
  */
-std::string Config::get_inner_css_folder() {
-    return get_instance()->innerCssFolder;
+std::string Config::get_assets_folder() {
+    return get_instance()->assetsFolder;
 }
-
 
 /**
  *
  */
-void Config::set_inner_img_folder(
-    const std::string &imgFolder
+void Config::set_assets_url(
+    const std::string &assetsURL
 ) {
-    get_instance()->innerImgFolder = imgFolder;
+    get_instance()->assetsURL = assetsURL;
 }
 
 /**
  *
  */
-std::string Config::get_inner_img_folder() {
-    return get_instance()->innerImgFolder;
-}
-
-/**
- *
- */
-void Config::set_inner_js_folder(
-    const std::string &jsFolder
-) {
-    get_instance()->innerJsFolder = jsFolder;
-}
-
-/**
- *
- */
-std::string Config::get_inner_js_folder() {
-    return get_instance()->innerJsFolder;
-}
-
-
-
-
-
-/**
- *
- */
-void Config::set_css_path(
-    const std::string &cssPath
-) {
-    get_instance()->cssPath = cssPath;
-}
-
-/**
- *
- */
-std::string Config::get_css_path() {
-    return get_instance()->cssPath;
-}
-
-/**
- *
- */
-void Config::set_img_path(
-    const std::string &imgPath
-) {
-    get_instance()->imgPath = imgPath;
-}
-
-/**
- *
- */
-std::string Config::get_img_path() {
-    return get_instance()->imgPath;
-}
-
-
-/**
- *
- */
-void Config::set_js_path(
-    const std::string &jsPath
-) {
-    get_instance()->jsPath = jsPath;
-}
-
-/**
- *
- */
-std::string Config::get_js_path() {
-    return get_instance()->jsPath;
+std::string Config::get_assets_url() {
+    return get_instance()->assetsURL;
 }
 
 /**
  *
  */
 std::string Config::get_upload_url() {
-    return get_instance()->uploadUrl;
+    return get_instance()->uploadURL;
 }
 
 /**
  *
  */
 void Config::set_upload_url(
-    const std::string &uploadUrl
+    const std::string &uploadURL
 ) {
-    get_instance()->uploadUrl = uploadUrl;
+    get_instance()->uploadURL = uploadURL;
 }
 
 /**
@@ -180,15 +110,10 @@ void Config::set_values(
 
     set_base_host(appConfig.get<std::string>("baseHost"));
 
-    set_css_path(appConfig.get<std::string>("cssPath"));
-    set_img_path(appConfig.get<std::string>("imgPath"));
-    set_js_path(appConfig.get<std::string>("jsPath"));
-    set_upload_url(appConfig.get<std::string>("uploadUrl"));
-
+    set_assets_url(appConfig.get<std::string>("assetsURL"));
+    set_upload_url(appConfig.get<std::string>("uploadURL"));
     //TODO we may check for trailing /
-    set_inner_css_folder(appConfig.get<std::string>("innerCssFolder"));
-    set_inner_img_folder(appConfig.get<std::string>("innerImgFolder"));
-    set_inner_js_folder(appConfig.get<std::string>("innerJsFolder"));
+    set_assets_folder(appConfig.get<std::string>("assetsFolder"));
     set_upload_folder(appConfig.get<std::string>("uploadFolder"));
 
 

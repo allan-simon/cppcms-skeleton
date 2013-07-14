@@ -37,7 +37,7 @@ void Img::serve_file(
     std::string imgFile,
     std::string mimeType
 ) {
-    std::string absolutePath = Config::get_inner_img_folder() + imgFile;
+    std::string absolutePath = Config::get_assets_folder() + imgFile;
     std::ifstream file(
         absolutePath.c_str()
     );  

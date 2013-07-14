@@ -37,59 +37,26 @@ class Config : public Singleton<Config> {
         std::string baseHost;
 
         /**
-         * @brief Store the path for css files as displayed on the webpage
+         * @brief Store the base url for the assets (img/css/js)
          *
-         * @since 18 January 2013
+         * @since 14 July 2013
          */
-        std::string cssPath;
-
- 
-
-        /**
-         * @brief Store the path for images files as used in the HTML
-         * @since 19 January 2013
-         */
-        std::string imgPath;
-
-        /**
-         * @brief Store the path for javascript files as used in the HTML
-         * @since 20 March 2013
-         */
-        std::string jsPath;
-        
+        std::string assetsURL;
 
         /**
          * @brief Store the URL for uploaded files as used in the HTML
          * @since 07 June 2013
          */
-        std::string uploadUrl;
-
-
-
+        std::string uploadURL;
 
         /**
-         * @brief Store the path for css files on the server
-         *        (if the application itself server the CSS)
+         * @brief Store the path for assets files (img/css/js) 
+         *        on the server (if the application itself serve 
+         *        them
          *
-         * @since 18 January 2013
+         * @since 14 July 2013
          */
-         std::string innerCssFolder;
-
-        /**
-         * @brief Store the path for image files on the server
-         *        (if the application itself server the images)
-         *
-         * @since 19 January 2013
-         */
-         std::string innerImgFolder;
-
-        /**
-         * @brief Store the path for javascript files on the server
-         *        (if the application itself server the images)
-         *
-         * @since 20 March 2013
-         */
-         std::string innerJsFolder;
+         std::string assetsFolder;
 
 
         /**
@@ -114,43 +81,22 @@ class Config : public Singleton<Config> {
         static void set_values(cppcms::json::value appConfig);
 
         static std::string get_base_host();
-
         static void set_base_host(const std::string & baseHost);
 
-        static std::string get_inner_css_folder();
-
-        static void set_inner_css_folder(
-            const std::string & cssFolder
+        static std::string get_assets_folder();
+        static void set_assets_folder(
+            const std::string & assetsFolder
+        );
+        
+        static std::string get_assets_url();
+        static void set_assets_url(
+            const std::string & assetsURL
         );
 
-        static std::string get_css_path();
 
-        static void set_css_path(const std::string & cssPath);
-
-
-        static std::string get_inner_img_folder();
-
-        static void set_inner_img_folder(
-            const std::string & imgFolder
-        );
-
-        static std::string get_img_path();
-
-        static void set_img_path(const std::string & imgPath);
-
-
-        static std::string get_inner_js_folder();
-
-        static void set_inner_js_folder(
-            const std::string & jsFolder
-        );
-
-        static std::string get_js_path();
-
-        static void set_js_path(const std::string & jsPath);
 
         static std::string get_upload_url();
-        static void set_upload_url(const std::string &uploadUrl);
+        static void set_upload_url(const std::string &uploadURL);
 
         static std::string get_upload_folder();
         static void set_upload_folder(const std::string &uploadFolder);

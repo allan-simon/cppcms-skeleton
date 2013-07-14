@@ -33,7 +33,7 @@ Css::Css(cppcms::service& serv) :
 
 
 void Css::serve_file(std::string cssFile) {
-    std::string absolutePath = Config::get_inner_css_folder() + cssFile;
+    std::string absolutePath = Config::get_assets_folder() + cssFile;
     std::ifstream file(
         absolutePath.c_str()
     );  

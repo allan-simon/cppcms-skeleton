@@ -98,7 +98,7 @@ int Users::add(
 
     
     cppdb::statement addUser = sqliteDb.prepare(
-        "INSERT INTO users(username, password, email, since)"
+        "INSERT INTO users(username, password, email, since) "
         "VALUES(?,?,?,?)"
     );
 
