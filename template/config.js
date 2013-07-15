@@ -30,7 +30,7 @@
         "baseHost" : "",
         "assetsFolder" : "../resources/",
         "uploadFolder" : "../upload/",
-        "assetsURL" : "/"
+        "assetsURL" : "/",
         "uploadURL" : "/upload/"
     },
 	"@PROJECT_NAME_CODE@" : {
