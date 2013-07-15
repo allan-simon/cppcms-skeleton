@@ -36,51 +36,18 @@ int main(int argc,char ** argv)
         "@PROJECT_NAME_CODE@.sqlite3.path"
     );
 
-    Config::set_css_path(
+    Config::set_assets_url(
         app.settings().get<string>(
-            "skel.cssPath"
+            "skel.assetsURL"
         )
     );
 
-    Config::set_img_path(
+    Config::set_assets_folder(
         app.settings().get<string>(
-            "skel.imgPath"
-        )
-    );
-    
-    Config::set_js_path(
-        app.settings().get<string>(
-            "skel.jsPath"
+            "skel.assetsFolder"
         )
     );
 
-
-
-
-
-    Config::set_inner_css_folder(
-        app.settings().get<string>(
-            "skel.innerCssFolder"
-        )
-    );
-
-    Config::set_inner_img_folder(
-        app.settings().get<string>(
-            "skel.innerImgFolder"
-        )
-    );
-    
-    Config::set_inner_js_folder(
-        app.settings().get<string>(
-            "skel.innerJsFolder"
-        )
-    );
-
-
-
-
-
-        
     /*start the graph database*/
 
     //singletons::ActionId::get_instance();
@@ -101,4 +68,3 @@ int main(int argc,char ** argv)
     //SearchEngine::kill();
     Config::kill();
 }
-
