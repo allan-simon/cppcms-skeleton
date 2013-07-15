@@ -22,13 +22,13 @@
 <% template title() %>TODO: replace this<% end template %>
 
 <% template css_link(std::string const& cssFile) %><link 
-    href="<% c++ out() << Config::get_css_path(); %><%= cssFile %>"
+    href="<% c++ out() << Config::get_assets_url(); %>css/<%= cssFile %>"
     rel="stylesheet"
     type="text/css"
 /><% end template %>
 
 <% template img_tag(std::string const& imgFile, int width, int height, std::string const& alt) %><img
-    src="<% c++ out() << Config::get_img_path(); %><%= imgFile%>"
+    src="<% c++ out() << Config::get_assets_url(); %>img/<%= imgFile%>"
     width="<%= width %>"
     height="<%= height %>"
     alt="<%= alt %>"
