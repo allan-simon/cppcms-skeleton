@@ -37,6 +37,15 @@ Users::Users() :
 {
 }
 
+/**
+ *
+ */
+Users::Users(const std::string &databasePath):
+    SqliteModel(databasePath)
+{
+}
+
+
 
 /**
  *

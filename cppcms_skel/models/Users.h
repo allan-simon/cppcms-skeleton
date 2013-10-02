@@ -99,10 +99,17 @@ class Users : public SqliteModel {
 
     public:
         /**
-         * @brief Constructor
+         * @brief Constructor, use the config.js information
          * @since 30 October 2012
          */
         Users();
+
+        /**
+         * @brief Constructor, use a given database path
+         * @since 2 October 2013
+         */
+        Users(const std::string &databasePath);
+
 
         /**
          * @brief Return the id of the user having the given name

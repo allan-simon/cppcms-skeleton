@@ -66,7 +66,7 @@ add_library(
 )
 
 
-# TODO cppdb should not be mandatory 
+# TODO cppdb should not be mandatory
 set(
     CPPCMSSKEL_LIBS
     ${CPPCMS}
@@ -81,7 +81,7 @@ target_link_libraries(
 )
 
 
-    
+
 # we install the "template" files (i.e c++ code with placeholders)
 # a local copy of them will be made each time we create a new app
 install(
@@ -104,8 +104,8 @@ install(
     PATTERN "__pycache__" EXCLUDE
     PATTERN "*.swp" EXCLUDE
 )
-    
-# to install the libcppcmsskel 
+
+# to install the libcppcmsskel
 install(
     TARGETS cppcmsskel
     LIBRARY DESTINATION lib
@@ -139,7 +139,7 @@ install(
 enable_testing()
 
     ######
-    # Unit test for SqliteModel
+    # Unit test for Models
     #####
 
     #we define all the methods that are covered by test
@@ -149,75 +149,92 @@ enable_testing()
         models
     )
 
+    ######
+    # Note: there's a little hack here 
+    # we define the classes   Class1 / Class2
+    # and after we define "lists" of methods named Class1_models_methods
+    # Class2_models_methods etc.  this way after we can do
+    # foreach METHOD ${${CLASS_NAME}_methods}
+    # to go through all methods of all class without duplicating cmake code
+    #####
     set(
-        CLASS
+        CLASSES
         SqliteModel
+        Users
     )
 
     set(
-        SQLITEMODEL_MODELS_METHODS
+        SqliteModel_MODELS_METHODS
         import_sql_file
         check_existence
     )
-    
-    foreach(METHOD ${SQLITEMODEL_MODELS_METHODS})
-        #we are supposed to have a folder named with the
-        #method named, and with inside one test by .cpp 
-        #file
-        file(
-            GLOB
-            TESTS
-            tests/${MODULE}/${CLASS}/${METHOD}/*.cpp
-        )
 
-        #for each of these tests
-        foreach(TEST_FULL_PATH ${TESTS})
+    set(
+        Users_MODELS_METHODS
+        username_exists
+    )
 
-
-            #we do that in two time in order to extract only the test
-            #name out of the full path
-            string(
-                REGEX MATCH
-                "([^/]+)[.]cpp"
-                TEST
-                ${TEST_FULL_PATH}
-            )
-            string(
-                REGEX MATCH
-                "[^.]+"
-                TEST
-                ${TEST}
+    foreach(CLASS ${CLASSES})
+        foreach(METHOD ${${CLASS}_MODELS_METHODS})
+            #we are supposed to have a folder named with the
+            #method named, and with inside one test by .cpp
+            #file
+            file(
+                GLOB
+                TESTS
+                tests/${MODULE}/${CLASS}/${METHOD}/*.cpp
             )
 
-            #just here to factorize
-            set(
-                EXECUTABLE_PATH
-                tests/${MODULE}/${CLASS}/${METHOD}
-            )
+            #for each of these tests
+            foreach(TEST_FULL_PATH ${TESTS})
 
-            add_executable(
-                ${EXECUTABLE_PATH}/${TEST}
-                ${EXECUTABLE_PATH}/${TEST}.cpp
-                cppcms_skel/${MODULE}/${CLASS}.cpp
-                cppcms_skel/generics/Config.cpp
-                ${EXECUTABLE_PATH} #required to put it like this in order to
-                                   #the custom command to know it has to be
-                                   #created
-            )
-            target_link_libraries(${EXECUTABLE_PATH}/${TEST} ${CPPCMSSKEL_LIBS})
 
-            #this command is to create the directory in the build directory
-            #in order to have the executable in the same hierarchy as their
-            #corresponding .cpp, in order to find them easily without the possiblity
-            #to have conflict between test name
-            add_custom_command(
-                OUTPUT  ${EXECUTABLE_PATH}
-                COMMAND mkdir -p ${EXECUTABLE_PATH}
-            )
-            add_test(
-                ${EXECUTABLE_PATH}/${TEST}
-                ${EXECUTABLE_PATH}/${TEST}
-            )
+                #we do that in two time in order to extract only the test
+                #name out of the full path
+                string(
+                    REGEX MATCH
+                    "([^/]+)[.]cpp"
+                    TEST
+                    ${TEST_FULL_PATH}
+                )
+                string(
+                    REGEX MATCH
+                    "[^.]+"
+                    TEST
+                    ${TEST}
+                )
+
+                #just here to factorize
+                set(
+                    EXECUTABLE_PATH
+                    tests/${MODULE}/${CLASS}/${METHOD}
+                )
+
+                add_executable(
+                    ${EXECUTABLE_PATH}/${TEST}
+                    ${EXECUTABLE_PATH}/${TEST}.cpp
+                    cppcms_skel/${MODULE}/${CLASS}.cpp
+                    cppcms_skel/generics/Config.cpp
+                    cppcms_skel/models/SqliteModel.cpp
+                    ${EXECUTABLE_PATH} #required to put it like this in order to
+                                       #the custom command to know it has to be
+                                       #created
+                )
+                target_link_libraries(${EXECUTABLE_PATH}/${TEST} ${CPPCMSSKEL_LIBS})
+
+                #this command is to create the directory in the build directory
+                #in order to have the executable in the same hierarchy as their
+                #corresponding .cpp, in order to find them easily without the possiblity
+                #to have conflict between test name
+                add_custom_command(
+                    OUTPUT  ${EXECUTABLE_PATH}
+                    COMMAND mkdir -p ${EXECUTABLE_PATH}
+                )
+                add_test(
+                    ${EXECUTABLE_PATH}/${TEST}
+                    ${EXECUTABLE_PATH}/${TEST}
+                )
+            endforeach()
         endforeach()
     endforeach()
 
