@@ -172,6 +172,7 @@ enable_testing()
     set(
         Users_MODELS_METHODS
         username_exists
+        email_exists
     )
 
     foreach(CLASS ${CLASSES})
