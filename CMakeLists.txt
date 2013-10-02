@@ -173,6 +173,7 @@ enable_testing()
         Users_MODELS_METHODS
         username_exists
         email_exists
+        is_login_correct 
     )
 
     foreach(CLASS ${CLASSES})
