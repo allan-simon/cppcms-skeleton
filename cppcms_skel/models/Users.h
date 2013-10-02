@@ -226,6 +226,16 @@ class Users : public SqliteModel {
         bool admin_exists(void);
 
 
+        /**
+         * Check if a user is admin or not
+         *
+         * @param userId Id of the user
+         * @return bool True if he's admin, false otherwise
+         *
+         * @since 2 October 2013
+         */
+         bool is_admin(const int userId);
+
 };
 
 

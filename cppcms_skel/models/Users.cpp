@@ -186,6 +186,21 @@ bool Users::admin_exists(void) {
 }
 
 
+/**
+ *
+ */
+bool Users::is_admin(const int userId) {
+
+    cppdb::statement isAdmin = sqliteDb.prepare(
+        "SELECT 1 FROM users "
+        "WHERE group_id = ? AND"
+        "   user_id = ? "
+    );
+    isAdmin.bind(USERS_ADMIN);
+    isAdmin.bind(userId);
+    return check_existence(isAdmin);
+
+}
 
 /**
  *
