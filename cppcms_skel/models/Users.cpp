@@ -102,13 +102,20 @@ bool Users::email_exists(
 int Users::add(
     const std::string &login,
     const std::string &pass,
-    const std::string &email
-) {       
+    const std::string &email,
+    const Users::Type userType
+) {
 
-    
+
     cppdb::statement addUser = sqliteDb.prepare(
-        "INSERT INTO users(username, password, email, since) "
-        "VALUES(?,?,?,?)"
+        "INSERT INTO users( "
+        "   username, "
+        "   password, "
+        "   email, "
+        "   group_id, "
+        "   since"
+        ") "
+        "VALUES(?,?,?,?,?)"
     );
 
 
@@ -117,15 +124,18 @@ int Users::add(
     addUser.bind(passHashed);
     addUser.bind(email);
     addUser.bind(
+        static_cast<int>(userType)
+    );
+    addUser.bind(
         booster::ptime::now().get_seconds()
     );
-          
+
     if (!execute_simple(addUser)) {
         return USERS_NOT_ADDED_ERROR;
     }
     int userId = static_cast<int>(addUser.last_insert_id());
     return userId;
-}     
+}
 
 /**
  *

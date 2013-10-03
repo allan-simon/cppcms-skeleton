@@ -174,6 +174,7 @@ enable_testing()
         username_exists
         email_exists
         is_login_correct 
+        add
     )
 
     foreach(CLASS ${CLASSES})

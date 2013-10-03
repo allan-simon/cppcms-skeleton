@@ -102,6 +102,18 @@ class Users : public SqliteModel {
          */
         Users(const std::string &databasePath);
 
+         /**
+          * @enum Type
+          * @brief Enumeration of the different kind of users
+          */
+         enum class Type {
+             admin = 0,
+             moderator,
+             advance,
+             normal,
+             blocked,
+             inactive
+         };
 
         /**
          * @brief Return the id of the user having the given name
@@ -167,16 +179,17 @@ class Users : public SqliteModel {
          *
          * @return int negative number if the user can't be added,
          *             id of the user if successful
-         *              
+         *
          *
          * @since 13 November 2012
-         */        
+         */
         int add(
             const std::string &login,
             const std::string &pass,
-            const std::string &email
-        );         
-                   
+            const std::string &email,
+            const Users::Type userType = Users::Type::normal
+        );
+
         /**
          * @brief Update the password of a user
          *
@@ -228,18 +241,7 @@ class Users : public SqliteModel {
          */
          bool is_admin(const int userId);
 
-         /**
-          * @enum Type
-          * @brief Enumeration of the different kind of users
-          */
-         enum class Type {
-             admin = 0,
-             moderator,
-             advance,
-             normal,
-             blocked,
-             inactive
-         };
+
 
 };
 
