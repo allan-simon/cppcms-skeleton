@@ -22,17 +22,9 @@ namespace models {
 
 #define USERS_NOT_ADDED_ERROR -1
 
-//TODO replace this by an enum
-#define USERS_ADMIN 0
-#define USERS_MODERATOR 1
-#define USERS_ADVANCED_USER 2
-#define USERS_NORMAL_USER 3
-#define USERS_BLOCKED_USER 4
-#define USERS_INACTIVE_USER 5
-
 /**
  * @class Users
- * 
+ *
  * @brief @TODO
  * @since 30 October 2012       
  *
@@ -235,6 +227,19 @@ class Users : public SqliteModel {
          * @since 2 October 2013
          */
          bool is_admin(const int userId);
+
+         /**
+          * @enum Type
+          * @brief Enumeration of the different kind of users
+          */
+         enum class Type {
+             admin = 0,
+             moderator,
+             advance,
+             normal,
+             blocked,
+             inactive
+         };
 
 };
 

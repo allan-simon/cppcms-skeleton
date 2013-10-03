@@ -179,7 +179,9 @@ bool Users::admin_exists(void) {
         "SELECT 1 FROM users "
         "WHERE group_id = ? "
     );
-    adminExists.bind(USERS_ADMIN);
+    adminExists.bind(
+        static_cast<int>(Users::Type::admin)
+    );
     return check_existence(adminExists);
 
 
@@ -196,7 +198,9 @@ bool Users::is_admin(const int userId) {
         "WHERE group_id = ? AND"
         "   user_id = ? "
     );
-    isAdmin.bind(USERS_ADMIN);
+    isAdmin.bind(
+        static_cast<int>(Users::Type::admin)
+    );
     isAdmin.bind(userId);
     return check_existence(isAdmin);
 
