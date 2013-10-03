@@ -194,9 +194,11 @@ class Users : public SqliteModel {
          * @brief Update the password of a user
          *
          * @param login       The username that we're updating
-         * @param newPassword The new password in clear 
+         * @param newPassword The new password in clear
          *
-         * @return bool True if everythign went smoothly,false otherwise
+         * @return bool True if everything went smoothly,false otherwise
+         *              Note: it does not check if the user exists,
+         *              and will return false only if a SQL error happen
          *
          * @since 15 March 2013
          */
