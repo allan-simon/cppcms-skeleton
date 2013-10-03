@@ -90,7 +90,9 @@ class Test : public cppcmsskel::models::Users {
 
         bool test_email_taken() {
             return test_add_new_user(
-                newName,
+                // just to make sure we use a non-used
+                // username
+                newName + "emailtaken",
                 alreadyTakenEmail
             );
         }
@@ -98,7 +100,8 @@ class Test : public cppcmsskel::models::Users {
         bool test_username_taken() {
             return test_add_new_user(
                 alreadyTakenName,
-                newEmail
+                // just to make sure newEmail is not taken
+                "usernametaken" + newEmail
             );
         }
 
