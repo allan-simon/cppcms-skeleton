@@ -150,7 +150,7 @@ bool Users::change_password(
         "   password = ?  "
         "WHERE username =  ?"
     );
-    
+
     const std::string passHashed = hash_password(newPassword);
     request.bind(passHashed);
     request.bind(login);
@@ -206,7 +206,7 @@ bool Users::is_admin(const int userId) {
     cppdb::statement isAdmin = sqliteDb.prepare(
         "SELECT 1 FROM users "
         "WHERE group_id = ? AND"
-        "   user_id = ? "
+        "   id = ? "
     );
     isAdmin.bind(
         static_cast<int>(Users::Type::admin)
