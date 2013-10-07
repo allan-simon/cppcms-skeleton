@@ -61,10 +61,6 @@ bool SqlImporter::from_string(
         // 
         while (next_sql_block() != std::string::npos) {
             // we split the string 
-            
-            std::cout << "*****begin******" << std::endl;
-            std::cout << currentFragment << std::endl;
-            std::cout << "*******end****" << std::endl;
             sqliteDb.create_statement(currentFragment)  << cppdb::exec; 
 
         } 

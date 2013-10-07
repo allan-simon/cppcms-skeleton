@@ -8,6 +8,7 @@ begin;
     drop table if exists conflicts;
     drop table if exists salt;
     drop table if exists uploads;
+    drop table if exists search;
 
     -- table representing a user
     CREATE TABLE users (
