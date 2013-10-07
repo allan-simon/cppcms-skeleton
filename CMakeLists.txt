@@ -2,9 +2,9 @@ PROJECT(cppcmsskel)
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
 #set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++0x")
 
-set(PROJECT_VERSION "0.20.1")
+set(PROJECT_VERSION "0.21.0")
 set(PROJECT_SOVERSION "0")
 set(ARCHIVE_NAME ${CMAKE_PROJECT_NAME}-${PROJECT_VERSION})
 add_custom_target(
@@ -221,6 +221,7 @@ enable_testing()
                     cppcms_skel/${MODULE}/${CLASS}.cpp
                     cppcms_skel/generics/Config.cpp
                     cppcms_skel/models/SqliteModel.cpp
+                    cppcms_skel/models/SqlImporter.cpp
                     ${EXECUTABLE_PATH} #required to put it like this in order to
                                        #the custom command to know it has to be
                                        #created
