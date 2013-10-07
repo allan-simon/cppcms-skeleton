@@ -64,5 +64,8 @@ after to launch the website you can do
 
 the one provided by default will run in standalone mode on the port 8080
 
+##More documentation 
+
+Some additional information can be found here [https://github.com/allan-simon/cppcms-skeleton/wiki](https://github.com/allan-simon/cppcms-skeleton/wiki)
 
 **MORE TO BE ADDED SOON**
