@@ -18,16 +18,20 @@
 #include "cppcms_skel/controllers/generics/Controller.h"
 #include "cppcms_skel/contents/content.h"
 
-#define CHECK_PERMISSION_OR_GO_TO_LOGIN() \
-    if (!check_permission()) {\
+#define LOGIN_REQUIRED() \
+    if (!login_required()) {\
        return;\
     }
 
+#define ADMIN_REQUIRED() \
+    if (!admin_required()) {\
+        return;\
+    }
+
+
 #define TREAT_PAGE() \
     if (request().post().empty()) {\
-        response().set_redirect_header(\
-            Config::get_base_host() \
-        );\
+        go_to_main_page(); \
         return;\
     }
 
@@ -36,13 +40,13 @@
     if (it != getData.end()) {\
         fieldVar = it->second;\
     }
-    
+
 #define GET_INT_FIELD(fieldVar, fieldString) \
     it = getData.find(fieldString);\
     if (it != getData.end()) {\
         fieldVar = atoi(it->second.c_str());\
     }
-    
+
 
 
 /**
@@ -65,7 +69,7 @@ class Controller : public controllers::generics::Controller {
          */
 
         void init_content(contents::BaseContent& content);
-    
+
         /**
          * Return if the current visitor is a logged user or not
          * @TODO maybe move this in a dedicated class that would
@@ -89,12 +93,14 @@ class Controller : public controllers::generics::Controller {
          * @TODO : maybe add a parameter to precising which action
          * @TODO maybe move this in a dedicated class that would
          * represent the current user
-         * 
+         *
          */
-        bool check_permission();
+        bool login_required();
+
+        bool admin_required();
 
         /**
-         * Convenience function to make an http redirection to the 
+         * Convenience function to make an http redirection to the
          * referer
          */
         void go_back_to_previous_page();
@@ -107,12 +113,52 @@ class Controller : public controllers::generics::Controller {
          */
         void go_to_main_page();
 
-        /* 
-         * Return the id of the current user 
+        /**
+         * Redirect to login page, with the page we tried to display in
+         * parameter so that after login, we will be able to go back to
+         * where we were if wanted
+         *
+         * @since 20 October 2013
+         */
+        void go_to_login();
+        /*
+         * Return the id of the current user
          * @TODO maybe move this in a dedicated class that would
          * represent the current user
          */
         int get_current_user_id();
+
+
+        /**
+         * Set what is the permission level (admin/moderator/normal user etc.)
+         * of the current user (a.k.a the one who is making the request)
+         *
+         * @param permissionLevel The permission level we want to set
+         *
+         * @since 20 October 2013
+         */
+        void set_current_user_permission_level(
+           const int permissionLevel
+        );
+
+        /**
+         * Get what is the permission level (admin/moderator/normal user etc.)
+         * of the current user (a.k.a the one who is making the request)
+         *
+         * @return int The permission level of the current user
+         *
+         * @since 20 October 2013
+         */
+        int get_current_user_permission_level();
+
+        /**
+         * Check if the user making the request is an admin or not
+         *
+         * @return bool True if the user is an admin, false otherwise
+         *
+         * @since 20 October 2013
+         */
+        bool is_current_user_admin();
 
         /**
          * @brief Gives the current username
@@ -126,13 +172,13 @@ class Controller : public controllers::generics::Controller {
         /**
          * @brief Set the current user name and id to be reused after by other
          *        Controllers
-         *        Note: for the moment it relies on the session for storing 
+         *        Note: for the moment it relies on the session for storing
          *              information, so if your session storage backend need
          *              it, it's your job to call session().save()
          *
          * @param string userName The user's name
          * @param id     Userid   The user's id (thanks captain obvious)
-         * 
+         *
          * @since 14 November 2012
          */
         void set_current_username_and_id(
@@ -144,12 +190,12 @@ class Controller : public controllers::generics::Controller {
         /**
          * @brief Set the current user name to be reused after by other
          *        Controllers
-         *        Note: for the moment it relies on the session for storing 
+         *        Note: for the moment it relies on the session for storing
          *              information, so if your session storage backend need
          *              it, it's your job to call session().save()
          *
          * @param string userName The user's name
-         * 
+         *
          * @since 14 November 2012
          */
         void set_current_username(
@@ -158,17 +204,17 @@ class Controller : public controllers::generics::Controller {
 
         /**
          * @brief Wrapper  function to set the redirect url header
-         * 
+         *
          * @param string url The URL on which the user will be redirected
          * @since 12 November 2012
          */
         void redirect(
             const std::string &url
         );
-                
+
         /**
          * @brief Add a message to display on the next page a user will view
-         *        Note: for the moment it relies on the session for storing 
+         *        Note: for the moment it relies on the session for storing
          *              information, so if your session storage backend need
          *              it, it's your job to call session().save()
          *
@@ -179,7 +225,7 @@ class Controller : public controllers::generics::Controller {
          */
         void add_message(
             const std::string &text,
-            const std::string &type = "info" 
+            const std::string &type = "info"
         );
 
         /**
@@ -191,7 +237,7 @@ class Controller : public controllers::generics::Controller {
          * @since 3 June 2013
          */
         void add_error(const std::string &text);
- 
+
         /**
          * @brief Add a warning message that will be displayed at next page
          *        viewed by the user
@@ -201,7 +247,7 @@ class Controller : public controllers::generics::Controller {
          * @since 3 June 2013
          */
         void add_warning(const std::string &text);
-        
+
         /**
          * @brief Add an information message that will be displayed at next
          *        page viewed by the user

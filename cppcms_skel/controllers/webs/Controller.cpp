@@ -1,6 +1,6 @@
 /**
  * @PROJECT_NAME_HUMAN@  @DESCRIPTION@
- * Copyright (C) @YEARS@ @AUTHOR@ <@EMAIL@> 
+ * Copyright (C) @YEARS@ @AUTHOR@ <@EMAIL@>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -18,7 +18,7 @@
  *
  * @category @PROJECT_NAME_HUMAN@
  * @package  Controllers
- * @author   @AUTHOR@ <@EMAIL@> 
+ * @author   @AUTHOR@ <@EMAIL@>
  * @license  Affero General Public License
  * @link     @PROJECT_WEBSITE@
  */
@@ -33,11 +33,13 @@
 
 #include "cppcms_skel/contents/content.h"
 #include "cppcms_skel/generics/Config.h"
+#include "cppcms_skel/results/Users.h"
 
 #define USERNAME "username"
 #define USERID   "userid"
 #define MESSAGES "messages"
 #define INTERFACE_LANG "interfaceLang"
+#define PERMISSION_LEVEL "permissionLevel"
 
 
 namespace controllers {
@@ -57,7 +59,7 @@ Controller::Controller(cppcms::service &serv) :
  *
  */
 void Controller::init_content(contents::BaseContent& content) {
-    
+
     response().content_encoding("UTF-8");
     response().set_content_header("text/html");
     content.lang = get_interface_lang();
@@ -100,6 +102,22 @@ const std::string Controller::get_current_username() {
 /**
  *
  */
+void Controller::set_current_user_permission_level(
+   const int permissionLevel
+) {
+    session()[PERMISSION_LEVEL] = std::to_string(permissionLevel);
+}
+
+/**
+ *
+ */
+int Controller::get_current_user_permission_level() {
+    return std::stoi(session()[PERMISSION_LEVEL]);
+}
+
+/**
+ *
+ */
 void Controller::set_current_username_and_id(
     const std::string &username,
     const int userId
@@ -124,7 +142,7 @@ void Controller::set_current_username(
  *
  */
 void Controller::go_back_to_previous_page() {
-    
+
 
     const std::string referer = request().http_referer();
 
@@ -143,9 +161,31 @@ void Controller::go_back_to_previous_page() {
  *
  */
 void Controller::go_to_main_page() {
-    redirect(Config::get_base_host());
+    //TODO that will not work if the
+    // application is not set at the root
+    // of the server
+    redirect("/");
 }
 
+/**
+ *
+ */
+void Controller::go_to_login(
+) {
+    std::ostringstream oss;
+    oss << cppcms::filters::urlencode(
+       request().path_info()
+    );
+
+    redirect(
+        //TODO that will not work if the
+        // application is not set at the root
+        // of the server
+        "/users/login"
+        "?from=" + oss.str()
+    );
+
+}
 
 /**
  *
@@ -161,26 +201,29 @@ void Controller::redirect(
 /**
  *
  */
-bool Controller::check_permission() {
+bool Controller::login_required() {
 
-    //TODO for the moment we do not handle case
-    // when you're logged but you're current group has not
-    // enough priviledges
     if (!is_logged()) {
-        std::ostringstream oss;
-        
-        oss << cppcms::filters::urlencode(
-           request().path_info()
-        );
+        go_to_login();
+        return false;
+    }
 
-        redirect(
-            "/users/login"
-            "?from=" + oss.str()
-        );
+    return true;
+}
+
+bool Controller::admin_required() {
+
+    if(!login_required()) {
+        return false;
+    }
+
+    if(!is_current_user_admin()) {
         return false;
     }
     return true;
+
 }
+
 
 /**
  *
@@ -189,12 +232,9 @@ int Controller::get_current_user_id() {
     return std::stoi(session()[USERID]);
 }
 
-
-
 /**
  *
  */
-
 void Controller::add_message(
     const std::string &text,
     const std::string &type
@@ -207,7 +247,7 @@ void Controller::add_message(
         std::string tmp;
         session().fetch_data(MESSAGES,messages);
     }
-    
+
     messages.push_back(newMessage);
     session().store_data(
         MESSAGES,
@@ -243,7 +283,15 @@ void Controller::add_warning(const std::string &text) {
     add_message(text, CPPCMS_SKEL_MESSAGE_WARNING);
 }
 
-
+/**
+ *
+ */
+bool Controller::is_current_user_admin() {
+    const int admin = static_cast<int>(
+        cppcmsskel::results::User::Permission::admin
+    );
+    return get_current_user_permission_level() == admin;
+}
 
 
 /**
