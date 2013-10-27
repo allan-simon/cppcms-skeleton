@@ -103,7 +103,7 @@ int Users::add(
     const std::string &login,
     const std::string &pass,
     const std::string &email,
-    const Users::Type userType
+    const results::User::Permission permission
 ) {
 
 
@@ -112,7 +112,7 @@ int Users::add(
         "   username, "
         "   password, "
         "   email, "
-        "   group_id, "
+        "   permission, "
         "   since"
         ") "
         "VALUES(?,?,?,?,?)"
@@ -124,7 +124,7 @@ int Users::add(
     addUser.bind(passHashed);
     addUser.bind(email);
     addUser.bind(
-        static_cast<int>(userType)
+        static_cast<int>(permission)
     );
     addUser.bind(
         booster::ptime::now().get_seconds()
@@ -170,7 +170,7 @@ bool Users::change_permission_level(
     cppdb::statement request = sqliteDb.prepare(
         "UPDATE users "
         "SET "
-        " group_id = ?  "
+        " permission = ?  "
         "WHERE username =  ?"
     );
     
@@ -187,10 +187,10 @@ bool Users::change_permission_level(
 bool Users::admin_exists(void) {
     cppdb::statement adminExists = sqliteDb.prepare(
         "SELECT 1 FROM users "
-        "WHERE group_id = ? "
+        "WHERE permission = ? "
     );
     adminExists.bind(
-        static_cast<int>(Users::Type::admin)
+        static_cast<int>(results::User::Permission::admin)
     );
     return check_existence(adminExists);
 
@@ -205,11 +205,11 @@ bool Users::is_admin(const int userId) {
 
     cppdb::statement isAdmin = sqliteDb.prepare(
         "SELECT 1 FROM users "
-        "WHERE group_id = ? AND"
+        "WHERE permission = ? AND"
         "   id = ? "
     );
     isAdmin.bind(
-        static_cast<int>(Users::Type::admin)
+        static_cast<int>(results::User::Permission::admin)
     );
     isAdmin.bind(userId);
     return check_existence(isAdmin);

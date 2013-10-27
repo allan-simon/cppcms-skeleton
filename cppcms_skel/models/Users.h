@@ -14,6 +14,7 @@
 
 
 #include "SqliteModel.h"
+#include "cppcms_skel/results/Users.h"
 
 
 namespace cppcmsskel {
@@ -102,18 +103,13 @@ class Users : public SqliteModel {
          */
         Users(const std::string &databasePath);
 
-         /**
-          * @enum Type
-          * @brief Enumeration of the different kind of users
-          */
-         enum class Type {
-             admin = 0,
-             moderator,
-             advance,
-             normal,
-             blocked,
-             inactive
-         };
+
+        /**
+         *
+         */
+        results::User by_id(
+            const int id
+        );
 
         /**
          * @brief Return the id of the user having the given name
@@ -187,7 +183,8 @@ class Users : public SqliteModel {
             const std::string &login,
             const std::string &pass,
             const std::string &email,
-            const Users::Type userType = Users::Type::normal
+            const results::User::Permission permission =
+                results::User::Permission::normal
         );
 
         /**
