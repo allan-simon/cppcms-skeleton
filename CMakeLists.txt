@@ -4,7 +4,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 #set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++0x")
 
-set(PROJECT_VERSION "0.21.1")
+set(PROJECT_VERSION "0.22.0")
 set(PROJECT_SOVERSION "0")
 set(ARCHIVE_NAME ${CMAKE_PROJECT_NAME}-${PROJECT_VERSION})
 add_custom_target(
@@ -40,6 +40,11 @@ file(
 )
 
 
+file(
+    GLOB
+    framework_results_files
+    cppcms_skel/results/*
+)
 
 file(
     GLOB
@@ -63,6 +68,7 @@ add_library(
     ${framework_generics_files}
     ${framework_models_files}
     ${framework_controllers_files}
+    ${framework_results_files}
 )
 
 
@@ -164,13 +170,18 @@ enable_testing()
     )
 
     set(
-        SqliteModel_MODELS_METHODS
+        SqliteModel_models_METHODS
         import_sql_file
         check_existence
     )
 
     set(
-        Users_MODELS_METHODS
+        SqliteModel_models_ADDITIONAL_FILES
+    )
+
+
+    set(
+        Users_models_METHODS
         username_exists
         email_exists
         is_login_correct 
@@ -179,8 +190,13 @@ enable_testing()
         change_password
     )
 
+    set(
+        Users_models_ADDITIONAL_FILES
+        cppcms_skel/results/Users.h
+    )
+
     foreach(CLASS ${CLASSES})
-        foreach(METHOD ${${CLASS}_MODELS_METHODS})
+        foreach(METHOD ${${CLASS}_${MODULE}_METHODS})
             #we are supposed to have a folder named with the
             #method named, and with inside one test by .cpp
             #file
@@ -222,6 +238,7 @@ enable_testing()
                     cppcms_skel/generics/Config.cpp
                     cppcms_skel/models/SqliteModel.cpp
                     cppcms_skel/models/SqlImporter.cpp
+                    ${${CLASS}_${MODULE}_ADDITIONAL_FILES}
                     ${EXECUTABLE_PATH} #required to put it like this in order to
                                        #the custom command to know it has to be
                                        #created

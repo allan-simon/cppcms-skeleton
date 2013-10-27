@@ -7,7 +7,7 @@ CREATE TABLE users (
     id INTEGER,
     username text not null unique,
     email text not null unique,
-    group_id integer not null,
+    permission integer not null,
     password text not null,
     since integer not null
 );

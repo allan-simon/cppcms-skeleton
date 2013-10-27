@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "models/Users.h" 
+#include "results/Users.h" 
 #include "generics/test.h"
 
 #define TEST_NAME "test"
@@ -27,7 +28,7 @@ class Test : public cppcmsskel::models::Users {
                 adminName,
                 adminPassword,
                 adminEmail,
-                cppcmsskel::models::Users::Type::admin
+                cppcmsskel::results::User::Permission::admin
             );
 
             return is_admin(userId);
@@ -38,7 +39,7 @@ class Test : public cppcmsskel::models::Users {
                 normalName,
                 normalPassword,
                 normalEmail,
-                cppcmsskel::models::Users::Type::normal
+                cppcmsskel::results::User::Permission::normal
             );
 
             return is_admin(userId);
