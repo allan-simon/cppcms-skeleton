@@ -34,9 +34,16 @@ bool SqlImporter::from_file(
     const std::string &sqlFilePath
 ) {
 
-    std::ifstream f(sqlFilePath.c_str());
+    std::ifstream fileStream(sqlFilePath.c_str());
+
+    if (!fileStream.good()) {
+        BOOSTER_ERROR("cppcms") << "file is not readable" << std::endl;
+        std::cerr << "file is not readable" << std::endl;
+        return false;
+    }
+
     std::string fileStr(
-        (std::istreambuf_iterator<char>(f)),
+        (std::istreambuf_iterator<char>(fileStream)),
         std::istreambuf_iterator<char>()
     );
 
