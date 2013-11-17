@@ -1,7 +1,7 @@
 /**
  * @PROJECT_NAME_HUMAN@  @DESCRIPTION@
  *
- * Copyright (C) @YEARS@ @AUTHOR@ <@EMAIL@> 
+ * Copyright (C) @YEARS@ @AUTHOR@ <@EMAIL@>
  * See accompanying file COPYING.TXT file for licensing details.
  *
  * @category @PROJECT_NAME_HUMAN@
@@ -20,11 +20,12 @@
 //%%%NEXT_INC_MODEL_CTRL_MARKER%%%
 
 
+namespace @PROJECT_NS@ {
 namespace controllers {
 namespace webs {
 
 %%CONTROLLER_NAME%%::%%CONTROLLER_NAME%%(cppcms::service& serv) :
-    controllers::webs::Controller(serv)
+    ::controllers::webs::Controller(serv)
 {
 
     //%%%NEXT_ACTION_DISPATCHER_MARKER%%%, do not delete
@@ -46,3 +47,4 @@ namespace webs {
 
 } // End namespace webs
 } // End namespace controllers
+} // End namespace @PROJECT_NS@

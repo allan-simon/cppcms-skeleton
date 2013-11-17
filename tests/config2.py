@@ -62,6 +62,7 @@ REPLACEMENTS = {
     '@AUTHOR@' : 'Allan SIMON',
     '@EMAIL@': 'allan.simon@supinfo.com',
     '@PROJECT_NAME_CODE@' : 'TatoWiki',
+    '@PROJECT_NS@' : 'tatowiki',
     '@PROJECT_NAME_HUMAN@': 'Tatoeba wiki',
     '@MAIN_CLASS_HEADER@' : 'TATOWIKI',
     '@MAIN_CLASS@' : 'TatoWiki',

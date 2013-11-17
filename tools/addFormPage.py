@@ -18,8 +18,6 @@ import os
 def addFormPage(controller, form, description = '@TODO'):
     addForm(controller,form)
 
-    controllerInclude = controller.upper()
-
     controllerUnderscore = camelToUnderscore(controller)
     controllerUrl = camelToUnderscore(controller).replace('_','-')
     viewName =controllerUnderscore + "_" + form

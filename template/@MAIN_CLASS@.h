@@ -31,6 +31,7 @@
 /** 
  * @namespace apps
  */
+namespace @PROJECT_NS@ {
 namespace apps {
 
 /** 
@@ -42,10 +43,10 @@ class @MAIN_CLASS@ : public cppcms::application {
 
 private:
     //%%%NEXT_MAIN_APP_CTRL_ATTR%%%
-    controllers::webs::Img img;
-    controllers::webs::Css css;
-    controllers::webs::Js js;
-    controllers::webs::Pages pages;
+    ::controllers::webs::Img img;
+    ::controllers::webs::Css css;
+    ::controllers::webs::Js js;
+    ::controllers::webs::Pages pages;
 
     /**
      * @brief Based on http header, we will try to guess the most suitable
@@ -74,5 +75,7 @@ public:
      */
 	void main(std::string url);
 }; 
-}
+
+} // namespace apps
+} // end namespace @PROJECT_NS@
 #endif

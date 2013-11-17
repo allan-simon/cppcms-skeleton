@@ -41,6 +41,7 @@ REPLACEMENTS = {
     '@EMAIL@': 'Your_email.com',
     '@PROJECT_NAME_CODE@' : 'TatoWiki',
     '@PROJECT_NAME_HUMAN@': 'Tato wiki',
+    '@PROJECT_NS@': 'tatowiki',
     '@MAIN_CLASS@' : 'TatoWiki',
     '@MAIN_CLASS_HEADER@' : 'TATOWIKI',
     '@DESCRIPTION@' : 'Description of your project',

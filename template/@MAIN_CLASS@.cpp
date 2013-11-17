@@ -31,6 +31,7 @@
 
 #define DEFAULT_INTERFACE_LANG "en"
 
+namespace @PROJECT_NS@ {
 namespace apps {
 
 /**
@@ -118,5 +119,5 @@ std::string @MAIN_CLASS@::get_default_interface_lang() {
 }
 
 
-
-} // namespace apps
+} // end namespace app
+} // end namespace @PROJECT_NS@

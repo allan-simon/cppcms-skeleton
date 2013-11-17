@@ -17,6 +17,7 @@ def addForm(controller, form, description = '@TODO'):
     formInclude = form.upper()
     formUnderscore = camelToUnderscore(form)
     controllerUnderscore = camelToUnderscore(controller)
+    controllerInclude = controller.upper()
 
     replacePlaceholders = {
         '%%CONTROLLER_NS%%' : controllerUnderscore,
@@ -26,7 +27,8 @@ def addForm(controller, form, description = '@TODO'):
         '%%FORM_INCLUDE%%' : formInclude,
         '%%FORM_TODAY%%' : date.today().strftime('%d %B %Y'),
         '%%FORM_STRUCT%%' : underscoreToPascalCase(form),
-        '%%FORM_DESCRIPTION%%' : description
+        '%%FORM_DESCRIPTION%%' : description,
+        '%%CONTROLLER_INCLUDE%%' : controllerInclude
     }
 
 

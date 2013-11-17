@@ -43,6 +43,7 @@ if __name__ == '__main__':
         "init.py",
         "linkModelController.py",
         "utils.py",
+        "update_local_template.py",
     ]
 
     if os.name == 'posix':

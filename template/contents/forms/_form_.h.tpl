@@ -10,12 +10,13 @@
  *
  */
 
-#ifndef @MAIN_CLASS_HEADER@_%%FORM_INCLUDE%%
-#define @MAIN_CLASS_HEADER@_%%FORM_INCLUDE%%
+#ifndef @MAIN_CLASS_HEADER@_%%CONTROLLER_INCLUDE%%_%%FORM_INCLUDE%%
+#define @MAIN_CLASS_HEADER@_%%CONTROLLER_INCLUDE%%_%%FORM_INCLUDE%%
 
 
 #include <cppcms/form.h>
 
+namespace @PROJECT_NS@ {
 namespace forms{
 namespace %%CONTROLLER_NS%% {
 
@@ -52,7 +53,8 @@ struct %%FORM_STRUCT%% : public cppcms::form {
 
 
 } // end of namespace %%CONTROLLER_NS%%
-}// end of namespace forms
+} // end of namespace forms
+} // end of namespace @PROJECT_NS@
 
 
 #endif

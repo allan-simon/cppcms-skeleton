@@ -13,9 +13,9 @@
 #ifndef @MAIN_CLASS_HEADER@_%%MODEL_INCLUDE%%
 #define @MAIN_CLASS_HEADER@_%%MODEL_INCLUDE%%
 
-
-
 #include <cppcms_skel/models/SqliteModel.h>
+
+namespace @PROJECT_NS@ {
 namespace models {
 
 
@@ -36,5 +36,6 @@ class %%MODEL_NAME%% : public cppcmsskel::models::SqliteModel {
 };
 
 } // end namespace models
+} // end namespace @PROJECT_NS@
 
 #endif

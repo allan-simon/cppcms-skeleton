@@ -41,6 +41,7 @@ REPLACEMENTS = {
     '@EMAIL@': 'Your_email.com',
     '@PROJECT_NAME_CODE@' : 'YourProjectName',
     '@PROJECT_NAME_HUMAN@': 'your project name',
+    '@PROJECT_NS@': 'yourproject_namespace',
     '@MAIN_CLASS@' : 'NameOfYourApplicationClass',
     '@MAIN_CLASS_HEADER@' : 'NAME_OF_MAIN_CLASS',
     '@DESCRIPTION@' : 'Description of your project',
