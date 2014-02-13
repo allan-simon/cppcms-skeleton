@@ -1,5 +1,5 @@
         /**
-         * @brief %%ACTION_DESCRIPTION%%
+         * %%ACTION_DESCRIPTION%%
          * @since %%ACTION_TODAY%%
          */
         void %%ACTION_NAME%%();
