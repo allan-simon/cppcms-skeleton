@@ -49,8 +49,8 @@ private:
     ::controllers::webs::Pages pages;
 
     /**
-     * @brief Based on http header, we will try to guess the most suitable
-     *        interface language
+     * Based on http header, we will try to guess the most suitable
+     * interface language
      *
      * @return The interface language code
      *
