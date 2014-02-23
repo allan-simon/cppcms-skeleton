@@ -65,6 +65,31 @@ bool Users::is_login_correct(
     return check_existence(checkPasswd);
 }
 
+/**
+ *
+ */
+cppcmsskel::results::User Users::by_id(
+    const int id
+) {
+    cppdb::statement byId = sqliteDb.prepare(
+        "SELECT id, username, permission FROM users "
+        "WHERE id = ? LIMIT 1"
+    );
+    byId.bind(id);
+
+    cppdb::result res = byId.row();
+    if (res.empty()) {
+        return cppcmsskel::results::User();
+    }
+
+    return cppcmsskel::results::User(
+        res.get<int>("id"),
+        res.get<std::string>("username"),
+        res.get<int>("permission")
+    );
+
+}
+
 
 /**
  * 

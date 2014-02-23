@@ -17,6 +17,7 @@
 
 #include "cppcms_skel/controllers/generics/Controller.h"
 #include "cppcms_skel/contents/content.h"
+#include "cppcms_skel/results/Users.h"
 
 #define LOGIN_REQUIRED() \
     if (!login_required()) {\
@@ -139,6 +140,10 @@ class Controller : public controllers::generics::Controller {
          */
         void set_current_user_permission_level(
            const int permissionLevel
+        );
+
+        void set_current_user_permission_level(
+            cppcmsskel::results::User::Permission permissionLevel
         );
 
         /**

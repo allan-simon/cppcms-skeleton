@@ -4,7 +4,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 #set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++0x")
 
-set(PROJECT_VERSION "0.24.0")
+set(PROJECT_VERSION "0.25.0")
 set(PROJECT_SOVERSION "0")
 set(ARCHIVE_NAME ${CMAKE_PROJECT_NAME}-${PROJECT_VERSION})
 add_custom_target(
@@ -186,6 +186,7 @@ enable_testing()
         email_exists
         is_login_correct 
         is_admin
+        by_id
         add
         change_password
     )

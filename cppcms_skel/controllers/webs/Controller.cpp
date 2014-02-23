@@ -111,6 +111,19 @@ void Controller::set_current_user_permission_level(
 /**
  *
  */
+void Controller::set_current_user_permission_level(
+   cppcmsskel::results::User::Permission permissionLevel
+) {
+    session()[PERMISSION_LEVEL] = std::to_string(
+        static_cast<int>(permissionLevel)
+    );
+}
+
+
+
+/**
+ *
+ */
 int Controller::get_current_user_permission_level() {
     return std::stoi(session()[PERMISSION_LEVEL]);
 }

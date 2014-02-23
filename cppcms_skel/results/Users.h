@@ -33,11 +33,26 @@ namespace results {
              blocked
          };
 
-        std::string name;
         int id;
+        std::string name;
         Permission permission;
 
+        User(
+            const int idParam = -1,
+            const std::string & nameParam = "",
+            int permissionParam = 5 // blocked user
+        ) :
+            id(idParam),
+            name(nameParam)
+        {
+            //TODO that line has undefined behavior if int is not
+            // a valid permission
+            permission = static_cast<Permission>(permissionParam);
+        };
 
+        bool exists () {
+            return id > 0;
+        }
 
 
     };
