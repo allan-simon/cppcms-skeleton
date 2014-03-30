@@ -38,9 +38,13 @@ def check_architecture_names(architecture):
     # true only if everything is ok
     return controllersOk and modelsOk and linksOk
 
-def _check(dict,type):
+def _check(dictionnary, type):
     isAllOk = True
-    for key, value in dict.items():
+    if not isinstance(dictionnary, dict):
+        print("%s is supposed to a be dictionnary" % type)
+        return False
+
+    for key, value in dictionnary.items():
         if key.lower()  in BAD_NAMES:
             print(
                 "You can't name your %s '%s', it's a C++ keyword"
