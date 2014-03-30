@@ -185,10 +185,10 @@ def generate_links_models_controllers(modelsControllers,models,controllers):
         bothExist = True
         if model not in models:
             bothExist = False
-            print("the model %s is not defined",model)
+            print("the model %s is not defined" % model)
         if controller not in controllers:
             bothExist = False
-            print("the controller %s is not defined",controller)
+            print("the controller %s is not defined" % controller)
         if bothExist:
             linkModelController(model,controller)
 
