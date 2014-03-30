@@ -1,5 +1,4 @@
         /**
-         * @brief TODO
          * @since %%MODEL_CTRL_TODAY%%
          */
         @PROJECT_NS@::models::%%MODEL_NAME%% *%%MODEL_VAR%%;

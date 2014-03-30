@@ -1,7 +1,6 @@
 /**
  * @struct %%CONTENT_NAME%%
  * @since  %%FORM_TODAY%%
- * @brief 
  */
 struct %%CONTENT_NAME%% : public %%CONTROLLER_NAME%% {
 
