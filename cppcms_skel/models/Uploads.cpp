@@ -40,9 +40,8 @@ std::string Uploads::save(
     try {
         //TODO if we keep the same name, we should then check that there's
         // not already a file with the same name
-        file->save_to(filename);
-        std::rename(
-            filename.c_str(),
+        file->write_data();
+        file->save_to(
             (Config::get_upload_folder() + filename).c_str()
         );
     } catch (cppcms::cppcms_error const &e) {
