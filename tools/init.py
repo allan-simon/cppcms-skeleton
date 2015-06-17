@@ -26,7 +26,10 @@ from architecture import generate_architecture, generate_folders
 from config import ARCHITECTURE, APP_ROOT, REPLACEMENTS
 from constants import FOLDERS, LOCAL_TEMPLATE_ROOT, MAIN_APP_PLACEHOLDER
 
-CPPCMS_SKEL_DEFAULT_INSTALL_DIR = '/usr/local/share/cppcmsskel/'
+if os.path.exists('/usr/share/cppcmsskel/'):
+    CPPCMS_SKEL_DEFAULT_INSTALL_DIR = '/usr/share/cppcmsskel/'
+else:
+    CPPCMS_SKEL_DEFAULT_INSTALL_DIR = '/usr/local/share/cppcmsskel/'
 
 
 if __name__ == '__main__':
